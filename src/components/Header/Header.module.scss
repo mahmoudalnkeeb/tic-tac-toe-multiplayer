@@ -1,0 +1,17 @@
+@use "@/styles/mixins" as m;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+@include m.small {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
