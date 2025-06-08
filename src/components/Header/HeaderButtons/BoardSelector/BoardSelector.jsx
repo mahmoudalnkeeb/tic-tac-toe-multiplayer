@@ -1,11 +1,25 @@
+"use client";
+
+import { BOARD_SIZES } from "@/data/staticData";
+import { useXOStore } from "@/stores/xo.store";
 import s from "./BoardSelector.module.scss";
 
 const BoardSelector = () => {
+  const { borderSize, updateGameState } = useXOStore((s) => s);
+
   return (
     <div className={s.boardSelector}>
-      <button data-size="3">3x3</button>
-      <button data-size="4">4x4</button>
-      <button data-size="5">5x5</button>
+      {BOARD_SIZES.map((size) => (
+        <button
+          key={size}
+          className={borderSize === size ? s.active : ""}
+          onClick={() => {
+            updateGameState({ key: "borderSize", value: size });
+          }}
+        >
+          {size}x{size}
+        </button>
+      ))}
     </div>
   );
 };

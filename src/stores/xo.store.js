@@ -8,6 +8,7 @@ import { create } from "zustand";
 const initialGameStates = ({ hasGameStart = false } = {}) => ({
   hasGameStart,
   playerTurn: "X",
+  borderSize: "3",
   winner: "",
   board: [
     ["", "", "", ""],
