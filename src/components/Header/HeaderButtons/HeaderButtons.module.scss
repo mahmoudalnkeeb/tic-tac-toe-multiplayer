@@ -1,0 +1,15 @@
+@use "@/styles/mixins" as m;
+
+.headerButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+@include m.small {
+  .headerButtons {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+}
