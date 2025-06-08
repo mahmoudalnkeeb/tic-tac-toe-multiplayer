@@ -1,21 +1,17 @@
 import {
+  createBoardBySize,
   hasNoSquaresAvailable,
   updateBoard,
   whoWins,
 } from "@/functions/gameUtility";
 import { create } from "zustand";
 
-const initialGameStates = () => ({
+const initialGameStates = ({ boardSize = 3 } = {}) => ({
   hasGameStart: true,
   playerTurn: "X",
-  borderSize: "3",
+  boardSize,
   winner: "",
-  board: [
-    ["", "", "", ""],
-    ["", "", "", ""],
-    ["", "", "", ""],
-    ["", "", "", ""],
-  ],
+  board: createBoardBySize(boardSize),
 });
 
 export const useXOStore = create((set, get) => ({
@@ -24,7 +20,7 @@ export const useXOStore = create((set, get) => ({
   startGame: () => {
     get().resetGame();
   },
-  resetGame: () => set(initialGameStates()),
+  resetGame: ({ boardSize } = {}) => set(initialGameStates({ boardSize })),
   fillSquare: ({ rowIndex, columnIndex }) => {
     if (!get().hasGameStart) return;
 
@@ -46,4 +42,8 @@ export const useXOStore = create((set, get) => ({
       winner: noSquaresAvailable ? "Draw!" : theWinner,
       hasGameStart: false,
     }),
+  updateBoardSize: ({ boardSize } = {}) => {
+    set({ boardSize });
+    get().resetGame({ boardSize });
+  },
 }));

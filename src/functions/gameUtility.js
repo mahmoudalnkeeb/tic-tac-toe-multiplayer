@@ -49,3 +49,9 @@ export function whoWins(board, player) {
   if (isWinByLine(board) || isWinDiagonally(board)) return player;
   return "None";
 }
+
+export function createBoardBySize(size = 3) {
+  const row = Array.from({ length: size }, () => "");
+  const board = Array.from({ length: size }, () => [...row]);
+  return board;
+}
