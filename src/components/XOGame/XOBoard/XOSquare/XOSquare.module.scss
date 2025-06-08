@@ -1,8 +1,9 @@
 .square {
+  --size: 85px;
   background: rgba(255, 255, 255, 0.08);
   border: 2px solid transparent;
-  min-width: 85px;
-  min-height: 85px;
+  min-width: var(--size);
+  min-height: var(--size);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -34,6 +35,14 @@
     color: #4ecdc4;
     text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
     box-shadow: 0 0 15px rgba(78, 205, 196, 0.1);
+  }
+
+  &.x4 {
+    --size: 70px;
+  }
+
+  &.x5 {
+    --size: 60px;
   }
 
   &:not(:disabled):hover {
