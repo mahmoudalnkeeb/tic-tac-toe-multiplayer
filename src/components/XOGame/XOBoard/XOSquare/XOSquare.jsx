@@ -4,16 +4,19 @@ import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ value, disabled, onClick }) => {
   const boardSize = useXOStore((s) => s.boardSize);
-  const x4Class = boardSize === 4 ? s.x4 : "";
-  const x5Class = boardSize === 5 ? s.x5 : "";
-  const playerXClass = value === SYMBOL_X ? s.playerX : "";
-  const playerOClass = value === SYMBOL_O ? s.playerO : "";
-  const classes = `${s.square} ${playerXClass} ${playerOClass} ${x4Class} ${x5Class}`;
+
+  const classes = [
+    s.square,
+    boardSize === 4 ? s.x4 : "",
+    boardSize === 5 ? s.x5 : "",
+    value === SYMBOL_X ? s.playerX : "",
+    value === SYMBOL_O ? s.playerO : "",
+  ];
 
   return (
     <button
       type="button"
-      className={classes}
+      className={classes.join(" ")}
       onClick={onClick}
       disabled={disabled}
     >
