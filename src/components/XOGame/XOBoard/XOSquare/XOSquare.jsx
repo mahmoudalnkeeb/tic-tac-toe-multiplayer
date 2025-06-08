@@ -17,7 +17,7 @@ const XOSquare = ({ value, disabled, onClick }) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {value}
+      {value === SYMBOL_O ? <span>{value}</span> : value}
     </button>
   );
 };
