@@ -8,7 +8,7 @@ import { create } from "zustand";
 
 const initialGameStates = ({ boardSize = 3 } = {}) => ({
   hasGameStart: true,
-  playerTurn: "X",
+  playerTurn: "✕",
   boardSize,
   winner: "",
   board: createBoardBySize(boardSize),
@@ -25,7 +25,7 @@ export const useXOStore = create((set, get) => ({
     if (!get().hasGameStart) return;
 
     const { playerTurn, board, declareWinner } = get();
-    const opponent = playerTurn === "X" ? "O" : "X";
+    const opponent = playerTurn === "✕" ? "○" : "✕";
     const newBoard = updateBoard({ board, rowIndex, columnIndex, playerTurn });
 
     set({ board: newBoard, playerTurn: opponent });
