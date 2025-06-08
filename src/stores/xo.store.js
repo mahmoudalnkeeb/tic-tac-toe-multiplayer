@@ -1,3 +1,4 @@
+import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
 import {
   createBoardBySize,
   hasNoSquaresAvailable,
@@ -25,7 +26,7 @@ export const useXOStore = create((set, get) => ({
     if (!get().hasGameStart) return;
 
     const { playerTurn, board, declareWinner } = get();
-    const opponent = playerTurn === "✕" ? "○" : "✕";
+    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
     const newBoard = updateBoard({ board, rowIndex, columnIndex, playerTurn });
 
     set({ board: newBoard, playerTurn: opponent });

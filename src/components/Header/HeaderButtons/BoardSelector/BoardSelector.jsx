@@ -1,8 +1,8 @@
 "use client";
 
-import { BOARD_SIZES } from "@/data/staticData";
 import { useXOStore } from "@/stores/xo.store";
 import s from "./BoardSelector.module.scss";
+import { BOARD_SIZES } from "@/data/constants";
 
 const BoardSelector = () => {
   const { boardSize, updateBoardSize } = useXOStore((s) => s);
