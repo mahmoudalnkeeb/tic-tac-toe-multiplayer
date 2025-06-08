@@ -1,0 +1,40 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.logo .logoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 8px);
+  grid-template-rows: repeat(3, 8px);
+  gap: 2px;
+  background: rgba(255, 255, 255, .1);
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.logo .logoGrid>li {
+  border-radius: 1px;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.logo .logoGrid>li:where(:nth-child(1), :nth-child(5)) {
+  background-color: #4a9eff;
+}
+
+.logo .logoGrid>li:where(:nth-child(3), :nth-child(7), :nth-child(8), :nth-child(9)) {
+  background-color: #ff4757;
+}
+
+.logo .logoText {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.logo .logoText>span {
+  font-size: 11px;
+  opacity: 0.7;
+}

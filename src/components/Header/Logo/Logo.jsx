@@ -1,9 +1,27 @@
-import s from './Logo.module.scss'
+import s from "./Logo.module.scss";
 
 const Logo = () => {
   return (
-    <div className={s.logo}></div>
-  )
-}
+    <div className={s.logo}>
+      <ul className={s.logoGrid}>
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+      </ul>
 
-export default Logo
+      <p className={s.logoText}>
+        Tic Tac Toe
+        <br />
+        <span>(XO) game</span>
+      </p>
+    </div>
+  );
+};
+
+export default Logo;
