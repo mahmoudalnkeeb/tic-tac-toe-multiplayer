@@ -5,8 +5,8 @@ import {
 } from "@/functions/gameUtility";
 import { create } from "zustand";
 
-const initialGameStates = ({ hasGameStart = false } = {}) => ({
-  hasGameStart,
+const initialGameStates = () => ({
+  hasGameStart: true,
   playerTurn: "X",
   borderSize: "3",
   winner: "",
@@ -24,7 +24,7 @@ export const useXOStore = create((set, get) => ({
   startGame: () => {
     get().resetGame();
   },
-  resetGame: () => set(initialGameStates({ hasGameStart: true })),
+  resetGame: () => set(initialGameStates()),
   fillSquare: ({ rowIndex, columnIndex }) => {
     if (!get().hasGameStart) return;
 
