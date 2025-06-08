@@ -1,14 +1,18 @@
-import AboutButton from "./AboutButton/AboutButton";
+"use client";
+
+import Button from "@/components/Shared/Button/Button";
+import { useXOStore } from "@/stores/xo.store";
 import BoardSelector from "./BoardSelector/BoardSelector";
 import s from "./HeaderButtons.module.scss";
-import ResetButton from "./ResetButton/ResetButton";
 
 const HeaderButtons = () => {
+  const resetGame = useXOStore((s) => s.resetGame);
+
   return (
     <div className={s.headerButtons}>
       <BoardSelector />
-      <AboutButton />
-      <ResetButton />
+      <Button onClick={() => {}}>About</Button>
+      <Button onClick={resetGame}>Reset</Button>
     </div>
   );
 };
