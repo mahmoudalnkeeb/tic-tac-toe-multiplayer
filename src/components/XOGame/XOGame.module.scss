@@ -2,9 +2,8 @@
   max-width: 1060px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 50px;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .controls {
