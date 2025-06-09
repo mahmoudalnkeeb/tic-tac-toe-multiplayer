@@ -10,9 +10,9 @@ const XOGame = () => {
   return (
     <section className={s.game}>
       <div className={s.wrapper}>
-        <PowerUps player="p1" />
+        <PowerUps player="player1" />
         <GameStats />
-        <PowerUps player="p2" />
+        <PowerUps player="player2" />
       </div>
 
       <XOBoard />

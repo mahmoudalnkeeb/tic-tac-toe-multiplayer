@@ -23,7 +23,7 @@ const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   powerUps: {
     player1: { ...initialPowerUps({ boardSize }) },
     player2: { ...initialPowerUps({ boardSize }) },
-    playerPower: null,
+    selectedPower: null,
     whoUsingPower: null,
   },
 });
