@@ -2,18 +2,19 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
+  background: rgba(0, 0, 0, .9);
+  color: #fff;
   padding: 30px 50px;
   border-radius: 20px;
   text-align: center;
+  text-wrap: nowrap;
   font-size: 24px;
   font-weight: bold;
   border: 2px solid #4ecdc4;
   backdrop-filter: blur(20px);
   z-index: 1000;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: translate(-50%, -50%) scale(0);
+  transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .winner.show {
