@@ -7,7 +7,14 @@ import s from "./WinnerPopUp.module.scss";
 const WinnerPopUp = () => {
   const winner = useXOStore((s) => s.winner);
 
-  return <p className={s.winner}>{winMessages?.[winner]}</p>;
+  const classes = [
+    s.winner,
+    winner === "Draw!" ? s.draw : "",
+    winner === SYMBOL_X ? s.p1 : "",
+    winner === SYMBOL_O ? s.p2 : "",
+  ].join(" ");
+
+  return <p className={classes}>{winMessages?.[winner]}</p>;
 };
 
 export default WinnerPopUp;
