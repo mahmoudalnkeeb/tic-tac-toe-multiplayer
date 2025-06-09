@@ -10,10 +10,6 @@ export function hasNoSquaresAvailable(board) {
   return board.every((row) => row.every((cell) => cell !== ""));
 }
 
-export function checkSingleDiagonal(diagonal) {
-  return diagonal[0] !== "" && diagonal.every((item) => item === diagonal[0]);
-}
-
 export function isUniform(arr) {
   return arr[0] !== "" && arr.every((cell) => cell === arr[0]);
 }
