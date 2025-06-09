@@ -51,17 +51,19 @@ export const useXOStore = create((set, get) => ({
     }
   },
   declareWinner: ({ theWinner, noSquaresAvailable } = {}) => {
+    const isDraw = noSquaresAvailable && theWinner === "None";
+
     set({
-      winner: noSquaresAvailable ? "Draw!" : theWinner,
+      winner: isDraw ? "Draw!" : theWinner,
       hasGameStart: false,
     });
-    get().updateStatsOnWin({ theWinner, noSquaresAvailable });
+    get().updateStatsOnWin({ theWinner, isDraw });
   },
-  updateStatsOnWin: ({ theWinner, noSquaresAvailable }) => {
+  updateStatsOnWin: ({ theWinner, isDraw }) => {
     const { p1Wins, draws, p2Wins } = get().stats;
     const updatedStats = {
       p1Wins: theWinner === SYMBOL_O ? p1Wins + 1 : p1Wins,
-      draws: noSquaresAvailable ? draws + 1 : draws,
+      draws: isDraw ? draws + 1 : draws,
       p2Wins: theWinner === SYMBOL_X ? p2Wins + 1 : p2Wins,
     };
 
