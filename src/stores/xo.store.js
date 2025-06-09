@@ -1,4 +1,9 @@
-import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
+import {
+  FIRST_PLAYER,
+  INITIAL_BOARD_SIZE,
+  SYMBOL_O,
+  SYMBOL_X,
+} from "@/data/constants";
 import {
   createBoardBySize,
   hasNoSquaresAvailable,
@@ -7,15 +12,13 @@ import {
 } from "@/functions/gameUtility";
 import { create } from "zustand";
 
-const initialGameStates = ({ boardSize = 3, stats } = {}) => ({
+const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   hasGameStart: true,
-  playerTurn: "✕",
+  playerTurn: FIRST_PLAYER,
   boardSize,
   winner: "",
   board: createBoardBySize(boardSize),
-  stats: {
-    ...initialStats(stats),
-  },
+  stats: { ...initialStats(stats) },
 });
 
 const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
@@ -27,9 +30,6 @@ const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
 export const useXOStore = create((set, get) => ({
   ...initialGameStates(),
   updateGameState: ({ key, value }) => set({ [key]: value }),
-  startGame: () => {
-    get().resetGame();
-  },
   resetGame: ({ boardSize } = {}) => {
     const { p1Wins, draws, p2Wins } = get().stats;
     set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
