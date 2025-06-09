@@ -5,13 +5,14 @@ import { useXOStore } from "@/stores/xo.store";
 import s from "./WinnerPopUp.module.scss";
 
 const WinnerPopUp = () => {
-  const winner = useXOStore((s) => s.winner);
+  const { winner, isWinnerPopupVisible } = useXOStore((s) => s);
 
   const classes = [
     s.winner,
     winner === "Draw!" ? s.draw : "",
-    winner === SYMBOL_X ? s.p1 : "",
-    winner === SYMBOL_O ? s.p2 : "",
+    winner === SYMBOL_O ? s.p1 : "",
+    winner === SYMBOL_X ? s.p2 : "",
+    isWinnerPopupVisible ? s.show : "",
   ].join(" ");
 
   return <p className={classes}>{winMessages?.[winner]}</p>;

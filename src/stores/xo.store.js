@@ -18,6 +18,7 @@ const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   boardSize,
   winner: "",
   board: createBoardBySize(boardSize),
+  isWinnerPopupVisible: false,
   stats: { ...initialStats(stats) },
 });
 
@@ -58,6 +59,7 @@ export const useXOStore = create((set, get) => ({
       hasGameStart: false,
     });
     get().updateStatsOnWin({ theWinner, isDraw });
+    get().showWinnerPopup();
   },
   updateStatsOnWin: ({ theWinner, isDraw }) => {
     const { p1Wins, draws, p2Wins } = get().stats;
@@ -73,5 +75,12 @@ export const useXOStore = create((set, get) => ({
   updateBoardSize: ({ boardSize } = {}) => {
     set({ boardSize });
     get().resetGame({ boardSize });
+  },
+  showWinnerPopup: () => {
+    set({ isWinnerPopupVisible: true });
+
+    setTimeout(() => {
+      set({ isWinnerPopupVisible: false });
+    }, 2000);
   },
 }));
