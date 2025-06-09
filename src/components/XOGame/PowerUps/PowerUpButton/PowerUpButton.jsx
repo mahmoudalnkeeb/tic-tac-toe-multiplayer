@@ -1,9 +1,21 @@
-import s from './PowerUpButton.module.scss'
+import s from "./PowerUpButton.module.scss";
 
-const PowerUpButton = () => {
+const PowerUpButton = ({
+  data: { id, name, icon, available, coolDown, player },
+}) => {
+  const classes = [
+    s.powerUp,
+    !available ? s.disabled : "",
+    player === "player1" ? s.player1 : "",
+  ].join(" ");
+
   return (
-    <div>PowerUpButton</div>
-  )
-}
+    <button key={id} type="button" className={classes}>
+      <span className={s.icon}>{icon}</span>
+      <span className={s.powerName}>{name}</span>
+      <span className={s.coolDown}>{coolDown}</span>
+    </button>
+  );
+};
 
-export default PowerUpButton
+export default PowerUpButton;
