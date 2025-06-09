@@ -107,4 +107,11 @@ export const useXOStore = create((set, get) => ({
   selectPowerUp: ({ selectedPower, whoUsingPower }) => {
     set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
   },
+  usePowerUp: ({ rowIndex, columnIndex }) => {
+    const { board, powerUps } = get();
+    const { selectedPower, whoUsingPower } = powerUps;
+    const squareData = board[rowIndex][columnIndex];
+
+    console.log({ selectedPower, whoUsingPower, squareData });
+  },
 }));

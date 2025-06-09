@@ -1,17 +1,22 @@
 export function updateBoard({ board, rowIndex, columnIndex, playerTurn }) {
   return board.map((row, i) =>
-    row.map((cell, j) =>
-      i === rowIndex && j === columnIndex ? playerTurn : cell
-    )
+    row.map((squareData, j) => {
+      const isCorrectIndexes = i === rowIndex && j === columnIndex;
+      const fillWith = isCorrectIndexes ? playerTurn : squareData.fillWith;
+      return { ...squareData, fillWith };
+    })
   );
 }
 
 export function hasNoSquaresAvailable(board) {
-  return board.every((row) => row.every((cell) => cell !== ""));
+  return board.every((row) => row.every(({ fillWith }) => fillWith !== ""));
 }
 
 export function isUniform(arr) {
-  return arr[0] !== "" && arr.every((cell) => cell === arr[0]);
+  return (
+    arr[0]?.fillWith !== "" &&
+    arr.every((squareData) => squareData?.fillWith === arr[0]?.fillWith)
+  );
 }
 
 export function isWinByLine(board) {
@@ -47,7 +52,15 @@ export function whoWins(board, player) {
 }
 
 export function createBoardBySize(size = 3) {
-  const row = Array.from({ length: size }, () => "");
+  const InitialSquare = {
+    fillWith: "",
+    isFreezed: false,
+    isBombed: false,
+    swapSelected: false,
+  };
+
+  const row = Array.from({ length: size }, () => InitialSquare);
   const board = Array.from({ length: size }, () => [...row]);
+
   return board;
 }
