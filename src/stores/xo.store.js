@@ -104,4 +104,7 @@ export const useXOStore = create((set, get) => ({
       set({ isWinnerPopupVisible: false });
     }, 2000);
   },
+  selectPowerUp: ({ selectedPower, whoUsingPower }) => {
+    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
+  },
 }));
