@@ -20,12 +20,33 @@ const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   board: createBoardBySize(boardSize),
   isWinnerPopupVisible: false,
   stats: { ...initialStats(stats) },
+  powerUps: {
+    player1: { ...initialPowerUps({ boardSize }) },
+    player2: { ...initialPowerUps({ boardSize }) },
+    playerPower: null,
+    whoUsingPower: null,
+  },
 });
 
 const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
   p1Wins,
   draws,
   p2Wins,
+});
+
+const initialPowerUps = ({ boardSize } = {}) => ({
+  freeze: {
+    available: true,
+    coolDown: boardSize === 4 ? 10 : 15,
+  },
+  bomb: {
+    available: true,
+    coolDown: boardSize === 4 ? 10 : 15,
+  },
+  swap: {
+    available: true,
+    coolDown: boardSize === 4 ? 10 : 15,
+  },
 });
 
 export const useXOStore = create((set, get) => ({
