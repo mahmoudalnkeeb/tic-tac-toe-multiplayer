@@ -2,6 +2,7 @@
 
 import GameStats from "./GameStats/GameStats";
 import PlayerTurnIndicator from "./PlayerTurnIndicator/PlayerTurnIndicator";
+import PowerUps from "./PowerUps/PowerUps";
 import XOBoard from "./XOBoard/XOBoard";
 import s from "./XOGame.module.scss";
 
@@ -9,6 +10,7 @@ const XOGame = () => {
   return (
     <section className={s.game}>
       <GameStats />
+      <PowerUps />
       <XOBoard />
       <PlayerTurnIndicator />
     </section>
