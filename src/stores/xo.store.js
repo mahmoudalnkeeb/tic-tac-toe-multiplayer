@@ -7,12 +7,21 @@ import {
 } from "@/functions/gameUtility";
 import { create } from "zustand";
 
-const initialGameStates = ({ boardSize = 3 } = {}) => ({
+const initialGameStates = ({ boardSize = 3, stats } = {}) => ({
   hasGameStart: true,
   playerTurn: "✕",
   boardSize,
   winner: "",
   board: createBoardBySize(boardSize),
+  stats: {
+    ...initialStats(stats),
+  },
+});
+
+const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
+  p1Wins,
+  draws,
+  p2Wins,
 });
 
 export const useXOStore = create((set, get) => ({
@@ -21,7 +30,10 @@ export const useXOStore = create((set, get) => ({
   startGame: () => {
     get().resetGame();
   },
-  resetGame: ({ boardSize } = {}) => set(initialGameStates({ boardSize })),
+  resetGame: ({ boardSize } = {}) => {
+    const { p1Wins, draws, p2Wins } = get().stats;
+    set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
+  },
   fillSquare: ({ rowIndex, columnIndex }) => {
     if (!get().hasGameStart) return;
 
@@ -38,11 +50,24 @@ export const useXOStore = create((set, get) => ({
       declareWinner({ theWinner, noSquaresAvailable });
     }
   },
-  declareWinner: ({ theWinner, noSquaresAvailable } = {}) =>
+  declareWinner: ({ theWinner, noSquaresAvailable } = {}) => {
     set({
       winner: noSquaresAvailable ? "Draw!" : theWinner,
       hasGameStart: false,
-    }),
+    });
+    get().updateStatsOnWin({ theWinner, noSquaresAvailable });
+  },
+  updateStatsOnWin: ({ theWinner, noSquaresAvailable }) => {
+    const { p1Wins, draws, p2Wins } = get().stats;
+    const updatedStats = {
+      p1Wins: theWinner === SYMBOL_O ? p1Wins + 1 : p1Wins,
+      draws: noSquaresAvailable ? draws + 1 : draws,
+      p2Wins: theWinner === SYMBOL_X ? p2Wins + 1 : p2Wins,
+    };
+
+    set({ stats: updatedStats });
+    return updatedStats;
+  },
   updateBoardSize: ({ boardSize } = {}) => {
     set({ boardSize });
     get().resetGame({ boardSize });
