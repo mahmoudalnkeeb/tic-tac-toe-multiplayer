@@ -26,12 +26,18 @@
     opacity: .5;
     cursor: not-allowed;
   }
+}
 
-  &:not(.disabled):hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #4ecdc4;
-    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
-  }
+.powerUps .powerUp:not(.disabled):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #4ecdc4;
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
+}
+
+.powerUps.p1 .powerUp:not(.disabled):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ff6b6b;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
 }
 
 .powerUps .powerUp .icon {
