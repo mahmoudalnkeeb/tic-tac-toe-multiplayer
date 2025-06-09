@@ -9,9 +9,12 @@ import s from "./XOGame.module.scss";
 const XOGame = () => {
   return (
     <section className={s.game}>
-      <PowerUps player="p1" />
-      <GameStats />
-      <PowerUps player="p2" />
+      <div className={s.wrapper}>
+        <PowerUps player="p1" />
+        <GameStats />
+        <PowerUps player="p2" />
+      </div>
+
       <XOBoard />
       <PlayerTurnIndicator />
     </section>
