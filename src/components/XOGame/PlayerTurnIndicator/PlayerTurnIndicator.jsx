@@ -5,12 +5,13 @@ import { useXOStore } from "@/stores/xo.store";
 import s from "./PlayerTurnIndicator.module.scss";
 
 const PlayerTurnIndicator = () => {
-  const playerTurn = useXOStore((s) => s.playerTurn);
+  const { playerTurn, boardSize } = useXOStore((s) => s);
   const p1ActiveClass = playerTurn === SYMBOL_O ? s.active : "";
   const p2ActiveClass = playerTurn === SYMBOL_X ? s.active : "";
+  const board5Class = boardSize === 5 ? s.x5 : "";
 
   return (
-    <div className={s.indicator}>
+    <div className={`${s.indicator} ${board5Class}`}>
       <div className={`${s.player} ${s.p1} ${p1ActiveClass}`}>
         <span className={s.symbol}>○</span>
         <span className={s.label}>P1</span>

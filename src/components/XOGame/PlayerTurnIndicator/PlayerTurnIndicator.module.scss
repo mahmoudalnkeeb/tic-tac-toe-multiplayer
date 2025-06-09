@@ -12,6 +12,10 @@
   transition: all .3s ease;
 }
 
+.indicator.x5 .player {
+  flex-direction: row;
+}
+
 .indicator .player .symbol {
   width: 60px;
   height: 60px;
