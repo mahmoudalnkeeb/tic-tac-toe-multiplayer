@@ -28,11 +28,40 @@
     --size: 60px;
   }
 
-  &:not(:disabled):hover {
+  &:not(:disabled, .freeze, .bomb):hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   }
+}
+
+.freeze {
+  position: absolute;
+  inset: 0;
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(45deg, #87ceeb, #4682b4);
+  cursor: not-allowed !important;
+  animation: frozen 2s ease-in-out;
+}
+
+.bomb {
+  position: absolute;
+  inset: 0;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(45deg, #ff4500, #ff6347);
+  animation: bombPulse 0.5s ease-in-out 1;
 }
 
 .square.playerX {
@@ -68,9 +97,33 @@
   }
 }
 
-.square.playerO>span {
+.square.playerO .symbol {
   position: absolute;
   left: 50%;
   top: calc(50% + -2px);
   translate: -50% -50%;
+}
+
+@keyframes frozen {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes bombPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }

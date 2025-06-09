@@ -4,6 +4,8 @@ import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ value, disabled, onClick }) => {
   const boardSize = useXOStore((s) => s.boardSize);
+  const isFreezed = false;
+  const isBombed = false;
 
   const classes = [
     s.square,
@@ -20,7 +22,9 @@ const XOSquare = ({ value, disabled, onClick }) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {value === SYMBOL_O ? <span>{value}</span> : value}
+      {value === SYMBOL_O ? <span className={s.symbol}>{value}</span> : value}
+      {isFreezed && <span className={s.freeze} />}
+      {isBombed && <span className={s.bomb} />}
     </button>
   );
 };
