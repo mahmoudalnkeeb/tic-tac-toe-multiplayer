@@ -8,6 +8,7 @@ import {
   createBoardBySize,
   hasNoSquaresAvailable,
   updateBoard,
+  updateCoolDownStatus,
   whoWins,
 } from "@/functions/gameUtility";
 import { create } from "zustand";
@@ -64,6 +65,7 @@ export const useXOStore = create((set, get) => ({
     const newBoard = updateBoard({ board, rowIndex, columnIndex, playerTurn });
 
     set({ board: newBoard, playerTurn: opponent });
+    get().handlePowerUpsCoolDown();
 
     const theWinner = whoWins(newBoard, playerTurn);
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
@@ -113,10 +115,13 @@ export const useXOStore = create((set, get) => ({
     if (selectedPower === "Freeze") {
       freezeSquare(requiredData);
     }
+
+    get().handlePowerUpsCoolDown();
   },
   freezeSquare: (requiredData) => {
     const { rowIndex, columnIndex, squareData } = requiredData;
     const { board, powerUps, playerTurn, unSelectPower } = get();
+    const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
 
     if (squareData.fillWith === "") {
@@ -129,8 +134,10 @@ export const useXOStore = create((set, get) => ({
       rowIndex,
       columnIndex,
       playerTurn,
-      powerUp: powerUps.selectedPower,
+      powerUp: selectedPower,
     });
+
+    powerUps[whoUsingPower].freeze.available = false;
 
     set({ board: newBoard, playerTurn: opponent });
     unSelectPower();
@@ -142,5 +149,9 @@ export const useXOStore = create((set, get) => ({
     set({
       powerUps: { ...get().powerUps, selectedPower: null, whoUsingPower: null },
     });
+  },
+  handlePowerUpsCoolDown: () => {
+    updateCoolDownStatus(get().powerUps.player1);
+    updateCoolDownStatus(get().powerUps.player2);
   },
 }));

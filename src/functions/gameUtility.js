@@ -81,3 +81,15 @@ export function createBoardBySize(size = 3) {
 
   return board;
 }
+
+export function updateCoolDownStatus(powerUps) {
+  for (const key in powerUps) {
+    const powerUp = powerUps[key];
+
+    if (!powerUp.available) powerUp.coolDown -= 1;
+    if (powerUp.coolDown <= 0) {
+      powerUp.available = true;
+      powerUp.coolDown = 10;
+    }
+  }
+}
