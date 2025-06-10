@@ -3,8 +3,9 @@ import { useXOStore } from "@/stores/xo.store";
 import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ squareData, disabled, onClick }) => {
-  const boardSize = useXOStore((s) => s.boardSize);
+  const { boardSize, powerUps } = useXOStore((s) => s);
   const { fillWith, isFreezed } = squareData;
+  const { selectedPower } = powerUps;
   const isBombed = false;
 
   const classes = [
@@ -13,6 +14,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
     boardSize === 5 ? s.x5 : "",
     fillWith === SYMBOL_X ? s.playerX : "",
     fillWith === SYMBOL_O ? s.playerO : "",
+    selectedPower === "Freeze" && fillWith !== "" ? s.freezeHover : "",
   ];
 
   return (
