@@ -93,3 +93,9 @@ export function updateCoolDownStatus(powerUps) {
     }
   }
 }
+export function getInitialCoolDown(boardSize) {
+  if (typeof boardSize !== "number") return 16;
+  if (boardSize === 4) return 11;
+  if (boardSize === 5) return 16;
+  return 16;
+}

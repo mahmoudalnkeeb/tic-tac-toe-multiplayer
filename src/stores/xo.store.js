@@ -6,6 +6,7 @@ import {
 } from "@/data/constants";
 import {
   createBoardBySize,
+  getInitialCoolDown,
   hasNoSquaresAvailable,
   updateBoard,
   updateCoolDownStatus,
@@ -22,8 +23,8 @@ const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   isWinnerPopupVisible: false,
   stats: { ...initialStats(stats) },
   powerUps: {
-    player1: { ...initialPowerUps({ boardSize }) },
-    player2: { ...initialPowerUps({ boardSize }) },
+    player1: { ...initialPowerUps(boardSize) },
+    player2: { ...initialPowerUps(boardSize) },
     selectedPower: null,
     whoUsingPower: null,
   },
@@ -35,18 +36,18 @@ const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
   p2Wins,
 });
 
-const initialPowerUps = ({ boardSize } = {}) => ({
+const initialPowerUps = (boardSize) => ({
   freeze: {
     available: true,
-    coolDown: boardSize === 4 ? 10 : 15,
+    coolDown: getInitialCoolDown(boardSize),
   },
   bomb: {
     available: true,
-    coolDown: boardSize === 4 ? 10 : 15,
+    coolDown: getInitialCoolDown(boardSize),
   },
   swap: {
     available: true,
-    coolDown: boardSize === 4 ? 10 : 15,
+    coolDown: getInitialCoolDown(boardSize),
   },
 });
 
