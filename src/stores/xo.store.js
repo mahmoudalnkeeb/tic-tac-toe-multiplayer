@@ -108,10 +108,39 @@ export const useXOStore = create((set, get) => ({
     set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
-    const { board, powerUps } = get();
+    const { board, powerUps, freezeSquare } = get();
     const { selectedPower, whoUsingPower } = powerUps;
     const squareData = board[rowIndex][columnIndex];
+    const requiredData = { rowIndex, columnIndex, squareData };
 
-    console.log({ selectedPower, whoUsingPower, squareData });
+    if (selectedPower === "Freeze") {
+      freezeSquare(requiredData);
+    }
+  },
+  freezeSquare: (requiredData) => {
+    const { rowIndex, columnIndex, squareData } = requiredData;
+    const { board, powerUps, playerTurn, unSelectPower } = get();
+    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+
+    if (squareData.fillWith === "") {
+      unSelectPower();
+      return "Denied: used on an empty square";
+    }
+
+    const newBoard = updateBoard({
+      board,
+      rowIndex,
+      columnIndex,
+      playerTurn,
+      powerUp: powerUps.selectedPower,
+    });
+
+    set({ board: newBoard, playerTurn: opponent });
+    unSelectPower();
+  },
+  unSelectPower: () => {
+    set({
+      powerUps: { ...get().powerUps, selectedPower: null, whoUsingPower: null },
+    });
   },
 }));

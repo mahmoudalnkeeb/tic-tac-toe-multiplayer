@@ -19,11 +19,11 @@ const BoardRow = ({ row, rowIndex }) => {
 
   return (
     <div className={s.row}>
-      {row.map(({ fillWith }, columnIndex) => (
+      {row.map((squareData, columnIndex) => (
         <XOSquare
           key={columnIndex}
-          value={fillWith}
-          disabled={fillWith || !hasGameStart}
+          squareData={squareData}
+          disabled={(!whoUsingPower && squareData.fillWith) || !hasGameStart}
           onClick={() => handleClick({ rowIndex, columnIndex })}
         />
       ))}

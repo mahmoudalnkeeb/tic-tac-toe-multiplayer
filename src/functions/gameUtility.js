@@ -1,8 +1,22 @@
-export function updateBoard({ board, rowIndex, columnIndex, playerTurn }) {
+export function updateBoard({
+  board,
+  rowIndex,
+  columnIndex,
+  playerTurn,
+  powerUp,
+}) {
   return board.map((row, i) =>
     row.map((squareData, j) => {
       const isCorrectIndexes = i === rowIndex && j === columnIndex;
-      const fillWith = isCorrectIndexes ? playerTurn : squareData.fillWith;
+
+      if (powerUp === "Freeze" && isCorrectIndexes) {
+        squareData.isFreezed = true;
+        return squareData;
+      }
+
+      const fillWith =
+        isCorrectIndexes && !powerUp ? playerTurn : squareData.fillWith;
+
       return { ...squareData, fillWith };
     })
   );
