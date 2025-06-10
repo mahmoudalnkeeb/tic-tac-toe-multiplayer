@@ -26,10 +26,13 @@ export function hasNoSquaresAvailable(board) {
   return board.every((row) => row.every(({ fillWith }) => fillWith !== ""));
 }
 
-export function isUniform(arr) {
+export function isUniform(row) {
   return (
-    arr[0]?.fillWith !== "" &&
-    arr.every((squareData) => squareData?.fillWith === arr[0]?.fillWith)
+    row[0]?.fillWith !== "" &&
+    row.every((squareData) => {
+      const isUniform = squareData?.fillWith === row[0]?.fillWith;
+      return isUniform && !squareData.isFreezed;
+    })
   );
 }
 
