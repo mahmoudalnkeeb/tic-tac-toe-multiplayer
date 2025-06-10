@@ -6,18 +6,24 @@ import s from "./PowerUpButton.module.scss";
 const PowerUpButton = ({
   data: { id, name, icon, available, coolDown, player },
 }) => {
-  const { selectPowerUp, powerUps } = useXOStore((s) => s);
+  const { selectPowerUp, powerUps, unSelectPower } = useXOStore((s) => s);
   const { selectedPower, whoUsingPower } = powerUps;
+  const isSelected = selectedPower === name && whoUsingPower === player;
 
   const classes = [
     s.powerUp,
     !available ? s.disabled : "",
     player === "player1" ? s.player1 : "",
-    selectedPower === name && whoUsingPower === player ? s.selected : "",
+    isSelected ? s.selected : "",
   ].join(" ");
 
   function handleClick() {
     if (!available) return;
+
+    if (isSelected) {
+      unSelectPower();
+      return;
+    }
 
     selectPowerUp({ selectedPower: name, whoUsingPower: player });
   }
