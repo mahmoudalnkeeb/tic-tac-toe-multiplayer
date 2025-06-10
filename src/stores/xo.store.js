@@ -124,10 +124,16 @@ export const useXOStore = create((set, get) => ({
     const { board, powerUps, playerTurn, unSelectPower } = get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+    const isOpponentTargeted = squareData.fillWith === opponent;
 
     if (squareData.fillWith === "") {
       unSelectPower();
       return "Denied: used on an empty square";
+    }
+
+    if (!isOpponentTargeted) {
+      unSelectPower();
+      return "Invalid target: power-up must be used on opponent's square";
     }
 
     const newBoard = updateBoard({
