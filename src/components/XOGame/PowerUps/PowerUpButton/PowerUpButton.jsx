@@ -5,6 +5,7 @@ import s from "./PowerUpButton.module.scss";
 
 const PowerUpButton = ({
   data: { id, name, icon, available, coolDown, player },
+  disabled,
 }) => {
   const { selectPowerUp, powerUps, unSelectPower } = useXOStore((s) => s);
   const { selectedPower, whoUsingPower } = powerUps;
@@ -29,7 +30,13 @@ const PowerUpButton = ({
   }
 
   return (
-    <button key={id} type="button" className={classes} onClick={handleClick}>
+    <button
+      key={id}
+      type="button"
+      className={classes}
+      onClick={handleClick}
+      disabled={disabled}
+    >
       <span className={s.icon}>{icon}</span>
       <span className={s.powerName}>{name}</span>
       <span className={s.coolDown}>{coolDown}</span>

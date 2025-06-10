@@ -104,9 +104,6 @@ export const useXOStore = create((set, get) => ({
       set({ isWinnerPopupVisible: false });
     }, 2000);
   },
-  selectPowerUp: ({ selectedPower, whoUsingPower }) => {
-    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
-  },
   usePowerUp: ({ rowIndex, columnIndex }) => {
     const { board, powerUps, freezeSquare } = get();
     const { selectedPower, whoUsingPower } = powerUps;
@@ -137,6 +134,9 @@ export const useXOStore = create((set, get) => ({
 
     set({ board: newBoard, playerTurn: opponent });
     unSelectPower();
+  },
+  selectPowerUp: ({ selectedPower, whoUsingPower }) => {
+    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
   },
   unSelectPower: () => {
     set({
