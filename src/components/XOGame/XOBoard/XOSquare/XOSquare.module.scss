@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .square {
   --size: 85px;
   background: rgba(255, 255, 255, 0.08);
@@ -40,6 +42,18 @@
     background: linear-gradient(45deg,
         rgba(135, 207, 235, .9),
         rgba(70, 131, 180, .7));
+  }
+}
+
+@include m.medium {
+  .square {
+    &.x4 {
+      --size: 61px;
+    }
+
+    &.x5 {
+      --size: 48.1px;
+    }
   }
 }
 

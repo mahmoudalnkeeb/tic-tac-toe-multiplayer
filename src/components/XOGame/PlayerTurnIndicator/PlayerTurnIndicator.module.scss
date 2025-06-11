@@ -1,7 +1,19 @@
+@use "@/styles/mixins" as m;
+
 .indicator {
   display: flex;
   gap: 80px;
   align-items: center;
+}
+
+@include m.medium {
+  .indicator:not(.x3) {
+    position: absolute;
+    left: 50%;
+    top: 230px;
+    translate: -50% 0;
+    gap: 40px;
+  }
 }
 
 .indicator .player {
@@ -14,6 +26,12 @@
 
 .indicator.x5 .player {
   flex-direction: row;
+}
+
+@include m.medium {
+  .indicator .player {
+    flex-direction: row;
+  }
 }
 
 .indicator .player .symbol {

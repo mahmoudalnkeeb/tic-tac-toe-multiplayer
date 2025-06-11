@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .powerUps {
   display: flex;
   gap: 15px;
@@ -10,5 +12,11 @@
   &.hidden {
     display: none;
     pointer-events: none;
+  }
+}
+
+@include m.medium {
+  .powerUps {
+    flex-direction: column;
   }
 }

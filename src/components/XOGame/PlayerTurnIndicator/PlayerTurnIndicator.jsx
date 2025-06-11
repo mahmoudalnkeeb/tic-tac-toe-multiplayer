@@ -9,9 +9,10 @@ const PlayerTurnIndicator = () => {
   const p1ActiveClass = playerTurn === SYMBOL_O ? s.active : "";
   const p2ActiveClass = playerTurn === SYMBOL_X ? s.active : "";
   const board5Class = boardSize === 5 ? s.x5 : "";
+  const board3Class = boardSize === 3 ? s.x3 : "";
 
   return (
-    <div className={`${s.indicator} ${board5Class}`}>
+    <div className={`${s.indicator} ${board5Class} ${board3Class}`}>
       <div className={`${s.player} ${s.p1} ${p1ActiveClass}`}>
         <span className={s.symbol}>○</span>
         <span className={s.label}>P1</span>

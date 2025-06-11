@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .board {
   display: grid;
   gap: 6px;
@@ -6,4 +8,11 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+}
+
+@include m.medium {
+  .board {
+    padding: 12px;
+    gap: 4px;
+  }
 }
