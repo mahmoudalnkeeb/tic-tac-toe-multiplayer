@@ -197,8 +197,14 @@ export const useXOStore = create((set, get) => ({
     set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
   },
   unSelectPower: () => {
+    const { board, powerUps, squaresToSwap } = get();
+    const isSwapPower = powerUps.selectedPower === "Swap";
+    const hasSelectSquare = squaresToSwap.length > 0;
+
     set({
-      powerUps: { ...get().powerUps, selectedPower: null, whoUsingPower: null },
+      powerUps: { ...powerUps, selectedPower: null, whoUsingPower: null },
+      board: hasSelectSquare && isSwapPower ? unSelectAllSquares(board) : board,
+      squaresToSwap: hasSelectSquare && isSwapPower ? [] : squaresToSwap,
     });
   },
   handlePowerUpsCoolDown: () => {
