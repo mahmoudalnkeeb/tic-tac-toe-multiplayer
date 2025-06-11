@@ -14,6 +14,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
     fillWith === SYMBOL_X ? s.playerX : "",
     fillWith === SYMBOL_O ? s.playerO : "",
     selectedPower === "Freeze" && fillWith !== "" ? s.freezeHover : "",
+    selectedPower === "Swap" && fillWith !== "" ? s.swapHover : "",
     squareData.swapSelected ? s.select : "",
   ].join(" ");
 
