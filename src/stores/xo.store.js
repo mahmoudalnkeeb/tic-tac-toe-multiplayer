@@ -56,8 +56,10 @@ const initialPowerUps = (boardSize) => ({
 
 export const useXOStore = create((set, get) => ({
   ...initialGameStates(),
-  resetGame: ({ boardSize } = {}) => {
-    const { p1Wins, draws, p2Wins } = get().stats;
+  resetGame: () => {
+    const { boardSize, stats } = get();
+    const { p1Wins, draws, p2Wins } = stats;
+
     set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
   },
   fillSquare: ({ rowIndex, columnIndex }) => {
