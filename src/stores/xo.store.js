@@ -21,6 +21,7 @@ const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
   winner: "",
   board: createBoardBySize(boardSize),
   isWinnerPopupVisible: false,
+  squaresToSwap: [],
   stats: { ...initialStats(stats) },
   powerUps: {
     player1: { ...initialPowerUps(boardSize) },
@@ -108,10 +109,10 @@ export const useXOStore = create((set, get) => ({
     }, 2000);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
-    const { board, powerUps, freezeSquare, bombSquares } = get();
-    const { selectedPower, whoUsingPower } = powerUps;
+    const { board, powerUps, freezeSquare, bombSquares, swapSquare } = get();
     const squareData = board[rowIndex][columnIndex];
     const requiredData = { rowIndex, columnIndex, squareData };
+    const { selectedPower } = powerUps;
 
     if (selectedPower === "Freeze") {
       freezeSquare(requiredData);
@@ -119,6 +120,10 @@ export const useXOStore = create((set, get) => ({
 
     if (selectedPower === "Bomb") {
       bombSquares(requiredData);
+    }
+
+    if (selectedPower === "Swap") {
+      swapSquare(requiredData);
     }
 
     get().handlePowerUpsCoolDown();
@@ -210,5 +215,12 @@ export const useXOStore = create((set, get) => ({
 
       set({ board: newBoard });
     }, timeout);
+  },
+  swapSquare: (requiredData) => {
+    const { rowIndex, columnIndex, squareData } = requiredData;
+    const { board, powerUps, playerTurn, unSelectPower, disablePowerUp } =
+      get();
+    const { whoUsingPower, selectedPower } = powerUps;
+    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
   },
 }));
