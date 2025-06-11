@@ -5,6 +5,18 @@ export function updateBoard({
   playerTurn,
   powerUp,
 }) {
+  if (powerUp === "Bomb") {
+    return triggerBombEffect({
+      board,
+      rowIndex,
+      columnIndex,
+    });
+  }
+
+  if (powerUp === "Delete Bomb") {
+    return deleteBombEffect(board);
+  }
+
   return board.map((row, i) =>
     row.map((squareData, j) => {
       const isCorrectIndexes = i === rowIndex && j === columnIndex;
@@ -20,6 +32,39 @@ export function updateBoard({
       return { ...squareData, fillWith };
     })
   );
+}
+
+export function triggerBombEffect({
+  rowIndex,
+  columnIndex,
+  board,
+  radius = 1,
+}) {
+  const boardSize = board.length;
+
+  for (let dimensionX = -radius; dimensionX <= radius; dimensionX++) {
+    for (let dimensionY = -radius; dimensionY <= radius; dimensionY++) {
+      const newRow = rowIndex + dimensionX;
+      const newCol = columnIndex + dimensionY;
+
+      const isOutOfBounds =
+        newRow < 0 || newCol < 0 || newRow >= boardSize || newCol >= boardSize;
+
+      if (isOutOfBounds) continue;
+
+      const targetedSquare = board[newRow][newCol];
+
+      if (targetedSquare.isFreezed) {
+        targetedSquare.isFreezed = false;
+        continue;
+      }
+
+      targetedSquare.isBombed = true;
+      targetedSquare.fillWith = "";
+    }
+  }
+
+  return board;
 }
 
 export function hasNoSquaresAvailable(board) {
@@ -98,4 +143,16 @@ export function getInitialCoolDown(boardSize) {
   if (boardSize === 4) return 11;
   if (boardSize === 5) return 16;
   return 16;
+}
+
+export function deleteBombEffect(board) {
+  return board.map((row) =>
+    row.map((squareData) => {
+      if (squareData.isBombed) {
+        squareData.isBombed = false;
+      }
+
+      return squareData;
+    })
+  );
 }

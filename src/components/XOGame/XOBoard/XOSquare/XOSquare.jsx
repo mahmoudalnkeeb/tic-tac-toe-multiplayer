@@ -4,9 +4,8 @@ import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ squareData, disabled, onClick }) => {
   const { boardSize, powerUps } = useXOStore((s) => s);
-  const { fillWith, isFreezed } = squareData;
+  const { fillWith, isFreezed, isBombed } = squareData;
   const { selectedPower } = powerUps;
-  const isBombed = false;
 
   const classes = [
     s.square,

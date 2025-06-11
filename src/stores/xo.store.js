@@ -108,13 +108,17 @@ export const useXOStore = create((set, get) => ({
     }, 2000);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
-    const { board, powerUps, freezeSquare } = get();
+    const { board, powerUps, freezeSquare, bombSquares } = get();
     const { selectedPower, whoUsingPower } = powerUps;
     const squareData = board[rowIndex][columnIndex];
     const requiredData = { rowIndex, columnIndex, squareData };
 
     if (selectedPower === "Freeze") {
       freezeSquare(requiredData);
+    }
+
+    if (selectedPower === "Bomb") {
+      bombSquares(requiredData);
     }
 
     get().handlePowerUpsCoolDown();
@@ -148,6 +152,34 @@ export const useXOStore = create((set, get) => ({
 
     set({ board: newBoard, playerTurn: opponent });
     unSelectPower();
+  },
+  bombSquares: (requiredData) => {
+    const { rowIndex, columnIndex, squareData } = requiredData;
+    const { board, powerUps, playerTurn, unSelectPower } = get();
+    const { whoUsingPower, selectedPower } = powerUps;
+    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+
+    const newBoard = updateBoard({
+      board,
+      rowIndex,
+      columnIndex,
+      playerTurn,
+      powerUp: selectedPower,
+    });
+
+    set({ board: newBoard, playerTurn: opponent });
+
+    setTimeout(() => {
+      const cleanBoard = updateBoard({
+        board,
+        rowIndex,
+        columnIndex,
+        playerTurn,
+        powerUp: "Delete Bomb",
+      });
+
+      set({ board: cleanBoard });
+    }, 1000);
   },
   selectPowerUp: ({ selectedPower, whoUsingPower }) => {
     set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
