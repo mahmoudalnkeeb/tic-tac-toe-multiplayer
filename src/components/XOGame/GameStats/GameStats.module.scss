@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .gameStats {
   display: flex;
   justify-content: center;
@@ -8,6 +10,12 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+}
+
+@include m.small {
+  .gameStats {
+    height: 183px;
+  }
 }
 
 .gameStats .stat {
@@ -46,4 +54,5 @@
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-wrap: nowrap;
 }

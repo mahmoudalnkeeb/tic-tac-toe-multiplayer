@@ -26,6 +26,24 @@
   }
 }
 
+@include m.small {
+  .game .wrapper {
+    flex-direction: column;
+  }
+
+  .game .wrapper>*:nth-child(1) {
+    order: 2;
+  }
+
+  .game .wrapper>*:nth-child(2) {
+    order: 1;
+  }
+
+  .game .wrapper>*:nth-child(3) {
+    order: 3;
+  }
+}
+
 .controls {
   flex: 1;
   max-width: 380px;

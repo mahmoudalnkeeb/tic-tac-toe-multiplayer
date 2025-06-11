@@ -20,3 +20,16 @@
     flex-direction: column;
   }
 }
+
+@include m.small {
+  .powerUps {
+    padding: 10px;
+    flex-direction: row;
+    justify-content: center;
+    display: none;
+
+    &:where(.player1, .player2):not(.hidden).active {
+      display: flex;
+    }
+  }
+}

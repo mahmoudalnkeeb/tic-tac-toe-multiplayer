@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .powerUp {
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid rgba(255, 255, 255, 0.05);
@@ -25,6 +27,12 @@
 
   &:not(:disabled):active {
     scale: .988;
+  }
+}
+
+@include m.small {
+  .powerUp {
+    flex: 1;
   }
 }
 
