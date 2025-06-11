@@ -262,8 +262,12 @@ export const useXOStore = create((set, get) => ({
     }, SWAP_SYMBOL_DELAY_MS);
   },
   selectSquare: (requiredData) => {
-    const { rowIndex, columnIndex } = requiredData;
+    const { rowIndex, columnIndex, squareData } = requiredData;
     const { board, playerTurn, squaresToSwap } = get();
+
+    if (squareData.fillWith === "") {
+      return "Invalid target: swap must be used on symbol square";
+    }
 
     const newBoard = updateBoard({
       board,
