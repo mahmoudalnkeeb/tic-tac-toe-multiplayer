@@ -11,18 +11,7 @@ export function updateBoard({
   }
 
   if (powerUp === "Select") {
-    return board.map((row, i) =>
-      row.map((squareData, j) => {
-        const isCorrectIndexes = i === rowIndex && j === columnIndex;
-
-        if (isCorrectIndexes) {
-          squareData.swapSelected = true;
-          return squareData;
-        }
-
-        return squareData;
-      })
-    );
+    return selectSwapSquare({ board, rowIndex, columnIndex });
   }
 
   if (powerUp === "Bomb") {
@@ -192,6 +181,21 @@ export function swapSymbolsOnBoard({ board, squaresToSwap }) {
 
       if (i === row2 && j === col2) {
         return { ...squareData, fillWith: firstSymbol };
+      }
+
+      return squareData;
+    })
+  );
+}
+
+export function selectSwapSquare({ board, rowIndex, columnIndex }) {
+  return board.map((row, i) =>
+    row.map((squareData, j) => {
+      const isCorrectIndexes = i === rowIndex && j === columnIndex;
+
+      if (isCorrectIndexes) {
+        squareData.swapSelected = true;
+        return squareData;
       }
 
       return squareData;
