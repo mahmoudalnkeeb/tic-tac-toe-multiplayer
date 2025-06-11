@@ -14,12 +14,13 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
     fillWith === SYMBOL_X ? s.playerX : "",
     fillWith === SYMBOL_O ? s.playerO : "",
     selectedPower === "Freeze" && fillWith !== "" ? s.freezeHover : "",
-  ];
+    squareData.swapSelected ? s.select : "",
+  ].join(" ");
 
   return (
     <button
       type="button"
-      className={classes.join(" ")}
+      className={classes}
       onClick={onClick}
       disabled={disabled}
     >

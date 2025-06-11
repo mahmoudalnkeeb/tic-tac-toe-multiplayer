@@ -27,7 +27,13 @@
     --size: 60px;
   }
 
-  &:not(:disabled, .freeze, .bomb):hover {
+  &.select {
+    border: 3px dashed #ffd93d;
+    background: rgba(255, 217, 61, 0.2);
+    cursor: pointer;
+  }
+
+  &:not(:disabled, .freeze, .bomb, .select):hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
