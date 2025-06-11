@@ -102,7 +102,9 @@ export const useXOStore = create((set, get) => ({
   },
   showWinnerPopup: () => {
     set({ isWinnerPopupVisible: true });
-    setTimeout(set({ isWinnerPopupVisible: false }), WINNER_POPUP_DURATION_MS);
+    setTimeout(() => {
+      set({ isWinnerPopupVisible: false });
+    }, WINNER_POPUP_DURATION_MS);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
     const {
@@ -213,15 +215,18 @@ export const useXOStore = create((set, get) => ({
   },
   scheduleBombDeletion: ({ rowIndex, columnIndex, timeout = 1000 }) => {
     const { board, playerTurn } = get();
-    const newBoard = updateBoard({
-      board,
-      rowIndex,
-      columnIndex,
-      playerTurn,
-      powerUp: "Delete Bomb",
-    });
 
-    setTimeout(() => set({ board: newBoard }), timeout);
+    setTimeout(() => {
+      const newBoard = updateBoard({
+        board,
+        rowIndex,
+        columnIndex,
+        playerTurn,
+        powerUp: "Delete Bomb",
+      });
+
+      set({ board: newBoard });
+    }, timeout);
   },
   swapSquare: (requiredData) => {
     const { rowIndex, columnIndex } = requiredData;
