@@ -134,7 +134,11 @@ export const useXOStore = create((set, get) => ({
     if (selectedPower === "Swap") {
       if (squaresToSwap.length === 0) {
         selectSquare(requiredData);
-        return;
+        return "Selected first square";
+      }
+
+      if (squareData.fillWith === "") {
+        return "Invalid target: swap must be used on symbol square";
       }
 
       if (squaresToSwap.length === 1) {
