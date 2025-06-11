@@ -1,8 +1,10 @@
 import {
   FIRST_PLAYER,
   INITIAL_BOARD_SIZE,
+  SWAP_SYMBOL_DELAY_MS,
   SYMBOL_O,
   SYMBOL_X,
+  WINNER_POPUP_DURATION_MS,
 } from "@/data/constants";
 import { updateBoard } from "@/functions/boardUpdater";
 import {
@@ -106,7 +108,7 @@ export const useXOStore = create((set, get) => ({
 
     setTimeout(() => {
       set({ isWinnerPopupVisible: false });
-    }, 2000);
+    }, WINNER_POPUP_DURATION_MS);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
     const {
@@ -258,7 +260,7 @@ export const useXOStore = create((set, get) => ({
       set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
       unSelectPower();
       disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
-    }, 800);
+    }, SWAP_SYMBOL_DELAY_MS);
   },
   selectSquare: (requiredData) => {
     const { rowIndex, columnIndex } = requiredData;
