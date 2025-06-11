@@ -116,8 +116,7 @@ export const useXOStore = create((set, get) => ({
       freezeSquare,
       bombSquares,
       swapSquare,
-      squaresToSwap,
-      selectSquare,
+      handleSwapPowerUp,
     } = get();
     const squareData = board[rowIndex][columnIndex];
     const requiredData = { rowIndex, columnIndex, squareData };
@@ -132,25 +131,8 @@ export const useXOStore = create((set, get) => ({
     }
 
     if (selectedPower === "Swap") {
-      if (squaresToSwap.length === 0) {
-        selectSquare(requiredData);
-        return "Selected first square";
-      }
-
-      if (squareData.fillWith === "") {
-        return "Invalid target: swap must be used on symbol square";
-      }
-
-      if (squareData.swapSelected) {
-        const newBoard = unSelectAllSquares(board);
-        set({ board: newBoard, squaresToSwap: [] });
-        return "Unselect squares";
-      }
-
-      if (squaresToSwap.length === 1) {
-        selectSquare(requiredData);
-        swapSquare(requiredData);
-      }
+      handleSwapPowerUp({ requiredData, swapSquare });
+      return;
     }
 
     get().handlePowerUpsCoolDown();
@@ -269,6 +251,7 @@ export const useXOStore = create((set, get) => ({
       set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
       unSelectPower();
       disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
+      get().handlePowerUpsCoolDown();
     }, SWAP_SYMBOL_DELAY_MS);
   },
   selectSquare: (requiredData) => {
@@ -289,5 +272,33 @@ export const useXOStore = create((set, get) => ({
     const squaresToSwapCopy = [...squaresToSwap, [rowIndex, columnIndex]];
 
     set({ board: newBoard, squaresToSwap: squaresToSwapCopy });
+  },
+  handleSwapPowerUp: ({ requiredData, swapSquare }) => {
+    const { board, squaresToSwap, selectSquare } = get();
+    const { squareData } = requiredData;
+    const isEmptySquare = squareData.fillWith === "";
+    const isAlreadySelected = squareData.swapSelected;
+    const isFirstSelection = squaresToSwap.length === 0;
+    const isSecondSelection = squaresToSwap.length === 1;
+
+    if (isEmptySquare) {
+      return "Invalid target: swap must be used on symbol square";
+    }
+
+    if (isFirstSelection) {
+      selectSquare(requiredData);
+      return "Selected first square";
+    }
+
+    if (isAlreadySelected) {
+      const newBoard = unSelectAllSquares(board);
+      set({ board: newBoard, squaresToSwap: [] });
+      return "Unselect squares";
+    }
+
+    if (isSecondSelection) {
+      selectSquare(requiredData);
+      swapSquare(requiredData);
+    }
   },
 }));
