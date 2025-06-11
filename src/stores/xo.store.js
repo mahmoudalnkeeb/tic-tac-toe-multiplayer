@@ -70,22 +70,22 @@ export const useXOStore = create((set, get) => ({
     set({ board: newBoard, playerTurn: opponent });
     get().handlePowerUpsCoolDown();
 
+    declareWinner(newBoard);
+  },
+  declareWinner: (newBoard) => {
+    const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
     const theWinner = whoWins(newBoard, playerTurn);
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
-
-    if (theWinner !== "None" || noSquaresAvailable) {
-      declareWinner({ theWinner, noSquaresAvailable });
-    }
-  },
-  declareWinner: ({ theWinner, noSquaresAvailable } = {}) => {
     const isDraw = noSquaresAvailable && theWinner === "None";
 
-    set({
-      winner: isDraw ? "Draw!" : theWinner,
-      hasGameStart: false,
-    });
-    get().updateStatsOnWin({ theWinner, isDraw });
-    get().showWinnerPopup();
+    if (theWinner !== "None" || noSquaresAvailable) {
+      set({
+        winner: isDraw ? "Draw!" : theWinner,
+        hasGameStart: false,
+      });
+      updateStatsOnWin({ theWinner, isDraw });
+      showWinnerPopup();
+    }
   },
   updateStatsOnWin: ({ theWinner, isDraw }) => {
     const { p1Wins, draws, p2Wins } = get().stats;
@@ -234,6 +234,8 @@ export const useXOStore = create((set, get) => ({
       unSelectPower,
       squaresToSwap,
       disablePowerUp,
+      declareWinner,
+      handlePowerUpsCoolDown,
     } = get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
@@ -251,7 +253,8 @@ export const useXOStore = create((set, get) => ({
       set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
       unSelectPower();
       disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
-      get().handlePowerUpsCoolDown();
+      handlePowerUpsCoolDown();
+      declareWinner(newBoard);
     }, SWAP_SYMBOL_DELAY_MS);
   },
   selectSquare: (requiredData) => {
