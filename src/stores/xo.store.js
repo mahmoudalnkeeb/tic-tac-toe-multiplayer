@@ -154,9 +154,15 @@ export const useXOStore = create((set, get) => ({
     disablePowerUp({ whoUsingPower, powerUpKey: "freeze" });
   },
   bombSquares: (requiredData) => {
+    const {
+      board,
+      powerUps,
+      playerTurn,
+      unSelectPower,
+      disablePowerUp,
+      scheduleBombDeletion,
+    } = get();
     const { rowIndex, columnIndex } = requiredData;
-    const { board, powerUps, playerTurn, unSelectPower, disablePowerUp } =
-      get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
 
@@ -171,18 +177,7 @@ export const useXOStore = create((set, get) => ({
     set({ board: newBoard, playerTurn: opponent });
     unSelectPower();
     disablePowerUp({ whoUsingPower, powerUpKey: "bomb" });
-
-    setTimeout(() => {
-      const cleanBoard = updateBoard({
-        board,
-        rowIndex,
-        columnIndex,
-        playerTurn,
-        powerUp: "Delete Bomb",
-      });
-
-      set({ board: cleanBoard });
-    }, 1000);
+    scheduleBombDeletion({ rowIndex, columnIndex });
   },
   selectPowerUp: ({ selectedPower, whoUsingPower }) => {
     set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
@@ -200,5 +195,20 @@ export const useXOStore = create((set, get) => ({
     const powerUpsCopy = { ...get().powerUps };
     powerUpsCopy[whoUsingPower][powerUpKey].available = false;
     set({ powerUps: powerUpsCopy });
+  },
+  scheduleBombDeletion: ({ rowIndex, columnIndex, timeout = 1000 }) => {
+    const { board, playerTurn } = get();
+
+    setTimeout(() => {
+      const newBoard = updateBoard({
+        board,
+        rowIndex,
+        columnIndex,
+        playerTurn,
+        powerUp: "Delete Bomb",
+      });
+
+      set({ board: newBoard });
+    }, timeout);
   },
 }));
