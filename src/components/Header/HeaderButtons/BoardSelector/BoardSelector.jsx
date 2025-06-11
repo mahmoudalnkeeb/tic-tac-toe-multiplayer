@@ -1,8 +1,8 @@
 "use client";
 
+import { BOARD_SIZES } from "@/data/constants";
 import { useXOStore } from "@/stores/xo.store";
 import s from "./BoardSelector.module.scss";
-import { BOARD_SIZES } from "@/data/constants";
 
 const BoardSelector = () => {
   const { boardSize, updateBoardSize } = useXOStore((s) => s);
@@ -13,7 +13,7 @@ const BoardSelector = () => {
         <button
           key={size}
           className={size === boardSize ? s.active : ""}
-          onClick={() => updateBoardSize({ boardSize: size })}
+          onClick={() => updateBoardSize(size)}
         >
           {size}x{size}
         </button>
