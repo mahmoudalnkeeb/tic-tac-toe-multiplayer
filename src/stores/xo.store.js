@@ -109,7 +109,15 @@ export const useXOStore = create((set, get) => ({
     }, 2000);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
-    const { board, powerUps, freezeSquare, bombSquares, swapSquare } = get();
+    const {
+      board,
+      powerUps,
+      freezeSquare,
+      bombSquares,
+      swapSquare,
+      squaresToSwap,
+      selectSquare,
+    } = get();
     const squareData = board[rowIndex][columnIndex];
     const requiredData = { rowIndex, columnIndex, squareData };
     const { selectedPower } = powerUps;
@@ -123,7 +131,15 @@ export const useXOStore = create((set, get) => ({
     }
 
     if (selectedPower === "Swap") {
-      swapSquare(requiredData);
+      if (squaresToSwap.length === 0) {
+        selectSquare(requiredData);
+        return;
+      }
+
+      if (squaresToSwap.length === 1) {
+        selectSquare(requiredData);
+        swapSquare(requiredData);
+      }
     }
 
     get().handlePowerUpsCoolDown();
@@ -217,10 +233,46 @@ export const useXOStore = create((set, get) => ({
     }, timeout);
   },
   swapSquare: (requiredData) => {
-    const { rowIndex, columnIndex, squareData } = requiredData;
-    const { board, powerUps, playerTurn, unSelectPower, disablePowerUp } =
-      get();
+    const { rowIndex, columnIndex } = requiredData;
+    const {
+      board,
+      powerUps,
+      playerTurn,
+      unSelectPower,
+      squaresToSwap,
+      disablePowerUp,
+    } = get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+
+    setTimeout(() => {
+      const newBoard = updateBoard({
+        board,
+        rowIndex,
+        columnIndex,
+        playerTurn,
+        powerUp: selectedPower,
+        squaresToSwap,
+      });
+
+      set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
+      unSelectPower();
+      disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
+    }, 800);
+  },
+  selectSquare: (requiredData) => {
+    const { rowIndex, columnIndex } = requiredData;
+    const { board, playerTurn, squaresToSwap } = get();
+
+    const newBoard = updateBoard({
+      board,
+      rowIndex,
+      columnIndex,
+      playerTurn,
+      powerUp: "Select",
+    });
+    const squaresToSwapCopy = [...squaresToSwap, [rowIndex, columnIndex]];
+
+    set({ board: newBoard, squaresToSwap: squaresToSwapCopy });
   },
 }));

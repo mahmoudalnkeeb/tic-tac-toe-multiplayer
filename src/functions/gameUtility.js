@@ -4,7 +4,45 @@ export function updateBoard({
   columnIndex,
   playerTurn,
   powerUp,
+  squaresToSwap = [],
 }) {
+  if (powerUp === "Swap" && squaresToSwap.length === 2) {
+    const [[row1, col1], [row2, col2]] = squaresToSwap;
+    const firstSymbol = board[row1]?.[col1]?.fillWith;
+    const secondSymbol = board[row2]?.[col2]?.fillWith;
+
+    return board.map((row, i) =>
+      row.map((squareData, j) => {
+        squareData.swapSelected = false;
+
+        if (i === row1 && j === col1) {
+          return { ...squareData, fillWith: secondSymbol };
+        }
+
+        if (i === row2 && j === col2) {
+          return { ...squareData, fillWith: firstSymbol };
+        }
+
+        return squareData;
+      })
+    );
+  }
+
+  if (powerUp === "Select") {
+    return board.map((row, i) =>
+      row.map((squareData, j) => {
+        const isCorrectIndexes = i === rowIndex && j === columnIndex;
+
+        if (isCorrectIndexes) {
+          squareData.swapSelected = true;
+          return squareData;
+        }
+
+        return squareData;
+      })
+    );
+  }
+
   if (powerUp === "Bomb") {
     return triggerBombEffect({
       board,
