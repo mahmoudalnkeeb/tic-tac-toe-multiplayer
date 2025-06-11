@@ -4,11 +4,11 @@ import {
   SYMBOL_O,
   SYMBOL_X,
 } from "@/data/constants";
+import { updateBoard } from "@/functions/boardUpdater";
 import {
   createBoardBySize,
   getInitialCoolDown,
   hasNoSquaresAvailable,
-  updateBoard,
   updateCoolDownStatus,
   whoWins,
 } from "@/functions/gameUtility";
