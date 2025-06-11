@@ -7,25 +7,7 @@ export function updateBoard({
   squaresToSwap = [],
 }) {
   if (powerUp === "Swap" && squaresToSwap.length === 2) {
-    const [[row1, col1], [row2, col2]] = squaresToSwap;
-    const firstSymbol = board[row1]?.[col1]?.fillWith;
-    const secondSymbol = board[row2]?.[col2]?.fillWith;
-
-    return board.map((row, i) =>
-      row.map((squareData, j) => {
-        squareData.swapSelected = false;
-
-        if (i === row1 && j === col1) {
-          return { ...squareData, fillWith: secondSymbol };
-        }
-
-        if (i === row2 && j === col2) {
-          return { ...squareData, fillWith: firstSymbol };
-        }
-
-        return squareData;
-      })
-    );
+    return swapSymbolsOnBoard({ board, squaresToSwap });
   }
 
   if (powerUp === "Select") {
@@ -188,6 +170,28 @@ export function deleteBombEffect(board) {
     row.map((squareData) => {
       if (squareData.isBombed) {
         squareData.isBombed = false;
+      }
+
+      return squareData;
+    })
+  );
+}
+
+export function swapSymbolsOnBoard({ board, squaresToSwap }) {
+  const [[row1, col1], [row2, col2]] = squaresToSwap;
+  const firstSymbol = board[row1]?.[col1]?.fillWith;
+  const secondSymbol = board[row2]?.[col2]?.fillWith;
+
+  return board.map((row, i) =>
+    row.map((squareData, j) => {
+      squareData.swapSelected = false;
+
+      if (i === row1 && j === col1) {
+        return { ...squareData, fillWith: secondSymbol };
+      }
+
+      if (i === row2 && j === col2) {
+        return { ...squareData, fillWith: firstSymbol };
       }
 
       return squareData;
