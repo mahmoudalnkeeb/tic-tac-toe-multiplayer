@@ -140,3 +140,15 @@ export function fillOrFreezeSquare({
     })
   );
 }
+
+export function unSelectAllSquares(board) {
+  return board.map((row) =>
+    row.map((squareData) => {
+      if (squareData.swapSelected) {
+        squareData.swapSelected = false;
+      }
+
+      return squareData;
+    })
+  );
+}

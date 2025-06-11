@@ -6,7 +6,7 @@ import {
   SYMBOL_X,
   WINNER_POPUP_DURATION_MS,
 } from "@/data/constants";
-import { updateBoard } from "@/functions/boardUpdater";
+import { unSelectAllSquares, updateBoard } from "@/functions/boardUpdater";
 import {
   createBoardBySize,
   getInitialCoolDown,
@@ -139,6 +139,12 @@ export const useXOStore = create((set, get) => ({
 
       if (squareData.fillWith === "") {
         return "Invalid target: swap must be used on symbol square";
+      }
+
+      if (squareData.swapSelected) {
+        const newBoard = unSelectAllSquares(board);
+        set({ board: newBoard, squaresToSwap: [] });
+        return "Unselect squares";
       }
 
       if (squaresToSwap.length === 1) {
