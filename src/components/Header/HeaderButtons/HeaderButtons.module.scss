@@ -6,10 +6,22 @@
   align-items: center;
 }
 
-@include m.small {
+@include m.very-small {
   .headerButtons {
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
+  }
+}
+
+.headerButtons .wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+@include m.very-small {
+  .headerButtons .wrapper {
+    gap: 12px;
   }
 }

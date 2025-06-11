@@ -11,8 +11,11 @@ const HeaderButtons = () => {
   return (
     <div className={s.headerButtons}>
       <BoardSelector />
-      <Button onClick={() => {}}>About</Button>
-      <Button onClick={resetGame}>Reset</Button>
+
+      <div className={s.wrapper}>
+        <Button onClick={() => {}}>About</Button>
+        <Button onClick={resetGame}>Reset</Button>
+      </div>
     </div>
   );
 };
