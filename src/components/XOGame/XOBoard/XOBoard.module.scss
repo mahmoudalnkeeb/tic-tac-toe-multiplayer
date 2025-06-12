@@ -8,6 +8,16 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+
+  &.xTurn {
+    border-color: #4ecdc4;
+    box-shadow: 0 0 50px rgba(78, 205, 196, 0.1);
+  }
+
+  &.oTurn {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 50px rgba(255, 107, 107, 0.1);
+  }
 }
 
 @include m.medium {
