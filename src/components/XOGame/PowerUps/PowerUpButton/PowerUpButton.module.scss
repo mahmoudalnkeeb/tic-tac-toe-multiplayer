@@ -44,14 +44,6 @@
   box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .powerUp:not(:disabled, .selected):hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.05);
-    box-shadow: none;
-  }
-}
-
 .powerUp:not(:disabled).selected {
   background-color: #4ecdc44d;
 }
@@ -65,6 +57,14 @@
 
 .powerUp.player1:not(:disabled).selected {
   background-color: #ff6b6b4d;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .powerUp:not(:disabled, .selected):hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+  }
 }
 
 .powerUp .icon {
