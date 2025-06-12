@@ -21,7 +21,7 @@ const WinnerPopUp = () => {
 export default WinnerPopUp;
 
 const winMessages = {
-  [SYMBOL_X]: "P1 Wins!",
-  [SYMBOL_O]: "P2 Wins!",
+  [SYMBOL_O]: "P1 Wins!",
+  [SYMBOL_X]: "P2 Wins!",
   "Draw!": "It's a Draw!",
 };

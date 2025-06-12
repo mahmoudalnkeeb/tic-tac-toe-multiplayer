@@ -75,7 +75,10 @@ export const useXOStore = create((set, get) => ({
   },
   declareWinner: (newBoard) => {
     const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
-    const theWinner = whoWins(newBoard, playerTurn);
+    const theWinner = whoWins(
+      newBoard,
+      playerTurn === SYMBOL_O ? SYMBOL_X : SYMBOL_O
+    );
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
     const isDraw = noSquaresAvailable && theWinner === "None";
 
