@@ -1,6 +1,6 @@
 "use client";
 
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./PowerUpButton.module.scss";
 
 const PowerUpButton = ({

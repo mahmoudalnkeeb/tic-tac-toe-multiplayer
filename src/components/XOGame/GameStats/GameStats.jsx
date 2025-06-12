@@ -1,6 +1,6 @@
 "use client";
 
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./GameStats.module.scss";
 
 const GameStats = () => {

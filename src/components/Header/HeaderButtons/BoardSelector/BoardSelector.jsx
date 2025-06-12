@@ -1,7 +1,7 @@
 "use client";
 
 import { BOARD_SIZES } from "@/data/constants";
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./BoardSelector.module.scss";
 
 const BoardSelector = () => {

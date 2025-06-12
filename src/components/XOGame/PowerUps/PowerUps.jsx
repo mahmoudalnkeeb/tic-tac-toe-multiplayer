@@ -2,7 +2,7 @@
 
 import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
 import { POWER_UPS_BUTTONS } from "@/data/staticData";
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import PowerUpButton from "./PowerUpButton/PowerUpButton";
 import s from "./PowerUps.module.scss";
 

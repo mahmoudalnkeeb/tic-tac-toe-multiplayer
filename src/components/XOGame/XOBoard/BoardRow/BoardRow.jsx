@@ -1,4 +1,4 @@
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import XOSquare from "../XOSquare/XOSquare";
 import s from "./BoardRow.module.scss";
 

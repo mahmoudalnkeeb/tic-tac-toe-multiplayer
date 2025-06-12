@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/Shared/Button/Button";
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import BoardSelector from "./BoardSelector/BoardSelector";
 import s from "./HeaderButtons.module.scss";
 

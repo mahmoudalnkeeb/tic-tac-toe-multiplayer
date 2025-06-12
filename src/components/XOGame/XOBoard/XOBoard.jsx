@@ -1,4 +1,4 @@
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import BoardRow from "./BoardRow/BoardRow";
 import WinnerPopUp from "./WinnerPopUp/WinnerPopUp";
 import s from "./XOBoard.module.scss";

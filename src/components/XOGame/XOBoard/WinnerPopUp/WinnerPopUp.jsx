@@ -1,7 +1,7 @@
 "use client";
 
 import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
-import { useXOStore } from "@/stores/xo.store";
+import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./WinnerPopUp.module.scss";
 
 const WinnerPopUp = () => {
