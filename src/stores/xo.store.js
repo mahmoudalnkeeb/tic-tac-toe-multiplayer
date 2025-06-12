@@ -1,6 +1,4 @@
 import {
-  FIRST_PLAYER,
-  INITIAL_BOARD_SIZE,
   SWAP_SYMBOL_DELAY_MS,
   SYMBOL_O,
   SYMBOL_X,
@@ -9,51 +7,12 @@ import {
 import { unSelectAllSquares, updateBoard } from "@/functions/boardUpdater";
 import {
   bothPlayersWonWithSwap,
-  createBoardBySize,
-  getInitialCoolDown,
   hasNoSquaresAvailable,
   updateCoolDownStatus,
   whoWins,
 } from "@/functions/gameUtility";
 import { create } from "zustand";
-
-const initialGameStates = ({ boardSize = INITIAL_BOARD_SIZE, stats } = {}) => ({
-  hasGameStart: true,
-  playerTurn: FIRST_PLAYER,
-  boardSize,
-  winner: "",
-  board: createBoardBySize(boardSize),
-  isWinnerPopupVisible: false,
-  squaresToSwap: [],
-  stats: { ...initialStats(stats) },
-  powerUps: {
-    player1: { ...initialPowerUps(boardSize) },
-    player2: { ...initialPowerUps(boardSize) },
-    selectedPower: null,
-    whoUsingPower: null,
-  },
-});
-
-const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
-  p1Wins,
-  draws,
-  p2Wins,
-});
-
-const initialPowerUps = (boardSize) => ({
-  freeze: {
-    available: true,
-    coolDown: getInitialCoolDown(boardSize),
-  },
-  bomb: {
-    available: true,
-    coolDown: getInitialCoolDown(boardSize),
-  },
-  swap: {
-    available: true,
-    coolDown: getInitialCoolDown(boardSize),
-  },
-});
+import { initialGameStates } from "./states";
 
 export const useXOStore = create((set, get) => ({
   ...initialGameStates(),
