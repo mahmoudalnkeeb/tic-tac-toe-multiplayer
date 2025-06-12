@@ -245,16 +245,17 @@ export const useXOStore = create((set, get) => ({
     } = get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
-    const newBoard = updateBoard({
-      board,
-      rowIndex,
-      columnIndex,
-      playerTurn,
-      powerUp: selectedPower,
-      squaresToSwap,
-    });
 
     setTimeout(() => {
+      const newBoard = updateBoard({
+        board,
+        rowIndex,
+        columnIndex,
+        playerTurn,
+        powerUp: selectedPower,
+        squaresToSwap,
+      });
+
       set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
       unSelectPower();
       disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
