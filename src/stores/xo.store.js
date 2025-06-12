@@ -69,16 +69,17 @@ export const useXOStore = create((set, get) => ({
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
     const newBoard = updateBoard({ board, rowIndex, columnIndex, playerTurn });
 
-    set({ board: newBoard, playerTurn: opponent });
+    const theWinner = whoWins(newBoard, playerTurn);
+    const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
+    const hasPlayerWin = theWinner !== "None" || noSquaresAvailable;
+
+    set({ board: newBoard, playerTurn: hasPlayerWin ? playerTurn : opponent });
     handlePowerUpsCoolDown();
     declareWinner(newBoard);
   },
   declareWinner: (newBoard) => {
     const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
-    const theWinner = whoWins(
-      newBoard,
-      playerTurn === SYMBOL_O ? SYMBOL_X : SYMBOL_O
-    );
+    const theWinner = whoWins(newBoard, playerTurn);
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
     const isDraw = noSquaresAvailable && theWinner === "None";
 
