@@ -44,7 +44,7 @@
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .powerUp:not(:disabled):hover {
+  .powerUp:not(:disabled, .selected):hover {
     background-color: initial;
     border-color: initial;
     box-shadow: none;
