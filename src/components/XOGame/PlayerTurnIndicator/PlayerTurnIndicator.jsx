@@ -14,12 +14,16 @@ const PlayerTurnIndicator = () => {
   return (
     <div className={`${s.indicator} ${board5Class} ${board3Class}`}>
       <div className={`${s.player} ${s.p1} ${p1ActiveClass}`}>
-        <span className={s.symbol}>○</span>
+        <span className={s.symbol}>
+          <span className={s.wrapper}>○</span>
+        </span>
         <span className={s.label}>P1</span>
       </div>
 
       <div className={`${s.player} ${s.p2} ${p2ActiveClass}`}>
-        <span className={s.symbol}>✕</span>
+        <span className={s.symbol}>
+          <span className={s.wrapper}>✕</span>
+        </span>
         <span className={s.label}>P2</span>
       </div>
     </div>
