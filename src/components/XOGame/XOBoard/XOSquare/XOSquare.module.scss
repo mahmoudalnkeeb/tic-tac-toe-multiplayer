@@ -66,6 +66,11 @@
     flex: 1;
     aspect-ratio: 1/1;
   }
+
+  .square.x4,
+  .square.x5 {
+    font-weight: 400;
+  }
 }
 
 .freeze {
