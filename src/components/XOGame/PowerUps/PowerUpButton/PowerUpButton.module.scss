@@ -68,7 +68,7 @@
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .powerUp.player1:not(:disabled):hover {
+  .powerUp.player1:not(:disabled, .selected):hover {
     background-color: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.05);
     box-shadow: none;
