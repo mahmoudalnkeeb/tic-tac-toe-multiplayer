@@ -1,3 +1,5 @@
+import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
+
 export function hasNoSquaresAvailable(board) {
   return board.every((row) => row.every(({ fillWith }) => fillWith !== ""));
 }
@@ -79,4 +81,19 @@ export function getInitialCoolDown(boardSize) {
   if (boardSize === 4) return 11;
   if (boardSize === 5) return 16;
   return 16;
+}
+
+export function bothPlayersWonWithSwap({
+  newBoard,
+  theWinner,
+  playerTurn,
+  usedPowerUp,
+}) {
+  const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+  const opponentIsWinner = whoWins(newBoard, opponent);
+
+  return (
+    theWinner !== "None" &&
+    (opponentIsWinner !== "None") & (usedPowerUp === "swap")
+  );
 }

@@ -8,6 +8,8 @@ import {
 } from "@/data/constants";
 import { unSelectAllSquares, updateBoard } from "@/functions/boardUpdater";
 import {
+  bothPlayersWonWithSwap,
+  createBoardBySize,
   getInitialCoolDown,
   hasNoSquaresAvailable,
   updateCoolDownStatus,
@@ -78,15 +80,15 @@ export const useXOStore = create((set, get) => ({
   },
   declareWinner: (newBoard, usedPowerUp) => {
     const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
-    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
     const theWinner = whoWins(newBoard, playerTurn);
-    const opponentIsWinner = whoWins(newBoard, opponent);
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
     const isDraw = noSquaresAvailable && theWinner === "None";
-    const bothPlayersWonBySwap =
-      usedPowerUp === "swap" &&
-      theWinner !== "None" &&
-      opponentIsWinner !== "None";
+    const bothPlayersWonBySwap = bothPlayersWonWithSwap({
+      newBoard,
+      theWinner,
+      playerTurn,
+      usedPowerUp,
+    });
 
     if (bothPlayersWonBySwap) {
       set({ winner: "Draw!", hasGameStart: false });
