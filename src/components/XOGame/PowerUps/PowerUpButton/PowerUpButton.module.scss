@@ -43,6 +43,14 @@
   box-shadow: 0 5px 15px rgba(78, 205, 196, 0.2);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .powerUp:not(:disabled):hover {
+    background-color: initial;
+    border-color: initial;
+    box-shadow: none;
+  }
+}
+
 .powerUp:not(:disabled).selected {
   background-color: #4ecdc44d;
 }
