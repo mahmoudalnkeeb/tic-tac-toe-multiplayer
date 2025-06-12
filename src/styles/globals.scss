@@ -1,5 +1,6 @@
 @use "./colors";
 @use "./variables";
+@use "./mixins" as m;
 @import "./fonts.css";
 
 * {
@@ -27,4 +28,10 @@ a {
 
 ul {
   list-style: none;
+}
+
+@include m.very-small {
+  main {
+    width: 100%;
+  }
 }

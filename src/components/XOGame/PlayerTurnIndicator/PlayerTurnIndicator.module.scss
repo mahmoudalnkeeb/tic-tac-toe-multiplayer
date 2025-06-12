@@ -24,32 +24,20 @@
     gap: 40px;
   }
 
-  .indicator.x3 {
-    top: 200px;
-  }
-
-  .indicator:not(.x3) {
-    top: 200px;
+  .indicator {
+    top: 180px !important;
   }
 }
 
 @media (max-width: 500px) {
-  .indicator.x3 {
-    top: 255px;
-  }
-
-  .indicator:not(.x3) {
-    top: 258px;
+  .indicator {
+    top: 235px !important;
   }
 }
 
 @include m.very-small {
-  .indicator.x3 {
-    top: 296px;
-  }
-
-  .indicator:not(.x3) {
-    top: 298px;
+  .indicator {
+    top: 280px !important;
   }
 }
 

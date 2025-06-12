@@ -16,6 +16,19 @@
   }
 }
 
+@include m.small {
+  .game {
+    padding-bottom: 30px;
+  }
+}
+
+@include m.very-small {
+  .game {
+    align-items: stretch;
+    width: 100%;
+  }
+}
+
 .game .wrapper {
   display: flex;
   gap: 30px;

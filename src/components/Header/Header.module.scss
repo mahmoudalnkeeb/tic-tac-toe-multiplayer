@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .header {
   display: flex;
   align-items: center;
@@ -6,6 +8,12 @@
   max-width: 800px;
   margin-bottom: 30px;
   gap: 30px;
+}
+
+@include m.small {
+  .header {
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 500px) {
