@@ -2,30 +2,32 @@ export function hasNoSquaresAvailable(board) {
   return board.every((row) => row.every(({ fillWith }) => fillWith !== ""));
 }
 
-export function isUniform(row) {
+export function isUniform(row, player) {
   return (
     row[0]?.fillWith !== "" &&
     row.every((squareData) => {
       const isUniform = squareData?.fillWith === row[0]?.fillWith;
-      return isUniform && !squareData.isFreezed;
+      return (
+        isUniform && !squareData.isFreezed && player === squareData?.fillWith
+      );
     })
   );
 }
 
-export function isWinByLine(board) {
+export function isWinByLine(board, player) {
   const size = board.length;
 
   for (let i = 0; i < size; i++) {
     const row = board[i];
     const column = board.map((row) => row[i]);
 
-    if (isUniform(row) || isUniform(column)) return true;
+    if (isUniform(row, player) || isUniform(column, player)) return true;
   }
 
   return false;
 }
 
-export function isWinDiagonally(board) {
+export function isWinDiagonally(board, player) {
   const size = board.length;
 
   const diagonal1 = [];
@@ -36,11 +38,14 @@ export function isWinDiagonally(board) {
     diagonal2.push(board[i][size - 1 - i]);
   }
 
-  return isUniform(diagonal1) || isUniform(diagonal2);
+  return isUniform(diagonal1, player) || isUniform(diagonal2, player);
 }
 
 export function whoWins(board, player) {
-  if (isWinByLine(board) || isWinDiagonally(board)) return player;
+  if (isWinByLine(board, player) || isWinDiagonally(board, player)) {
+    return player;
+  }
+
   return "None";
 }
 

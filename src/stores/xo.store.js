@@ -8,7 +8,6 @@ import {
 } from "@/data/constants";
 import { unSelectAllSquares, updateBoard } from "@/functions/boardUpdater";
 import {
-  createBoardBySize,
   getInitialCoolDown,
   hasNoSquaresAvailable,
   updateCoolDownStatus,
@@ -77,11 +76,24 @@ export const useXOStore = create((set, get) => ({
     handlePowerUpsCoolDown();
     declareWinner(newBoard);
   },
-  declareWinner: (newBoard) => {
+  declareWinner: (newBoard, usedPowerUp) => {
     const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
+    const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
     const theWinner = whoWins(newBoard, playerTurn);
+    const opponentIsWinner = whoWins(newBoard, opponent);
     const noSquaresAvailable = hasNoSquaresAvailable(newBoard);
     const isDraw = noSquaresAvailable && theWinner === "None";
+    const bothPlayersWonBySwap =
+      usedPowerUp === "swap" &&
+      theWinner !== "None" &&
+      opponentIsWinner !== "None";
+
+    if (bothPlayersWonBySwap) {
+      set({ winner: "Draw!", hasGameStart: false });
+      updateStatsOnWin({ theWinner: "None", isDraw: true });
+      showWinnerPopup();
+      return;
+    }
 
     if (theWinner !== "None" || noSquaresAvailable) {
       set({ winner: isDraw ? "Draw!" : theWinner, hasGameStart: false });
@@ -257,11 +269,11 @@ export const useXOStore = create((set, get) => ({
         squaresToSwap,
       });
 
-      set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
       unSelectPower();
       disablePowerUp({ whoUsingPower, powerUpKey: "swap" });
       handlePowerUpsCoolDown();
-      declareWinner(newBoard);
+      declareWinner(newBoard, "swap");
+      set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
     }, SWAP_SYMBOL_DELAY_MS);
   },
   selectSquare: (requiredData) => {
