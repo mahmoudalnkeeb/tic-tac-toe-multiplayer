@@ -1,6 +1,7 @@
 @use "@/styles/mixins" as m;
 
 .powerUp {
+  -webkit-tap-highlight-color: transparent;
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.8);
@@ -45,8 +46,8 @@
 
 @media (hover: none) and (pointer: coarse) {
   .powerUp:not(:disabled, .selected):hover {
-    background-color: initial;
-    border-color: initial;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
     box-shadow: none;
   }
 }
