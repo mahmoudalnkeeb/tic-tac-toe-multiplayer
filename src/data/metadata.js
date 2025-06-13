@@ -1,3 +1,5 @@
+export const DOMAIN = "https://tictactoe-4x4.netlify.app";
+
 export const METADATA = {
   title: "Advanced Tic Tic Toe",
   description:
@@ -19,4 +21,7 @@ export const METADATA = {
     "how to play tic tac toe with powers",
     "play tic tac toe with friends",
   ],
+  authors: [{ name: "Moamal Alaa Kareem" }],
+  publisher: "Moamal Alaa Kareem",
+  creator: "Moamal Alaa Kareem",
 };
