@@ -142,7 +142,7 @@
 
 @media (hover: none) and (pointer: coarse) {
 
-  .square:not(:disabled, .freeze, .bomb, .select):hover {
+  .square:not(:disabled):not(.freeze):not(.bomb):not(.select):hover {
     background: rgba(255, 255, 255, .08);
     border-color: transparent;
     box-shadow: none;
