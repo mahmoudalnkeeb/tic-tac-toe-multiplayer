@@ -3,14 +3,12 @@
 .square {
   --size: 85px;
   -webkit-tap-highlight-color: transparent;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, .08);
   border: 2px solid transparent;
   min-width: var(--size);
   min-height: var(--size);
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include m.center-x-y;
   position: relative;
   backdrop-filter: blur(5px);
   font-size: 2rem;
@@ -31,9 +29,9 @@
   }
 
   &:not(:disabled, .freeze, .bomb, .select):hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
     cursor: pointer;
   }
 
@@ -59,26 +57,14 @@
 }
 
 @include m.very-small {
-
-  .square,
-  .square.x4,
-  .square.x5 {
+  :where(.square, .square.x4, .square.x5) {
     --size: 40px;
     flex: 1;
     aspect-ratio: 1/1;
   }
 
-  .square.x4,
-  .square.x5 {
+  :where(.square.x4, .square.x5) {
     font-weight: 400;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .square:not(:disabled, .freeze, .bomb, .select, .swapHover):hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: transparent;
-    box-shadow: none;
   }
 }
 
@@ -107,15 +93,15 @@
   border-radius: inherit;
   z-index: -1;
   background: linear-gradient(45deg, #ff4500, #ff6347);
-  animation: bombPulse 0.5s ease-in-out 1;
+  animation: bombPulse .5s ease-in-out 1;
 }
 
 .square.playerX {
   border-color: #4ecdc4;
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba(78, 205, 196, .1);
   color: #4ecdc4;
-  text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
-  box-shadow: 0 0 15px rgba(78, 205, 196, 0.1);
+  text-shadow: 0 0 20px rgba(78, 205, 196, .5);
+  box-shadow: 0 0 15px rgba(78, 205, 196, .1);
 
   &.x4 {
     font-size: 1.8rem;
@@ -128,10 +114,10 @@
 
 .square.playerO {
   border-color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(255, 107, 107, .1);
   color: #ff6b6b;
-  text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-  box-shadow: 0 0 15px rgba(255, 107, 107, 0.1);
+  text-shadow: 0 0 20px rgba(255, 107, 107, .5);
+  box-shadow: 0 0 15px rgba(255, 107, 107, .1);
   font-size: 3.8rem;
 
   &.x4 {
@@ -146,14 +132,20 @@
 .square.select {
   border: 3px dashed #ffd93d;
   color: #ffd93d;
-  background: rgba(255, 217, 61, 0.2);
-  cursor: pointer;
+  background: rgba(255, 217, 61, .2);
 }
 
 .square:not(:disabled).swapHover:hover {
   color: #ffd93d;
-  background: rgba(255, 217, 61, 0.2);
-  cursor: pointer;
+  background: rgba(255, 217, 61, .2);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .square:not(:disabled, .freeze, .bomb, .select, .swapHover):hover {
+    background: rgba(255, 255, 255, .08);
+    border-color: transparent;
+    box-shadow: none;
+  }
 }
 
 .square.playerO .symbol {

@@ -8,17 +8,17 @@ const GameStats = () => {
 
   return (
     <div className={s.gameStats}>
-      <div className={s.stat} id="p1">
+      <div className={`${s.stat} ${s.player1}`}>
         <span className={s.value}>{p1Wins}</span>
         <span className={s.label}>P1 Wins</span>
       </div>
 
-      <div className={s.stat} id="draws">
+      <div className={`${s.stat} ${s.draws}`}>
         <span className={s.value}>{draws}</span>
         <span className={s.label}>Draws</span>
       </div>
 
-      <div className={s.stat} id="p2">
+      <div className={`${s.stat} ${s.player2}`}>
         <span className={s.value}>{p2Wins}</span>
         <span className={s.label}>P2 Wins</span>
       </div>

@@ -4,11 +4,10 @@
   display: flex;
   justify-content: center;
   gap: 40px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, .05);
   padding: 20px;
-  width: 100%;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, .1);
   backdrop-filter: blur(10px);
 }
 
@@ -34,14 +33,14 @@
   background-clip: text;
 }
 
-.gameStats .stat[id=p1] .value {
+.gameStats .stat.player1 .value {
   background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gameStats .stat[id=draws] .value {
+.gameStats .stat.draws .value {
   background: linear-gradient(135deg, #ffd93d, #ff9f1c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

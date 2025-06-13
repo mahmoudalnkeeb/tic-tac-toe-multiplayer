@@ -2,8 +2,8 @@
 
 .indicator {
   display: flex;
-  gap: 80px;
   align-items: center;
+  gap: 80px;
 }
 
 @include m.medium {
@@ -62,11 +62,9 @@
 .indicator .player .symbol {
   width: 60px;
   height: 60px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 255, 255, .3);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include m.center-x-y;
   font-size: 1.75rem;
   padding-bottom: 5px;
   backdrop-filter: blur(10px);
@@ -75,11 +73,11 @@
 }
 
 .indicator .player.p1 .symbol {
-  font-weight: 400;
   font-size: 2rem;
+  font-weight: 400;
   border-color: #ff6b6b;
   color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(255, 107, 107, .1);
 }
 
 .indicator .player.p1 .symbol .wrapper {
@@ -91,7 +89,7 @@
   font-weight: bold;
   border-color: #4ecdc4;
   color: #4ecdc4;
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba(78, 205, 196, .1);
 }
 
 .indicator .player.p2 .symbol .wrapper {
@@ -110,7 +108,7 @@
 .indicator .player .label {
   font-size: .875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, .8);
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: color .3s ease;
@@ -126,7 +124,7 @@
 
 @keyframes pulse-p1 {
   from {
-    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, .5);
   }
 
   to {
@@ -136,7 +134,7 @@
 
 @keyframes pulse-p2 {
   from {
-    box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.5);
+    box-shadow: 0 0 0 0 rgba(78, 205, 196, .5);
   }
 
   to {
