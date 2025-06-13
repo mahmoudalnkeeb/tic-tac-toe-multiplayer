@@ -58,7 +58,7 @@
 
 @include m.very-small {
   :where(.square, .square.x4, .square.x5) {
-    --size: 40px;
+    --size: auto !important;
     flex: 1;
     aspect-ratio: 1/1;
   }

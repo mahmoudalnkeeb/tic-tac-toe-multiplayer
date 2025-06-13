@@ -112,6 +112,12 @@
   transition: color .3s ease;
 }
 
+@media (max-width: 300px) {
+  .indicator .player .label {
+    display: none;
+  }
+}
+
 .indicator .player.p1.active .label {
   color: #ff6b6b;
 }
