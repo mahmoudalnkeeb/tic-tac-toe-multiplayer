@@ -27,11 +27,8 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
       disabled={disabled}
       aria-label={getSquareAriaLabel(squareData)}
     >
-      {fillWith === SYMBOL_O ? (
-        <span className={s.symbol}>{fillWith}</span>
-      ) : (
-        fillWith
-      )}
+      {fillWith === SYMBOL_O && <span className={s.symbol}>{fillWith}</span>}
+      {fillWith !== SYMBOL_O && fillWith}
       {isFreezed && <span className={s.freeze} />}
       {isBombed && <span className={s.bomb} />}
     </button>
