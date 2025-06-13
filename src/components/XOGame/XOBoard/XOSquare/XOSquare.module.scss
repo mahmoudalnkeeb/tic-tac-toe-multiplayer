@@ -141,10 +141,7 @@
 }
 
 @media (hover: none) and (pointer: coarse) {
-
-  .square:not(:disabled):hover,
-  .square:not(:disabled).select:hover,
-  .square:not(:disabled).swapHover:hover {
+  .square:not(:disabled, .freeze, .bomb, .select, .swapHover):hover {
     background: rgba(255, 255, 255, .08);
     border-color: transparent;
     box-shadow: none;
