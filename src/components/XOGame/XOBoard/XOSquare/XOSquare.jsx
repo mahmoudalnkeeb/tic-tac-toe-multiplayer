@@ -1,10 +1,11 @@
 import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
+import { getSquareAriaLabel } from "@/functions/accessibilityHelper";
 import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ squareData, disabled, onClick }) => {
   const { boardSize, powerUps } = useXOStore((s) => s);
-  const { fillWith, isFreezed, isBombed } = squareData;
+  const { fillWith, isFreezed, isBombed, swapSelected } = squareData;
   const { selectedPower } = powerUps;
 
   const classes = [
@@ -15,7 +16,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
     fillWith === SYMBOL_O ? s.playerO : "",
     selectedPower === "Freeze" && fillWith !== "" ? s.freezeHover : "",
     selectedPower === "Swap" && fillWith !== "" ? s.swapHover : "",
-    squareData.swapSelected ? s.select : "",
+    swapSelected ? s.select : "",
   ].join(" ");
 
   return (
@@ -24,6 +25,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
       className={classes}
       onClick={onClick}
       disabled={disabled}
+      aria-label={getSquareAriaLabel(squareData)}
     >
       {fillWith === SYMBOL_O ? (
         <span className={s.symbol}>{fillWith}</span>
