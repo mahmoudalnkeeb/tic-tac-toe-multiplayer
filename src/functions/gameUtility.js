@@ -5,15 +5,20 @@ export function hasNoSquaresAvailable(board) {
 }
 
 export function isUniform(row, player) {
-  return (
-    row[0]?.fillWith !== "" &&
-    row.every((squareData) => {
-      const isUniform = squareData?.fillWith === row[0]?.fillWith;
-      return (
-        isUniform && !squareData.isFreezed && player === squareData?.fillWith
-      );
-    })
-  );
+  const isEmptySquare = row[0]?.fillWith === "";
+  if (isEmptySquare) return false;
+
+  const confirmed = row.every((squareData) => {
+    const isUniform = squareData?.fillWith === row[0]?.fillWith;
+
+    return (
+      isUniform &&
+      !squareData.isFreezed &&
+      (player === squareData?.fillWith || !player)
+    );
+  });
+
+  return confirmed ? row[0]?.fillWith : false;
 }
 
 export function isWinByLine(board, player) {
@@ -22,8 +27,18 @@ export function isWinByLine(board, player) {
   for (let i = 0; i < size; i++) {
     const row = board[i];
     const column = board.map((row) => row[i]);
+    const rowWinner = isUniform(row, player);
+    const colWinner = isUniform(column, player);
 
-    if (isUniform(row, player) || isUniform(column, player)) return true;
+    // If checking a specific player
+    if (player && (rowWinner || colWinner)) {
+      return player;
+    }
+
+    // If checking for any winner
+    if (!player && (rowWinner || colWinner)) {
+      return rowWinner || colWinner;
+    }
   }
 
   return false;
@@ -44,8 +59,13 @@ export function isWinDiagonally(board, player) {
 }
 
 export function whoWins(board, player) {
-  if (isWinByLine(board, player) || isWinDiagonally(board, player)) {
-    return player;
+  const winnerByLine = isWinByLine(board, player);
+  const winnerByDiagonal = isWinDiagonally(board, player);
+
+  const winner = winnerByLine || winnerByDiagonal;
+
+  if (winner) {
+    return player ? player : winner;
   }
 
   return "None";
@@ -90,10 +110,11 @@ export function bothPlayersWonWithSwap({
   usedPowerUp,
 }) {
   const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
-  const opponentIsWinner = whoWins(newBoard, opponent);
+  const opponentWinner = whoWins(newBoard, opponent);
 
-  return (
-    theWinner !== "None" &&
-    (opponentIsWinner !== "None") & (usedPowerUp === "swap")
-  );
+  const bothWon = theWinner !== "None" && opponentWinner !== "None";
+  const usedSwap = usedPowerUp === "swap";
+  const sameWinner = theWinner === opponentWinner;
+
+  return usedSwap && bothWon && !sameWinner;
 }
