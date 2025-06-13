@@ -5,14 +5,19 @@ import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./PlayerTurnIndicator.module.scss";
 
 const PlayerTurnIndicator = () => {
-  const { playerTurn, boardSize } = useXOStore((s) => s);
+  const { playerTurn, boardSize, winner } = useXOStore((s) => s);
   const p1ActiveClass = playerTurn === SYMBOL_O ? s.active : "";
   const p2ActiveClass = playerTurn === SYMBOL_X ? s.active : "";
-  const board5Class = boardSize === 5 ? s.x5 : "";
-  const board3Class = boardSize === 3 ? s.x3 : "";
+
+  const containerClasses = [
+    s.indicator,
+    boardSize === 3 ? s.x3 : "",
+    boardSize === 5 ? s.x5 : "",
+    winner !== "" ? s.disable : "",
+  ].join(" ");
 
   return (
-    <div className={`${s.indicator} ${board5Class} ${board3Class}`}>
+    <div className={containerClasses}>
       <div className={`${s.player} ${s.p1} ${p1ActiveClass}`}>
         <span className={s.symbol}>
           <span className={s.wrapper}>○</span>

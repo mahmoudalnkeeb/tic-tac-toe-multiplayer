@@ -95,11 +95,11 @@
   top: 1px;
 }
 
-.indicator .player.p1.active .symbol {
+.indicator:not(.disable) .player.p1.active .symbol {
   animation: pulse-p1 1.3s ease-in-out infinite;
 }
 
-.indicator .player.p2.active .symbol {
+.indicator:not(.disable) .player.p2.active .symbol {
   animation: pulse-p2 1.3s ease-in-out infinite;
 }
 
@@ -118,11 +118,11 @@
   }
 }
 
-.indicator .player.p1.active .label {
+.indicator:not(.disable) .player.p1.active .label {
   color: #ff6b6b;
 }
 
-.indicator .player.p2.active .label {
+.indicator:not(.disable) .player.p2.active .label {
   color: #4ecdc4;
 }
 
