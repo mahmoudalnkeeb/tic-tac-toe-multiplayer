@@ -46,7 +46,6 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transition: all .3s ease;
 }
 
 .indicator.x5 .player {
@@ -69,7 +68,6 @@
   padding-bottom: 5px;
   backdrop-filter: blur(10px);
   position: relative;
-  transition: all .3s ease;
 }
 
 .indicator .player.p1 .symbol {
