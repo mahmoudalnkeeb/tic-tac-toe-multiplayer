@@ -17,7 +17,7 @@ const PowerUps = ({ player }) => {
     boardSize === 3 ? s.hidden : "",
     player === "player1" ? s.player1 : "",
     player === "player2" ? s.player2 : "",
-    !(isPlayer1 || isPlayer2) ? s.active : "",
+    !(isPlayer1 || isPlayer2) ? s.display : "",
   ].join(" ");
 
   return (

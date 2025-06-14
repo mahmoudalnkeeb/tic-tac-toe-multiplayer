@@ -28,7 +28,7 @@
     justify-content: center;
     display: none;
 
-    &:where(.player1, .player2):not(.hidden).active {
+    &:where(.player1, .player2):not(.hidden).display {
       display: flex;
     }
   }
