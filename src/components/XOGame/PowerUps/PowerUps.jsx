@@ -7,7 +7,7 @@ import PowerUpButton from "./PowerUpButton/PowerUpButton";
 import s from "./PowerUps.module.scss";
 
 const PowerUps = ({ player }) => {
-  const { boardSize, powerUps, playerTurn } = useXOStore((s) => s);
+  const { boardSize, powerUps, playerTurn, winner } = useXOStore((s) => s);
   const playerPowerUps = Object.entries(powerUps[player]);
   const isPlayer1 = playerTurn !== SYMBOL_O && player === "player1";
   const isPlayer2 = playerTurn !== SYMBOL_X && player === "player2";
@@ -24,7 +24,7 @@ const PowerUps = ({ player }) => {
     <div className={classes}>
       {POWER_UPS_BUTTONS.map((buttonData, index) => {
         const { available, coolDown } = playerPowerUps[index][1];
-        const disable = !available || isPlayer1 || isPlayer2;
+        const disable = !available || isPlayer1 || isPlayer2 || winner !== "";
 
         return (
           <PowerUpButton
