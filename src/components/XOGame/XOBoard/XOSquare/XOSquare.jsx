@@ -4,9 +4,10 @@ import { useXOStore } from "@/stores/xo.store/xo.store";
 import s from "./XOSquare.module.scss";
 
 const XOSquare = ({ squareData, disabled, onClick }) => {
-  const { boardSize, powerUps } = useXOStore((s) => s);
+  const { boardSize, powerUps, squaresToSwap } = useXOStore((s) => s);
   const { fillWith, isFreezed, isBombed, swapSelected } = squareData;
   const { selectedPower } = powerUps;
+  const shouldSwap = squaresToSwap.length >= 2 && squareData.swapSelected;
 
   const classes = [
     s.square,
@@ -32,6 +33,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
       {fillWith !== SYMBOL_O && fillWith}
       {isFreezed && <span className={s.freeze} />}
       {isBombed && <span className={s.bomb} />}
+      {shouldSwap && <span className={s.swap} />}
     </button>
   );
 };
