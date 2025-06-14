@@ -117,11 +117,18 @@ export const useXOStore = create((set, get) => ({
       get();
     const { whoUsingPower, selectedPower } = powerUps;
     const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+    const isEmptySquare = squareData.fillWith === "";
+    const isFreezedSquare = squareData.isFreezed;
     const isOpponentTargeted = squareData.fillWith === opponent;
 
-    if (squareData.fillWith === "") {
+    if (isEmptySquare) {
       unSelectPower();
       return "Denied: used on an empty square";
+    }
+
+    if (isFreezedSquare) {
+      unSelectPower();
+      return "Denied: the square is already freezed";
     }
 
     if (!isOpponentTargeted) {
