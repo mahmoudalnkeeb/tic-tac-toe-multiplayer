@@ -24,13 +24,17 @@ export function updateBoard({
     return deleteBombEffect(board);
   }
 
-  return fillOrFreezeSquare({
-    board,
-    rowIndex,
-    columnIndex,
-    powerUp,
-    playerTurn,
-  });
+  const selectedSquare = board[rowIndex][columnIndex];
+  const fillWith =
+    selectedSquare.fillWith === "" ? playerTurn : selectedSquare.fillWith;
+
+  board[rowIndex][columnIndex] = {
+    ...selectedSquare,
+    fillWith,
+    isFreezed: powerUp === "Freeze",
+  };
+
+  return board;
 }
 
 export function selectSwapSquare({ board, rowIndex, columnIndex }) {
@@ -115,30 +119,6 @@ export function deleteBombEffect(board) {
       }
 
       return squareData;
-    })
-  );
-}
-
-export function fillOrFreezeSquare({
-  board,
-  rowIndex,
-  columnIndex,
-  powerUp,
-  playerTurn,
-}) {
-  return board.map((row, i) =>
-    row.map((squareData, j) => {
-      const isCorrectIndexes = i === rowIndex && j === columnIndex;
-
-      if (powerUp === "Freeze" && isCorrectIndexes) {
-        squareData.isFreezed = true;
-        return squareData;
-      }
-
-      const fillWith =
-        isCorrectIndexes && !powerUp ? playerTurn : squareData.fillWith;
-
-      return { ...squareData, fillWith };
     })
   );
 }
