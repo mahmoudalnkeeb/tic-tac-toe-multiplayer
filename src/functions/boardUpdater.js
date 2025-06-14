@@ -17,11 +17,7 @@ export function updateBoard({
   }
 
   if (powerUp === "Bomb") {
-    return triggerBombEffect({
-      board,
-      rowIndex,
-      columnIndex,
-    });
+    return triggerBombEffect({ board, rowIndex, columnIndex });
   }
 
   if (powerUp === "Delete Bomb") {
@@ -80,6 +76,7 @@ export function triggerBombEffect({
   board,
   radius = 1,
 }) {
+  const newBoard = board.map((row) => row.map((square) => ({ ...square })));
   const boardSize = board.length;
 
   for (let dimensionX = -radius; dimensionX <= radius; dimensionX++) {
@@ -92,11 +89,13 @@ export function triggerBombEffect({
 
       if (isOutOfBounds) continue;
 
-      const targetedSquare = board[newRow][newCol];
+      const targetedSquare = newBoard[newRow][newCol];
 
       if (targetedSquare.isFreezed) {
         targetedSquare.isBombed = true;
-        setTimeout((targetedSquare.isFreezed = false), BOMB_DELETION_DELAY_MS);
+        setTimeout(() => {
+          targetedSquare.isFreezed = false;
+        }, BOMB_DELETION_DELAY_MS);
         continue;
       }
 
@@ -105,7 +104,7 @@ export function triggerBombEffect({
     }
   }
 
-  return board;
+  return newBoard;
 }
 
 export function deleteBombEffect(board) {
