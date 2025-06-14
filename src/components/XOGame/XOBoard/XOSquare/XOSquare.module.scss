@@ -47,8 +47,9 @@
   }
 
   &:not(:disabled).bombHover:hover {
-    background: linear-gradient(45deg, #ff4500, #ff6347);
-    box-shadow: 0 0 4px rgba(255, 107, 107, 1);
+    background: linear-gradient(45deg,
+        rgba(255, 68, 0, .8),
+        rgba(255, 99, 71, 1));
   }
 }
 
@@ -91,7 +92,9 @@
 }
 
 .square.bombHover:hover .freeze {
-  background: linear-gradient(45deg, #ff4500, #ff6347);
+  background: linear-gradient(45deg,
+      rgba(255, 68, 0, .8),
+      rgba(255, 99, 71, 1));
 }
 
 .bomb {
