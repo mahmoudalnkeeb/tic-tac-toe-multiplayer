@@ -84,14 +84,8 @@ export const useXOStore = create((set, get) => ({
     }, WINNER_POPUP_DURATION_MS);
   },
   usePowerUp: ({ rowIndex, columnIndex }) => {
-    const {
-      board,
-      powerUps,
-      freezeSquare,
-      bombSquares,
-      swapSquare,
-      handleSwapPowerUp,
-    } = get();
+    const { board, powerUps, freezeSquare, bombSquares, handleSwapPowerUp } =
+      get();
     const squareData = board[rowIndex][columnIndex];
     const requiredData = { rowIndex, columnIndex, squareData };
     const { selectedPower } = powerUps;
@@ -105,7 +99,7 @@ export const useXOStore = create((set, get) => ({
     }
 
     if (selectedPower === "Swap") {
-      handleSwapPowerUp({ requiredData, swapSquare });
+      handleSwapPowerUp(requiredData);
       return;
     }
 
@@ -247,8 +241,9 @@ export const useXOStore = create((set, get) => ({
   selectSquare: (requiredData) => {
     const { rowIndex, columnIndex, squareData } = requiredData;
     const { board, playerTurn, squaresToSwap } = get();
+    const isEmptySquare = squareData.fillWith === "";
 
-    if (squareData.fillWith === "") {
+    if (isEmptySquare) {
       return "Invalid target: swap must be used on symbol square";
     }
 
@@ -263,11 +258,10 @@ export const useXOStore = create((set, get) => ({
 
     set({ board: newBoard, squaresToSwap: squaresToSwapCopy });
   },
-  handleSwapPowerUp: ({ requiredData, swapSquare }) => {
-    const { board, squaresToSwap, selectSquare } = get();
-    const { squareData } = requiredData;
-    const isEmptySquare = squareData.fillWith === "";
-    const isAlreadySelected = squareData.swapSelected;
+  handleSwapPowerUp: (requiredData) => {
+    const { board, squaresToSwap, selectSquare, swapSquare } = get();
+    const isEmptySquare = requiredData.squareData.fillWith === "";
+    const isAlreadySelected = requiredData.squareData.swapSelected;
     const isFirstSelection = squaresToSwap.length === 0;
     const isSecondSelection = squaresToSwap.length === 1;
 
@@ -275,7 +269,7 @@ export const useXOStore = create((set, get) => ({
       return "Invalid target: swap must be used on symbol square";
     }
 
-    if (isFirstSelection) {
+    if (isFirstSelection && !isSecondSelection) {
       selectSquare(requiredData);
       return "Selected first square";
     }
