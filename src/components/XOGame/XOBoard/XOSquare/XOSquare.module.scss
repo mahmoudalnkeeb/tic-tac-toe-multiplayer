@@ -1,7 +1,7 @@
 @use "@/styles/mixins" as m;
 @use "@/styles/keyframes" as keyframe;
 @include keyframe.frozen;
-@include keyframe.bombPulse;
+@include keyframe.bomb-pulse;
 @include keyframe.fade-in;
 
 .square {
@@ -109,7 +109,7 @@
   border-radius: inherit;
   z-index: 1;
   background: linear-gradient(45deg, #ff4500, #ff6347);
-  animation: bombPulse .5s ease-in-out 1;
+  animation: bomb-pulse .5s ease-in-out 1;
 }
 
 .swap {
