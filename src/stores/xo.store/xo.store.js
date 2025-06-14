@@ -5,7 +5,11 @@ import {
   SYMBOL_X,
   WINNER_POPUP_DURATION_MS,
 } from "@/data/constants";
-import { unSelectAllSquares, updateBoard } from "@/functions/boardUpdater";
+import {
+  unSelectAllSquares,
+  unSelectSquare,
+  updateBoard,
+} from "@/functions/boardUpdater";
 import {
   bothPlayersWonWithSwap,
   hasNoSquaresAvailable,
@@ -120,7 +124,14 @@ export const useXOStore = create((set, get) => ({
   },
 
   selectPowerUp: ({ selectedPower, whoUsingPower }) => {
-    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
+    const { squaresToSwap, board } = get();
+    const hasSelectSquare = squaresToSwap.length > 0;
+
+    set({
+      powerUps: { ...get().powerUps, selectedPower, whoUsingPower },
+      board: hasSelectSquare ? unSelectSquare(board) : board,
+      squaresToSwap: [],
+    });
   },
 
   unSelectPower: () => {
