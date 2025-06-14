@@ -100,13 +100,9 @@ export function triggerBombEffect({
 
 export function deleteBombEffect(board) {
   return board.map((row) =>
-    row.map((squareData) => {
-      if (squareData.isBombed) {
-        squareData.isBombed = false;
-      }
-
-      return squareData;
-    })
+    row.map((squareData) =>
+      squareData.isBombed ? { ...squareData, isBombed: false } : squareData
+    )
   );
 }
 
