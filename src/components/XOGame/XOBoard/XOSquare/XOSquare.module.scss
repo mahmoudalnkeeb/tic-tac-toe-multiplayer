@@ -1,4 +1,7 @@
 @use "@/styles/mixins" as m;
+@use "@/styles/keyframes" as keyframe;
+@include keyframe.frozen;
+@include keyframe.bombPulse;
 
 .square {
   --size: 85px;
@@ -153,28 +156,4 @@
   left: 50%;
   top: calc(50% + -3px);
   translate: -50% -50%;
-}
-
-@keyframes frozen {
-
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-
-  50% {
-    filter: brightness(1.5);
-  }
-}
-
-@keyframes bombPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
 }

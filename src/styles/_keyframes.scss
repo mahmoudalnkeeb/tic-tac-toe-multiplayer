@@ -1,0 +1,42 @@
+@mixin pulse {
+  @keyframes pulse {
+
+    from {
+      scale: 1;
+      opacity: .8;
+    }
+
+    to {
+      scale: 1.4;
+      opacity: 0;
+    }
+  }
+}
+
+@mixin frozen {
+  @keyframes frozen {
+
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+
+    50% {
+      filter: brightness(1.5);
+    }
+  }
+}
+
+@mixin bombPulse {
+  @keyframes bombPulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+  }
+}

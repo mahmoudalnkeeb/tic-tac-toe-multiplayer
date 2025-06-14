@@ -1,4 +1,6 @@
 @use "@/styles/mixins" as m;
+@use "@/styles/keyframes" as keyframe;
+@include keyframe.pulse;
 
 .indicator {
   display: flex;
@@ -152,17 +154,4 @@
 
 .indicator:not(.disable) .player.p2.active .label {
   color: #4ecdc4;
-}
-
-@keyframes pulse {
-
-  from {
-    scale: 1;
-    opacity: .8;
-  }
-
-  to {
-    scale: 1.4;
-    opacity: 0;
-  }
 }
