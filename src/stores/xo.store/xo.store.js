@@ -91,6 +91,8 @@ export const useXOStore = create((set, get) => ({
     setTimeout(() => {
       set({ isWinnerPopupVisible: false });
     }, WINNER_POPUP_DURATION_MS);
+
+    setTimeout(() => get().resetGame(), WINNER_POPUP_DURATION_MS + 400);
   },
 
   // Power-Ups Management
