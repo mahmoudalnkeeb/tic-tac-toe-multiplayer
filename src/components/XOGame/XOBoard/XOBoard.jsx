@@ -5,11 +5,12 @@ import WinnerPopUp from "./WinnerPopUp/WinnerPopUp";
 import s from "./XOBoard.module.scss";
 
 const XOBoard = () => {
-  const { board, playerTurn } = useXOStore((state) => state);
+  const { board, playerTurn, winner } = useXOStore((s) => s);
   const playerTurnClass = playerTurn === SYMBOL_X ? s.xTurn : s.oTurn;
+  const drawClass = winner === "Draw!" ? s.draw : "";
 
   return (
-    <div className={`${s.board} ${playerTurnClass}`}>
+    <div className={`${s.board} ${playerTurnClass} ${drawClass}`}>
       {board.map((row, rowIndex) => (
         <BoardRow key={rowIndex} row={row} rowIndex={rowIndex} />
       ))}
