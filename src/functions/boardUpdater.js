@@ -9,7 +9,9 @@ export function updateBoard({
   squaresToSwap = [],
 }) {
   if (powerUp === "Select") {
-    return selectSwapSquare({ board, rowIndex, columnIndex });
+    const selectedSquare = board[rowIndex][columnIndex];
+    board[rowIndex][columnIndex] = { ...selectedSquare, swapSelected: true };
+    return board;
   }
 
   if (powerUp === "Swap" && squaresToSwap.length === 2) {
@@ -35,21 +37,6 @@ export function updateBoard({
   };
 
   return board;
-}
-
-export function selectSwapSquare({ board, rowIndex, columnIndex }) {
-  return board.map((row, i) =>
-    row.map((squareData, j) => {
-      const isCorrectIndexes = i === rowIndex && j === columnIndex;
-
-      if (isCorrectIndexes) {
-        squareData.swapSelected = true;
-        return squareData;
-      }
-
-      return squareData;
-    })
-  );
 }
 
 export function swapSymbolsOnBoard({ board, squaresToSwap }) {
