@@ -1,4 +1,5 @@
 import {
+  BOMB_DELETION_DELAY_MS,
   SWAP_SYMBOL_DELAY_MS,
   SYMBOL_O,
   SYMBOL_X,
@@ -191,7 +192,11 @@ export const useXOStore = create((set, get) => ({
     powerUpsCopy[whoUsingPower][powerUpKey].available = false;
     set({ powerUps: powerUpsCopy });
   },
-  scheduleBombDeletion: ({ rowIndex, columnIndex, timeout = 1000 }) => {
+  scheduleBombDeletion: ({
+    rowIndex,
+    columnIndex,
+    timeout = BOMB_DELETION_DELAY_MS,
+  }) => {
     const { board, playerTurn } = get();
 
     setTimeout(() => {

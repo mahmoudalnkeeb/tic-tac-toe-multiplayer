@@ -1,3 +1,5 @@
+import { BOMB_DELETION_DELAY_MS } from "@/data/constants";
+
 export function updateBoard({
   board,
   rowIndex,
@@ -93,7 +95,8 @@ export function triggerBombEffect({
       const targetedSquare = board[newRow][newCol];
 
       if (targetedSquare.isFreezed) {
-        targetedSquare.isFreezed = false;
+        targetedSquare.isBombed = true;
+        setTimeout((targetedSquare.isFreezed = false), BOMB_DELETION_DELAY_MS);
         continue;
       }
 
