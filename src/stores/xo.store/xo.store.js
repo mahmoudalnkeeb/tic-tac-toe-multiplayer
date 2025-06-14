@@ -16,13 +16,15 @@ import { create } from "zustand";
 import { initialGameStates } from "./states";
 
 export const useXOStore = create((set, get) => ({
+  // Game State
   ...initialGameStates(),
-  resetGame: () => {
-    const { boardSize, stats } = get();
-    const { p1Wins, draws, p2Wins } = stats;
 
-    set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
+  updateBoardSize: (boardSize) => {
+    set({ boardSize });
+    get().resetGame({ boardSize });
   },
+
+  // Core Game Mechanics
   fillSquare: ({ rowIndex, columnIndex }) => {
     if (!get().hasGameStart) return;
 
@@ -38,6 +40,14 @@ export const useXOStore = create((set, get) => ({
     handlePowerUpsCoolDown();
     declareWinner(newBoard);
   },
+
+  resetGame: () => {
+    const { boardSize, stats } = get();
+    const { p1Wins, draws, p2Wins } = stats;
+
+    set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
+  },
+
   declareWinner: (newBoard, usedPowerUp) => {
     const { playerTurn, updateStatsOnWin, showWinnerPopup } = get();
     const theWinner = whoWins(newBoard);
@@ -63,6 +73,7 @@ export const useXOStore = create((set, get) => ({
       showWinnerPopup();
     }
   },
+
   updateStatsOnWin: ({ theWinner, isDraw }) => {
     const { p1Wins, draws, p2Wins } = get().stats;
     const updatedStats = {
@@ -74,16 +85,15 @@ export const useXOStore = create((set, get) => ({
     set({ stats: updatedStats });
     return updatedStats;
   },
-  updateBoardSize: (boardSize) => {
-    set({ boardSize });
-    get().resetGame({ boardSize });
-  },
+
   showWinnerPopup: () => {
     set({ isWinnerPopupVisible: true });
     setTimeout(() => {
       set({ isWinnerPopupVisible: false });
     }, WINNER_POPUP_DURATION_MS);
   },
+
+  // Power-Ups Management
   usePowerUp: ({ rowIndex, columnIndex }) => {
     const { board, powerUps, freezeSquare, bombSquares, handleSwapPowerUp } =
       get();
@@ -106,6 +116,35 @@ export const useXOStore = create((set, get) => ({
 
     get().handlePowerUpsCoolDown();
   },
+
+  selectPowerUp: ({ selectedPower, whoUsingPower }) => {
+    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
+  },
+
+  unSelectPower: () => {
+    const { board, powerUps, squaresToSwap } = get();
+    const isSwapPower = powerUps.selectedPower === "Swap";
+    const hasSelectSquare = squaresToSwap.length > 0;
+
+    set({
+      powerUps: { ...powerUps, selectedPower: null, whoUsingPower: null },
+      board: hasSelectSquare && isSwapPower ? unSelectAllSquares(board) : board,
+      squaresToSwap: hasSelectSquare && isSwapPower ? [] : squaresToSwap,
+    });
+  },
+
+  handlePowerUpsCoolDown: () => {
+    updateCoolDownStatus(get().powerUps.player1);
+    updateCoolDownStatus(get().powerUps.player2);
+  },
+
+  disablePowerUp: ({ whoUsingPower, powerUpKey }) => {
+    const powerUpsCopy = { ...get().powerUps };
+    powerUpsCopy[whoUsingPower][powerUpKey].available = false;
+    set({ powerUps: powerUpsCopy });
+  },
+
+  // Freeze Power-Up
   freezeSquare: (requiredData) => {
     const { rowIndex, columnIndex, squareData } = requiredData;
     const { board, powerUps, playerTurn, unSelectPower, disablePowerUp } =
@@ -143,6 +182,8 @@ export const useXOStore = create((set, get) => ({
     unSelectPower();
     disablePowerUp({ whoUsingPower, powerUpKey: "freeze" });
   },
+
+  // Bomb Power-Up
   bombSquares: (requiredData) => {
     const {
       board,
@@ -169,29 +210,7 @@ export const useXOStore = create((set, get) => ({
     disablePowerUp({ whoUsingPower, powerUpKey: "bomb" });
     scheduleBombDeletion({ rowIndex, columnIndex });
   },
-  selectPowerUp: ({ selectedPower, whoUsingPower }) => {
-    set({ powerUps: { ...get().powerUps, selectedPower, whoUsingPower } });
-  },
-  unSelectPower: () => {
-    const { board, powerUps, squaresToSwap } = get();
-    const isSwapPower = powerUps.selectedPower === "Swap";
-    const hasSelectSquare = squaresToSwap.length > 0;
 
-    set({
-      powerUps: { ...powerUps, selectedPower: null, whoUsingPower: null },
-      board: hasSelectSquare && isSwapPower ? unSelectAllSquares(board) : board,
-      squaresToSwap: hasSelectSquare && isSwapPower ? [] : squaresToSwap,
-    });
-  },
-  handlePowerUpsCoolDown: () => {
-    updateCoolDownStatus(get().powerUps.player1);
-    updateCoolDownStatus(get().powerUps.player2);
-  },
-  disablePowerUp: ({ whoUsingPower, powerUpKey }) => {
-    const powerUpsCopy = { ...get().powerUps };
-    powerUpsCopy[whoUsingPower][powerUpKey].available = false;
-    set({ powerUps: powerUpsCopy });
-  },
   scheduleBombDeletion: ({
     rowIndex,
     columnIndex,
@@ -211,6 +230,36 @@ export const useXOStore = create((set, get) => ({
       set({ board: newBoard });
     }, timeout);
   },
+
+  // Swap Power-Up
+  handleSwapPowerUp: (requiredData) => {
+    const { board, squaresToSwap, selectSquare, swapSquare } = get();
+    const isEmptySquare = requiredData.squareData.fillWith === "";
+    const isAlreadySelected = requiredData.squareData.swapSelected;
+    const isFirstSelection = squaresToSwap.length === 0;
+    const isSecondSelection = squaresToSwap.length === 1;
+
+    if (isEmptySquare) {
+      return "Invalid target: swap must be used on symbol square";
+    }
+
+    if (isFirstSelection && !isSecondSelection) {
+      selectSquare(requiredData);
+      return "Selected first square";
+    }
+
+    if (isAlreadySelected) {
+      const newBoard = unSelectAllSquares(board);
+      set({ board: newBoard, squaresToSwap: [] });
+      return "Unselect squares";
+    }
+
+    if (isSecondSelection) {
+      selectSquare(requiredData);
+      swapSquare(requiredData);
+    }
+  },
+
   swapSquare: (requiredData) => {
     const { rowIndex, columnIndex } = requiredData;
     const {
@@ -243,6 +292,7 @@ export const useXOStore = create((set, get) => ({
       set({ board: newBoard, playerTurn: opponent, squaresToSwap: [] });
     }, SWAP_SYMBOL_DELAY_MS);
   },
+
   selectSquare: (requiredData) => {
     const { rowIndex, columnIndex, squareData } = requiredData;
     const { board, playerTurn, squaresToSwap } = get();
@@ -262,32 +312,5 @@ export const useXOStore = create((set, get) => ({
     const squaresToSwapCopy = [...squaresToSwap, [rowIndex, columnIndex]];
 
     set({ board: newBoard, squaresToSwap: squaresToSwapCopy });
-  },
-  handleSwapPowerUp: (requiredData) => {
-    const { board, squaresToSwap, selectSquare, swapSquare } = get();
-    const isEmptySquare = requiredData.squareData.fillWith === "";
-    const isAlreadySelected = requiredData.squareData.swapSelected;
-    const isFirstSelection = squaresToSwap.length === 0;
-    const isSecondSelection = squaresToSwap.length === 1;
-
-    if (isEmptySquare) {
-      return "Invalid target: swap must be used on symbol square";
-    }
-
-    if (isFirstSelection && !isSecondSelection) {
-      selectSquare(requiredData);
-      return "Selected first square";
-    }
-
-    if (isAlreadySelected) {
-      const newBoard = unSelectAllSquares(board);
-      set({ board: newBoard, squaresToSwap: [] });
-      return "Unselect squares";
-    }
-
-    if (isSecondSelection) {
-      selectSquare(requiredData);
-      swapSquare(requiredData);
-    }
   },
 }));
