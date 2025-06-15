@@ -19,14 +19,21 @@ const BoardRow = ({ row, rowIndex }) => {
 
   return (
     <div className={s.row}>
-      {row.map((squareData, columnIndex) => (
-        <XOSquare
-          key={columnIndex}
-          squareData={squareData}
-          disabled={(!whoUsingPower && squareData.fillWith) || !hasGameStart}
-          onClick={() => handleClick({ rowIndex, columnIndex })}
-        />
-      ))}
+      {row.map((squareData, columnIndex) => {
+        const disable =
+          (!whoUsingPower && squareData.fillWith) ||
+          !hasGameStart ||
+          squareData.isBombed;
+
+        return (
+          <XOSquare
+            key={columnIndex}
+            squareData={squareData}
+            disabled={disable}
+            onClick={() => handleClick({ rowIndex, columnIndex })}
+          />
+        );
+      })}
     </div>
   );
 };
