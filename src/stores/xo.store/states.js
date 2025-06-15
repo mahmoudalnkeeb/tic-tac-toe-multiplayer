@@ -1,8 +1,5 @@
 const { FIRST_PLAYER, INITIAL_BOARD_SIZE } = require("@/data/constants");
-const {
-  createBoardBySize,
-  getInitialCoolDown,
-} = require("@/functions/gameUtility");
+const { createBoardBySize } = require("@/functions/gameUtility");
 
 export const initialGameStates = ({
   boardSize = INITIAL_BOARD_SIZE,
@@ -44,3 +41,9 @@ const initialPlayerPowerUps = (boardSize) => ({
     coolDown: getInitialCoolDown(boardSize),
   },
 });
+
+export function getInitialCoolDown(boardSize) {
+  if (boardSize === 4) return 11;
+  if (boardSize === 5) return 16;
+  return 16;
+}
