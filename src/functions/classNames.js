@@ -14,13 +14,13 @@ export function getSquareClasses({
 
   return [
     cssModule.square,
-    boardSize === 4 ? s.x4 : "",
-    boardSize === 5 ? s.x5 : "",
-    fillWith === SYMBOL_X ? s.playerX : "",
-    fillWith === SYMBOL_O ? s.playerO : "",
-    activeFreezeHover ? s.freezeHover : "",
-    powerUps.selectedPower === "Swap" && fillWith ? s.swapHover : "",
-    powerUps.selectedPower === "Bomb" ? s.bombHover : "",
-    swapSelected ? s.select : "",
+    boardSize === 4 ? cssModule.x4 : "",
+    boardSize === 5 ? cssModule.x5 : "",
+    fillWith === SYMBOL_X ? cssModule.playerX : "",
+    fillWith === SYMBOL_O ? cssModule.playerO : "",
+    activeFreezeHover ? cssModule.freezeHover : "",
+    powerUps.selectedPower === "Swap" && fillWith ? cssModule.swapHover : "",
+    powerUps.selectedPower === "Bomb" ? cssModule.bombHover : "",
+    swapSelected ? cssModule.select : "",
   ].join(" ");
 }
