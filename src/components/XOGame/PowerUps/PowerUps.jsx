@@ -24,7 +24,7 @@ const PowerUps = ({ player }) => {
     <div className={classes}>
       {POWER_UPS_BUTTONS.map((buttonData, index) => {
         const { available, coolDown } = playerPowerUps[index][1];
-        const disable = !available || isPlayer1 || isPlayer2 || winner !== "";
+        const disable = !available || isPlayer1 || isPlayer2 || winner;
 
         return (
           <PowerUpButton

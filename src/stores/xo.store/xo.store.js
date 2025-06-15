@@ -25,11 +25,11 @@ export const useXOStore = create((set, get) => ({
 
   updateBoardSize: (boardSize) => {
     set({ boardSize });
-    get().resetGame({ boardSize });
+    get().startNewGame({ boardSize });
   },
 
   // Core Game Mechanics
-  fillSquare: ({ rowIndex, columnIndex }) => {
+  fillSquare: (rowIndex, columnIndex) => {
     if (!get().hasGameStart) return;
 
     const { playerTurn, board, declareWinner, handlePowerUpsCoolDown } = get();
@@ -45,7 +45,7 @@ export const useXOStore = create((set, get) => ({
     declareWinner(newBoard);
   },
 
-  resetGame: () => {
+  startNewGame: () => {
     const { boardSize, stats } = get();
     const { p1Wins, draws, p2Wins } = stats;
 
@@ -96,11 +96,11 @@ export const useXOStore = create((set, get) => ({
       set({ isWinnerPopupVisible: false });
     }, WINNER_POPUP_DURATION_MS);
 
-    setTimeout(() => get().resetGame(), WINNER_POPUP_DURATION_MS + 400);
+    setTimeout(() => get().startNewGame(), WINNER_POPUP_DURATION_MS + 400);
   },
 
   // Power-Ups Management
-  usePowerUp: ({ rowIndex, columnIndex }) => {
+  usePowerUp: (rowIndex, columnIndex) => {
     const { board, powerUps, freezeSquare, bombSquares, handleSwapPowerUp } =
       get();
     const squareData = board[rowIndex][columnIndex];
@@ -262,7 +262,7 @@ export const useXOStore = create((set, get) => ({
     }
 
     if (isAlreadySelected) {
-      const newBoard = unSelectAllSquares(board);
+      const newBoard = unSelectSquare(board);
       set({ board: newBoard, squaresToSwap: [] });
       return "Unselect squares";
     }

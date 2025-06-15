@@ -8,13 +8,13 @@ const BoardRow = ({ row, rowIndex }) => {
   );
   const { whoUsingPower } = powerUps;
 
-  function handleClick({ rowIndex, columnIndex }) {
+  function handleClick(rowIndex, columnIndex) {
     if (!whoUsingPower) {
-      fillSquare({ rowIndex, columnIndex });
+      fillSquare(rowIndex, columnIndex);
       return;
     }
 
-    usePowerUp({ rowIndex, columnIndex });
+    usePowerUp(rowIndex, columnIndex);
   }
 
   return (
@@ -30,7 +30,7 @@ const BoardRow = ({ row, rowIndex }) => {
             key={columnIndex}
             squareData={squareData}
             disabled={disable}
-            onClick={() => handleClick({ rowIndex, columnIndex })}
+            onClick={() => handleClick(rowIndex, columnIndex)}
           />
         );
       })}

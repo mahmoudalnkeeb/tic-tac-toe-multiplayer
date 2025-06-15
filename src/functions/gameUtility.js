@@ -1,7 +1,7 @@
 import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
 
 export function hasNoSquaresAvailable(board) {
-  return board.every((row) => row.every(({ fillWith }) => fillWith !== ""));
+  return board.every((row) => row.every(({ fillWith }) => fillWith));
 }
 
 export function isUniform(row, player) {

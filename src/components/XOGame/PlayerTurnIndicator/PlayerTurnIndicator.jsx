@@ -13,7 +13,7 @@ const PlayerTurnIndicator = () => {
     s.indicator,
     boardSize === 3 ? s.x3 : "",
     boardSize === 5 ? s.x5 : "",
-    winner !== "" ? s.disable : "",
+    winner ? s.disable : "",
   ].join(" ");
 
   return (
