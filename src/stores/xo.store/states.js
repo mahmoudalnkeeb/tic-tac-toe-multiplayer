@@ -17,8 +17,8 @@ export const initialGameStates = ({
   squaresToSwap: [],
   stats: { ...initialStats(stats) },
   powerUps: {
-    player1: { ...initialPowerUps(boardSize) },
-    player2: { ...initialPowerUps(boardSize) },
+    player1: { ...initialPlayerPowerUps(boardSize) },
+    player2: { ...initialPlayerPowerUps(boardSize) },
     selectedPower: null,
     whoUsingPower: null,
   },
@@ -30,7 +30,7 @@ const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
   p2Wins,
 });
 
-const initialPowerUps = (boardSize) => ({
+const initialPlayerPowerUps = (boardSize) => ({
   freeze: {
     available: true,
     coolDown: getInitialCoolDown(boardSize),
