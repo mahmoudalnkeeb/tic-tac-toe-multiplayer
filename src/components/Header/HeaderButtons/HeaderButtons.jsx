@@ -6,7 +6,7 @@ import BoardSelector from "./BoardSelector/BoardSelector";
 import s from "./HeaderButtons.module.scss";
 
 const HeaderButtons = () => {
-  const startNewGame = useXOStore((s) => s.startNewGame);
+  const resetStats = useXOStore((s) => s.resetStats);
 
   return (
     <div className={s.headerButtons}>
@@ -14,7 +14,7 @@ const HeaderButtons = () => {
 
       <div className={s.wrapper}>
         <Button onClick={() => {}}>About</Button>
-        <Button onClick={startNewGame}>Reset</Button>
+        <Button onClick={resetStats}>Reset</Button>
       </div>
     </div>
   );

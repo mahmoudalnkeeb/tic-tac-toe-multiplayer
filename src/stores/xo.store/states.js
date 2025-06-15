@@ -15,16 +15,16 @@ export const initialGameStates = ({
   board: createBoardBySize(boardSize),
   isWinnerPopupVisible: false,
   squaresToSwap: [],
-  stats: { ...initialStats(stats) },
+  stats: initialStats(stats),
   powerUps: {
-    player1: { ...initialPlayerPowerUps(boardSize) },
-    player2: { ...initialPlayerPowerUps(boardSize) },
+    player1: initialPlayerPowerUps(boardSize),
+    player2: initialPlayerPowerUps(boardSize),
     selectedPower: null,
     whoUsingPower: null,
   },
 });
 
-const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
+export const initialStats = ({ p1Wins = 0, draws = 0, p2Wins = 0 } = {}) => ({
   p1Wins,
   draws,
   p2Wins,

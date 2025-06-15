@@ -17,7 +17,7 @@ import {
   whoWins,
 } from "@/functions/gameUtility";
 import { create } from "zustand";
-import { initialGameStates } from "./states";
+import { initialGameStates, initialStats } from "./states";
 
 export const useXOStore = create((set, get) => ({
   // Game State
@@ -48,8 +48,13 @@ export const useXOStore = create((set, get) => ({
   startNewGame: () => {
     const { boardSize, stats } = get();
     const { p1Wins, draws, p2Wins } = stats;
-
     set(initialGameStates({ boardSize, stats: { p1Wins, draws, p2Wins } }));
+  },
+
+  resetStats: () => {
+    set(
+      initialGameStates({ boardSize: get().boardSize, stats: initialStats() })
+    );
   },
 
   declareWinner: (newBoard, usedPowerUp) => {
