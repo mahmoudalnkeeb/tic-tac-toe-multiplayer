@@ -4,6 +4,7 @@ import { useXOStore } from "@/stores/xo.store/xo.store";
 import GameStats from "./GameStats/GameStats";
 import PlayerTurnIndicator from "./PlayerTurnIndicator/PlayerTurnIndicator";
 import PowerUps from "./PowerUps/PowerUps";
+import XOBoard from "./XOBoard/XOBoard";
 import s from "./XOGame.module.scss";
 
 const XOGame = () => {
@@ -18,25 +19,7 @@ const XOGame = () => {
         <PowerUps player="player2" />
       </div>
 
-      <div className={s.wrapper}>
-        <PowerUps player="player1" />
-        <GameStats />
-        <PowerUps player="player2" />
-      </div>
-
-      <div className={s.wrapper}>
-        <PowerUps player="player1" />
-        <GameStats />
-        <PowerUps player="player2" />
-      </div>
-
-      <div className={s.wrapper}>
-        <PowerUps player="player1" />
-        <GameStats />
-        <PowerUps player="player2" />
-      </div>
-
-      {/* <XOBoard /> */}
+      <XOBoard />
       <PlayerTurnIndicator />
     </section>
   );
