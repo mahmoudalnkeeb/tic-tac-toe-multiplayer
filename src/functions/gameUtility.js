@@ -71,20 +71,6 @@ export function whoWins(board, player) {
   return "None";
 }
 
-export function createBoardBySize(size = 3) {
-  const InitialSquare = {
-    fillWith: "",
-    isFreezed: false,
-    isBombed: false,
-    swapSelected: false,
-  };
-
-  const row = Array.from({ length: size }, () => InitialSquare);
-  const board = Array.from({ length: size }, () => [...row]);
-
-  return board;
-}
-
 export function updateCoolDownStatus(powerUps) {
   for (const key in powerUps) {
     const powerUp = powerUps[key];
