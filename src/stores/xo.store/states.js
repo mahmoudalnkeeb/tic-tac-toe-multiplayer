@@ -1,4 +1,4 @@
-const { FIRST_PLAYER, INITIAL_BOARD_SIZE } = require("@/data/constants");
+import { FIRST_PLAYER, INITIAL_BOARD_SIZE } from "@/data/constants";
 
 export const initialGameStates = ({
   boardSize = INITIAL_BOARD_SIZE,
