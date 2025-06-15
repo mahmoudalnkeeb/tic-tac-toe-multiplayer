@@ -13,13 +13,13 @@ const XOGame = () => {
 
   return (
     <section className={`${s.game} ${board3Class}`}>
-      <div className={s.wrapper}>
+      {/* <div className={s.wrapper}>
         <PowerUps player="player1" />
         <GameStats />
         <PowerUps player="player2" />
-      </div>
+      </div> */}
 
-      {/* <XOBoard /> */}
+      <XOBoard />
       <PlayerTurnIndicator />
     </section>
   );
