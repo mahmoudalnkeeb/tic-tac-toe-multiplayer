@@ -19,7 +19,7 @@ const XOGame = () => {
         <PowerUps player="player2" />
       </div>
 
-      <XOBoard />
+      {/* <XOBoard /> */}
       <PlayerTurnIndicator />
     </section>
   );
