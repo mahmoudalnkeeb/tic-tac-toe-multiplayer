@@ -2,6 +2,7 @@
 
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
+import InfoCard from "../Shared/InfoCard/InfoCard";
 import AboutHeader from "./AboutHeader/AboutHeader";
 import s from "./AboutPopup.module.scss";
 
@@ -25,6 +26,16 @@ const AboutPopup = () => {
     >
       <article className={s.aboutArticle} ref={aboutArticleRef}>
         <AboutHeader />
+
+        <InfoCard title="Game Objective">
+          <p className={s.objectiveDescription}>
+            Tic Tac Toe is a classic strategy game where two players take turns
+            placing their symbols on a grid. The first player to get three (or
+            more on larger boards) of their symbols in a row, either{" "}
+            <b>horizontally</b>, <b>vertically</b>, or
+            <b>diagonally</b>, wins!
+          </p>
+        </InfoCard>
       </article>
     </div>
   );

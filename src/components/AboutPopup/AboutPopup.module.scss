@@ -38,3 +38,10 @@
 .aboutOverlay.show .aboutArticle {
   transform: scale(1) translateY(0);
 }
+
+.objectiveDescription {
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
