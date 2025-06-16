@@ -45,6 +45,8 @@ const AboutPopup = () => {
             ))}
           </ul>
         </InfoCard>
+
+        <InfoCard title="Winning Example"></InfoCard>
       </article>
     </div>
   );
