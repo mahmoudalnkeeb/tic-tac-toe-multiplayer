@@ -1,5 +1,6 @@
 "use client";
 
+import { HOW_TO_PLAY_LIST } from "@/data/staticData";
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
 import InfoCard from "../Shared/InfoCard/InfoCard";
@@ -35,6 +36,14 @@ const AboutPopup = () => {
             <b>horizontally</b>, <b>vertically</b>, or
             <b>diagonally</b>, wins!
           </p>
+        </InfoCard>
+
+        <InfoCard title="How to Play">
+          <ul className={s.howToPlayList}>
+            {HOW_TO_PLAY_LIST.map(({ content, id }) => (
+              <li key={id}>{content}</li>
+            ))}
+          </ul>
         </InfoCard>
       </article>
     </div>
