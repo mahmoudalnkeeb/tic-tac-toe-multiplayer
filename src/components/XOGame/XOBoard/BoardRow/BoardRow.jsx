@@ -3,9 +3,8 @@ import XOSquare from "../XOSquare/XOSquare";
 import s from "./BoardRow.module.scss";
 
 const BoardRow = ({ row, rowIndex }) => {
-  const { hasGameStart, fillSquare, powerUps, usePowerUp } = useXOStore(
-    (state) => state
-  );
+  const { hasGameStart, fillSquare, powerUps, usePowerUp, playerTurn } =
+    useXOStore((s) => s);
   const { whoUsingPower } = powerUps;
 
   function handleClick(rowIndex, columnIndex) {
@@ -20,10 +19,15 @@ const BoardRow = ({ row, rowIndex }) => {
   return (
     <div className={s.row}>
       {row.map((squareData, columnIndex) => {
+        const isPlayerSymbol = squareData.fillWith === playerTurn;
+        const isFreezeSelected = powerUps.selectedPower === "Freeze";
+        const activeFreezeHover = squareData.fillWith && !isPlayerSymbol;
+
         const disable =
           (!whoUsingPower && squareData.fillWith) ||
           !hasGameStart ||
-          squareData.isBombed;
+          squareData.isBombed ||
+          (isFreezeSelected && !activeFreezeHover);
 
         return (
           <XOSquare
