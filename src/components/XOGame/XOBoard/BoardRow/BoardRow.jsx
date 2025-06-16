@@ -8,7 +8,7 @@ const BoardRow = ({ row, rowIndex }) => {
     useXOStore((s) => s);
   const { whoUsingPower } = powerUps;
 
-  function handleClick(rowIndex, columnIndex) {
+  function handleSquareClick(rowIndex, columnIndex) {
     if (!whoUsingPower) {
       fillSquare(rowIndex, columnIndex);
       return;
@@ -32,7 +32,7 @@ const BoardRow = ({ row, rowIndex }) => {
             key={columnIndex}
             squareData={squareData}
             disabled={disable}
-            onClick={() => handleClick(rowIndex, columnIndex)}
+            onClick={() => handleSquareClick(rowIndex, columnIndex)}
           />
         );
       })}
