@@ -16,15 +16,21 @@ export function shouldDisableSquare({
   powerUps,
 }) {
   const { fillWith, isBombed } = squareData;
-  const isPlayerSymbol = fillWith === playerTurn;
-  const isFreezeSelected = powerUps.selectedPower === "Freeze";
+  const { selectedPower, whoUsingPower } = powerUps;
 
-  const freezeCondition = isFreezeSelected && !(fillWith && !isPlayerSymbol);
+  const isPlayerSymbol = fillWith === playerTurn;
+  const hasFilled = fillWith !== "";
+  const isFreezeSelected = selectedPower === "Freeze";
+  const isSwapSelected = selectedPower === "Swap";
+
+  const freezeCondition = isFreezeSelected && !(hasFilled && !isPlayerSymbol);
+  const swapCondition = isSwapSelected && !hasFilled;
 
   return (
-    (!powerUps.whoUsingPower && fillWith) ||
+    (!whoUsingPower && !hasFilled) ||
     !hasGameStart ||
     isBombed ||
-    freezeCondition
+    freezeCondition ||
+    swapCondition
   );
 }
