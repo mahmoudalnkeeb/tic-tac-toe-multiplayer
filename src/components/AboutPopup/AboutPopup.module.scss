@@ -1,0 +1,40 @@
+.aboutOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-out;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.aboutArticle {
+  background: linear-gradient(145deg, rgba(20, 28, 40, 0.98), rgba(12, 17, 24, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 45px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+  transform: scale(0.9) translateY(40px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.aboutOverlay.show .aboutArticle {
+  transform: scale(1) translateY(0);
+}
