@@ -8,3 +8,23 @@ export function getSquareAriaLabel(squareData) {
 
   return `${squareData.fillWith} symbol, occupied square`;
 }
+
+export function shouldDisableSquare({
+  hasGameStart,
+  squareData,
+  playerTurn,
+  powerUps,
+}) {
+  const { fillWith, isBombed } = squareData;
+  const isPlayerSymbol = fillWith === playerTurn;
+  const isFreezeSelected = powerUps.selectedPower === "Freeze";
+
+  const freezeCondition = isFreezeSelected && !(fillWith && !isPlayerSymbol);
+
+  return (
+    (!powerUps.whoUsingPower && fillWith) ||
+    !hasGameStart ||
+    isBombed ||
+    freezeCondition
+  );
+}

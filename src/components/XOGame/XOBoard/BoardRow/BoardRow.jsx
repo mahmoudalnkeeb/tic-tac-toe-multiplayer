@@ -1,3 +1,4 @@
+import { shouldDisableSquare } from "@/functions/accessibilityHelper";
 import { useXOStore } from "@/stores/xo.store/xo.store";
 import XOSquare from "../XOSquare/XOSquare";
 import s from "./BoardRow.module.scss";
@@ -19,15 +20,12 @@ const BoardRow = ({ row, rowIndex }) => {
   return (
     <div className={s.row}>
       {row.map((squareData, columnIndex) => {
-        const isPlayerSymbol = squareData.fillWith === playerTurn;
-        const isFreezeSelected = powerUps.selectedPower === "Freeze";
-        const activeFreezeHover = squareData.fillWith && !isPlayerSymbol;
-
-        const disable =
-          (!whoUsingPower && squareData.fillWith) ||
-          !hasGameStart ||
-          squareData.isBombed ||
-          (isFreezeSelected && !activeFreezeHover);
+        const disable = shouldDisableSquare({
+          hasGameStart,
+          squareData,
+          playerTurn,
+          powerUps,
+        });
 
         return (
           <XOSquare
