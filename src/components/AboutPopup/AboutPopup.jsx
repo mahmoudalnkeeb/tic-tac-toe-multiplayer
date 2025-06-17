@@ -1,6 +1,6 @@
 "use client";
 
-import { SYMBOL_O } from "@/data/constants";
+import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
 import { BOARD_EXAMPLES, HOW_TO_PLAY_LIST } from "@/data/staticData";
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
@@ -72,15 +72,29 @@ const AboutPopup = () => {
           </p>
 
           <InfoCard title="Freeze Power-Up" isNested={true}>
+            <p className={s.freezeDescription}>
+              The <b>Freeze</b> power-up allows you to immobilize one of your
+              opponent’s active symbols on the board. Once a symbol is frozen,
+              it becomes <b>inactive</b>, meaning:
+            </p>
+
+            <ul className={s.freezeList}>
+              <li>It cannot be overwritten.</li>
+              <li>It does not contribute to any winning combinations.</li>
+              <li>
+                It effectively acts as a block in your opponent’s strategy.
+              </li>
+              <li>
+                It can still be exchanged using the <b>Swap</b> power-up.
+              </li>
+            </ul>
+
             <p>
-              The <b>Freeze</b> power-up allows you to temporarily immobilize
-              one of your opponent's symbols on the board. A <b>frozen</b>{" "}
-              square cannot be played on, overwritten, or contribute to their
-              winning lines. It acts as a powerful defensive tool to block your
-              opponent's progress. This power-up specifically targets an
-              existing opponent's symbol and does not affect your own symbols or
-              empty cells. Note that a <b>frozen</b> cell can be unfrozen and
-              cleared if it's caught in the blast of a <b>Bomb power-up</b>.
+              This power-up is a <b>defensive tool</b> used to disrupt potential
+              winning lines. It can only target existing <b>opponent symbols</b>
+              , not your own or empty cells. However, if a <b>Bomb</b> power-up
+              hits a frozen cell, it will <b>unfreeze</b> it from the board
+              without remove the symbol.
             </p>
 
             <p className={s.exampleText}>
@@ -88,6 +102,15 @@ const AboutPopup = () => {
             </p>
 
             <ExampleBoard boardData={BOARD_EXAMPLES.freezeBoard} />
+
+            <p>
+              In this example, <b>Player 1 ({SYMBOL_O})</b> has used the Freeze
+              power-up on Player <b>2's ({SYMBOL_X})</b> symbol in the{" "}
+              <b>top-middle</b> cell. This {SYMBOL_X} is now <b>frozen</b>,
+              making it unusable in future moves and blocking Player 2 from
+              completing <b>vertical</b>, <b>diagonal</b>, or <b>horizontal</b>{" "}
+              lines through that square.
+            </p>
           </InfoCard>
         </InfoCard>
       </article>
