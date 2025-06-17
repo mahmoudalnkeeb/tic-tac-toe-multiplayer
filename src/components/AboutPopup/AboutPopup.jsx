@@ -70,6 +70,23 @@ const AboutPopup = () => {
             available again only after a certain number of turns have passed.
             Using them at the right moment is key to mastering the game!
           </p>
+
+          <InfoCard title="Freeze Power-Up" isNested={true}>
+            <p>
+              The <b>Freeze</b> power-up allows you to temporarily immobilize
+              one of your opponent's symbols on the board. A <b>frozen</b>{" "}
+              square cannot be played on, overwritten, or contribute to their
+              winning lines. It acts as a powerful defensive tool to block your
+              opponent's progress. This power-up specifically targets an
+              existing opponent's symbol and does not affect your own symbols or
+              empty cells. Note that a <b>frozen</b> cell can be unfrozen and
+              cleared if it's caught in the blast of a <b>Bomb power-up</b>.
+            </p>
+
+            <p className={s.exampleText}>
+              Example: Freezing an Opponent's Cell (4x4 board)
+            </p>
+          </InfoCard>
         </InfoCard>
       </article>
     </div>
