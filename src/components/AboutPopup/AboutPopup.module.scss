@@ -40,9 +40,10 @@
   transform: scale(1) translateY(0);
 }
 
-.objectiveDescription {
+.aboutArticle :where(p, li) {
   margin-bottom: 18px;
-  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.88);
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
@@ -57,8 +58,6 @@
   display: flex;
   align-items: flex-start;
   gap: 18px;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.88);
 }
 
 .howToPlayList li::before {
@@ -76,12 +75,4 @@
   font-weight: bold;
   flex-shrink: 0;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-
-.winningParagraph,
-.winningParagraph2 {
-  margin-bottom: 18px;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }

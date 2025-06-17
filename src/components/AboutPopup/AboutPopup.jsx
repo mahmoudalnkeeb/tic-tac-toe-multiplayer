@@ -49,16 +49,26 @@ const AboutPopup = () => {
         </InfoCard>
 
         <InfoCard title="Winning Example">
-          <p className={s.winningParagraph}>
+          <p>
             Here's a clear illustration of how <b>Player 1 ({SYMBOL_O})</b> can
             achieve victory with a diagonal connection on a standard 4x4 board:
           </p>
 
           <ExampleBoard boardData={BOARD_EXAMPLES.winningBoard} />
 
-          <p className={s.winningParagraph2}>
+          <p>
             In this scenario, Player 1 successfully connects Four{" "}
             <b>{SYMBOL_O}</b> symbols along a diagonal path, securing the win.
+          </p>
+        </InfoCard>
+
+        <InfoCard title="Power-Ups">
+          <p>
+            Strategic advantages await! Each player has access to three unique
+            power-ups that can dramatically alter the game's flow. Power-ups
+            have a <b>cooldown period</b> after use, meaning they become
+            available again only after a certain number of turns have passed.
+            Using them at the right moment is key to mastering the game!
           </p>
         </InfoCard>
       </article>
