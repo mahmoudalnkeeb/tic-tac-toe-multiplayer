@@ -145,6 +145,19 @@ const AboutPopup = () => {
               possibilities for both players.
             </p>
           </InfoCard>
+
+          <InfoCard title="Swap Power-Up" isNested={true}>
+            <p>
+              The <strong>Swap</strong> power-up allows you to{" "}
+              <strong>exchange the positions </strong> of any{" "}
+              <strong>two existing symbols</strong> on the board. This power-up
+              is only active when <strong>two occupied squares</strong> are
+              selected; it cannot be used if you choose an{" "}
+              <strong>empty square</strong>. Utilize this power-up to instantly
+              disrupt your opponent's almost-complete winning lines, or to
+              immediately form your own winning combination!
+            </p>
+          </InfoCard>
         </InfoCard>
       </article>
     </div>
