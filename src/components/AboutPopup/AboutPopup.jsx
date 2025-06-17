@@ -1,5 +1,6 @@
 "use client";
 
+import { SYMBOL_O } from "@/data/constants";
 import { HOW_TO_PLAY_LIST } from "@/data/staticData";
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
@@ -46,7 +47,17 @@ const AboutPopup = () => {
           </ul>
         </InfoCard>
 
-        <InfoCard title="Winning Example"></InfoCard>
+        <InfoCard title="Winning Example">
+          <p className={s.winningParagraph}>
+            Here's a clear illustration of how <b>Player 1 ({SYMBOL_O})</b> can
+            achieve victory with a diagonal connection on a standard 4x4 board:
+          </p>
+
+          <p className={s.winningParagraph2}>
+            In this scenario, Player 1 successfully connects Four{" "}
+            <b>{SYMBOL_O}</b> symbols along a diagonal path, securing the win.
+          </p>
+        </InfoCard>
       </article>
     </div>
   );
