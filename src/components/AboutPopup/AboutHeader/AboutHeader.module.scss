@@ -16,13 +16,23 @@
 }
 
 .header .title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 7vw, 2rem);
   font-weight: 800;
   background: linear-gradient(135deg, #66e0ff, #4ecdc4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: .8px;
+}
+
+.header .title>br {
+  display: none;
+}
+
+@include m.very-small {
+  .header .title>br {
+    display: block;
+  }
 }
 
 .header .closeBtn {
