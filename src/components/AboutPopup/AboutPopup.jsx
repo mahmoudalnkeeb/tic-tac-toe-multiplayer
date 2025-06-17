@@ -35,7 +35,8 @@ const AboutPopup = () => {
             Tic Tac Toe is a classic strategy game where two players take turns
             placing their symbols on a grid. The first player to get three (or
             more on larger boards) of their symbols in a row, either{" "}
-            <b>horizontally</b>, <b>vertically</b>, or <b>diagonally</b>, wins!
+            <strong>horizontally</strong>, <strong>vertically</strong>, or{" "}
+            <strong>diagonally</strong>, wins!
           </p>
         </InfoCard>
 
@@ -49,15 +50,17 @@ const AboutPopup = () => {
 
         <InfoCard title="Winning Example">
           <p>
-            Here's a clear illustration of how <b>Player 1 ({SYMBOL_O})</b> can
-            achieve victory with a diagonal connection on a standard 4x4 board:
+            Here's a clear illustration of how{" "}
+            <strong>Player 1 ({SYMBOL_O})</strong> can achieve victory with a
+            diagonal connection on a standard 4x4 board:
           </p>
 
           <ExampleBoard boardData={BOARD_EXAMPLES.winningBoard} />
 
           <p>
-            In this scenario, <b>Player 1</b> successfully connects Four{" "}
-            <b>{SYMBOL_O} symbols</b> along a diagonal path, securing the win.
+            In this scenario, <strong>Player 1</strong> successfully connects
+            Four <strong>{SYMBOL_O} symbols</strong> along a diagonal path,
+            securing the win.
           </p>
         </InfoCard>
 
@@ -65,16 +68,16 @@ const AboutPopup = () => {
           <p>
             Strategic advantages await! Each player has access to three unique
             power-ups that can dramatically alter the game's flow. Power-ups
-            have a <b>cooldown period</b> after use, meaning they become
-            available again only after a certain number of turns have passed.
-            Using them at the right moment is key to mastering the game!
+            have a <strong>cooldown period</strong> after use, meaning they
+            become available again only after a certain number of turns have
+            passed. Using them at the right moment is key to mastering the game!
           </p>
 
           <InfoCard title="Freeze Power-Up" isNested={true}>
             <p className={s.freezeDescription}>
-              The <b>Freeze</b> power-up allows you to immobilize one of your
-              opponent’s active symbols on the board. Once a symbol is frozen,
-              it becomes <b>inactive</b>, meaning:
+              The <strong>Freeze</strong> power-up allows you to immobilize one
+              of your opponent’s active symbols on the board. Once a symbol is
+              frozen, it becomes <strong>inactive</strong>, meaning:
             </p>
 
             <ul className={s.freezeList}>
@@ -84,39 +87,45 @@ const AboutPopup = () => {
                 It effectively acts as a block in your opponent’s strategy.
               </li>
               <li>
-                It can still be exchanged using the <b>Swap</b> power-up.
+                It can still be exchanged using the <strong>Swap</strong>{" "}
+                power-up.
               </li>
             </ul>
 
             <p>
-              This power-up is a <b>defensive tool</b> used to disrupt potential
-              winning lines. It can only target existing <b>opponent symbols</b>
-              , not your own or empty cells. However, if a <b>Bomb</b> power-up
-              hits a frozen cell, it will <b>unfreeze</b> it from the board
-              without remove the symbol.
+              This power-up is a <strong>defensive tool</strong> used to disrupt
+              potential winning lines. It can only target existing{" "}
+              <strong>opponent symbols</strong>, not your own or empty cells.
+              However, if a <strong>Bomb</strong> power-up hits a frozen cell,
+              it will <strong>unfreeze</strong> it from the board without remove
+              the symbol.
             </p>
 
             <ExampleBoard boardData={BOARD_EXAMPLES.freezeBoard} />
 
             <p>
-              In this example, <b>Player 1 ({SYMBOL_O})</b> has used the Freeze
-              power-up on <b>Player 2's ({SYMBOL_X})</b> symbol in the{" "}
-              <b>top-middle</b> cell. This {SYMBOL_X} is now <b>frozen</b>,
-              making it unusable in future moves and blocking Player 2 from
-              completing <b>vertical</b>, <b>diagonal</b>, or <b>horizontal</b>{" "}
-              lines through that square.
+              In this example, <strong>Player 1 ({SYMBOL_O})</strong> has used
+              the Freeze power-up on <strong>Player 2's ({SYMBOL_X})</strong>{" "}
+              symbol in the <strong>top-middle</strong> cell. This {SYMBOL_X} is
+              now <strong>frozen</strong>, making it unusable in future moves
+              and blocking Player 2 from completing <strong>vertical</strong>,{" "}
+              <strong>diagonal</strong>, or <strong>horizontal</strong> lines
+              through that square.
             </p>
           </InfoCard>
 
           <InfoCard title="Bomb Power-Up" isNested={true}>
             <p>
-              The <b>Bomb</b> power-up grants you the ability to target{" "}
-              <b>any single square</b> on the board. When activated, the
-              selected square and all <b>8 surrounding adjacent squares</b> (if
-              they exist within the board's boundaries) will be instantly{" "}
-              <b>cleared</b> of any <b>symbols</b>. If a targeted square
-              happened to be <b>frozen</b>, the <b>bomb</b> will effectively{" "}
-              <b>remove the freeze effect</b> but <b>not the symbol</b>.
+              The <strong>Bomb</strong> power-up grants you the ability to
+              target <strong>any single square</strong> on the board. When
+              activated, the selected square and all{" "}
+              <strong>8 surrounding adjacent squares</strong> (if they exist
+              within the board's boundaries) will be instantly{" "}
+              <strong>cleared</strong> of any <strong>symbols</strong>. If a
+              targeted square happened to be <strong>frozen</strong>, the{" "}
+              <strong>bomb</strong> will effectively{" "}
+              <strong>remove the freeze effect</strong> but{" "}
+              <strong>not the symbol</strong>.
             </p>
           </InfoCard>
         </InfoCard>
