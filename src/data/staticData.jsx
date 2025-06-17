@@ -105,4 +105,30 @@ export const BOARD_EXAMPLES = {
       { fillWith: SYMBOL_X },
     ],
   ],
+  bombBoard: [
+    [
+      { fillWith: SYMBOL_O, type: "targeted" },
+      { fillWith: SYMBOL_X, type: "targeted" },
+      { fillWith: SYMBOL_O, type: "targeted" },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "", type: "targeted" },
+      { fillWith: SYMBOL_X, type: "targeted" },
+      { fillWith: SYMBOL_O, type: "targeted" },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "", type: "targeted" },
+      { fillWith: SYMBOL_X, type: "targeted" },
+      { fillWith: SYMBOL_O, type: "targeted" },
+      { fillWith: SYMBOL_X },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_O },
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+    ],
+  ],
 };

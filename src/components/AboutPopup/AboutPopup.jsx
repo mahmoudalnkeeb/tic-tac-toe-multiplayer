@@ -127,6 +127,8 @@ const AboutPopup = () => {
               <strong>remove the freeze effect</strong> but{" "}
               <strong>not the symbol</strong>.
             </p>
+
+            <ExampleBoard boardData={BOARD_EXAMPLES.bombBoard} />
           </InfoCard>
         </InfoCard>
       </article>

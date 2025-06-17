@@ -1,6 +1,7 @@
 @use "@/styles/mixins" as m;
 @use "@/styles/keyframes" as keyframe;
 @include keyframe.pulse(1.2, 1);
+@include keyframe.bomb-pulse;
 
 .board {
   display: grid;
@@ -97,6 +98,15 @@
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
   pointer-events: none;
   border-radius: 8px;
+}
+
+.square.targeted {
+  background: rgba(255, 99, 71, 0.4);
+  border-color: #ff6347;
+  box-shadow:
+    0 0 6px rgba(255, 99, 71, .5);
+  z-index: 1;
+  animation: bomb-pulse 0.5s infinite alternate;
 }
 
 .square.select {

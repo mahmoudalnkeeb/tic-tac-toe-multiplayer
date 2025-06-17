@@ -52,3 +52,17 @@
     }
   }
 }
+
+@mixin bomb-pulse {
+  @keyframes bomb-pulse {
+    0% {
+      scale: 1;
+      opacity: 1;
+    }
+
+    100% {
+      scale: 1.03;
+      opacity: 0.95;
+    }
+  }
+}
