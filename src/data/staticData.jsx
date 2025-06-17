@@ -173,4 +173,30 @@ export const BOARD_EXAMPLES = {
       { fillWith: SYMBOL_X, type: "selected frozen" },
     ],
   ],
+  afterSwapBoard: [
+    [
+      { fillWith: SYMBOL_O },
+      { fillWith: SYMBOL_X, type: "winning" },
+      { fillWith: SYMBOL_O },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X, type: "winning" },
+      { fillWith: "" },
+      { fillWith: SYMBOL_O },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X, type: "winning" },
+      { fillWith: SYMBOL_O },
+      { fillWith: SYMBOL_X },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X, type: "winning" },
+      { fillWith: "" },
+      { fillWith: SYMBOL_O, type: "frozen" },
+    ],
+  ],
 };

@@ -172,6 +172,19 @@ const AboutPopup = () => {
               symbols that are frozen, making it a powerful tool to turn the
               tide of the game.
             </p>
+
+            <ExampleBoard boardData={BOARD_EXAMPLES.afterSwapBoard} />
+
+            <p>
+              The <strong>'{SYMBOL_O}'</strong> and{" "}
+              <strong>`{SYMBOL_X}`</strong> have successfully swapped places.
+              This strategic move allowed <strong>Player 2 ({SYMBOL_X})</strong>{" "}
+              to immediately complete a <strong>vertical winning</strong> line
+              through the second column, securing their victory. By leveraging
+              the Swap power-up even with a{" "}
+              <strong>frozen symbol {SYMBOL_X}</strong> was able to turn a
+              defensive position into a winning one.
+            </p>
           </InfoCard>
         </InfoCard>
       </article>
