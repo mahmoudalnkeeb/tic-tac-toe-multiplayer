@@ -14,6 +14,7 @@ const ExampleBoard = ({ boardData }) => {
               type === "winning" ? s.winning : "",
               type === "frozen" ? s.frozen : "",
               type === "targeted" ? s.targeted : "",
+              type === "selected" ? s.selected : "",
             ].join(" ");
 
             return (

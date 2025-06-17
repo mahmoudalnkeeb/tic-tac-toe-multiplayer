@@ -109,8 +109,9 @@
   animation: bomb-pulse 0.5s infinite alternate;
 }
 
-.square.select {
+.square.selected {
   border: 3px dashed #ffd93d;
   color: #ffd93d;
   background: rgba(255, 217, 61, .2);
+  animation: bomb-pulse 0.5s infinite alternate;
 }

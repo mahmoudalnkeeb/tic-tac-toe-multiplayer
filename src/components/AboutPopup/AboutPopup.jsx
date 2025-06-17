@@ -157,6 +157,8 @@ const AboutPopup = () => {
               disrupt your opponent's almost-complete winning lines, or to
               immediately form your own winning combination!
             </p>
+
+            <ExampleBoard boardData={BOARD_EXAMPLES.selectSwapBoard} />
           </InfoCard>
         </InfoCard>
       </article>
