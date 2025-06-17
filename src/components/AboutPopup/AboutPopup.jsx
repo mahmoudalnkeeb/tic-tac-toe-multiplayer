@@ -35,8 +35,7 @@ const AboutPopup = () => {
             Tic Tac Toe is a classic strategy game where two players take turns
             placing their symbols on a grid. The first player to get three (or
             more on larger boards) of their symbols in a row, either{" "}
-            <b>horizontally</b>, <b>vertically</b>, or
-            <b>diagonally</b>, wins!
+            <b>horizontally</b>, <b>vertically</b>, or <b>diagonally</b>, wins!
           </p>
         </InfoCard>
 
@@ -57,8 +56,8 @@ const AboutPopup = () => {
           <ExampleBoard boardData={BOARD_EXAMPLES.winningBoard} />
 
           <p>
-            In this scenario, Player 1 successfully connects Four{" "}
-            <b>{SYMBOL_O}</b> symbols along a diagonal path, securing the win.
+            In this scenario, <b>Player 1</b> successfully connects Four{" "}
+            <b>{SYMBOL_O} symbols</b> along a diagonal path, securing the win.
           </p>
         </InfoCard>
 
@@ -101,7 +100,7 @@ const AboutPopup = () => {
 
             <p>
               In this example, <b>Player 1 ({SYMBOL_O})</b> has used the Freeze
-              power-up on Player <b>2's ({SYMBOL_X})</b> symbol in the{" "}
+              power-up on <b>Player 2's ({SYMBOL_X})</b> symbol in the{" "}
               <b>top-middle</b> cell. This {SYMBOL_X} is now <b>frozen</b>,
               making it unusable in future moves and blocking Player 2 from
               completing <b>vertical</b>, <b>diagonal</b>, or <b>horizontal</b>{" "}
