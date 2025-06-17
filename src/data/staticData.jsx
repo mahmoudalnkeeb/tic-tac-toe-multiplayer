@@ -79,4 +79,30 @@ export const BOARD_EXAMPLES = {
       { fillWith: SYMBOL_O, type: "winning" },
     ],
   ],
+  freezeBoard: [
+    [
+      { fillWith: SYMBOL_O },
+      { fillWith: SYMBOL_X, type: "frozen" },
+      { fillWith: SYMBOL_O },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+      { fillWith: "" },
+      { fillWith: SYMBOL_O },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+      { fillWith: SYMBOL_O },
+      { fillWith: SYMBOL_X },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+    ],
+  ],
 };

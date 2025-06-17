@@ -12,7 +12,8 @@ const ExampleBoard = ({ boardData }) => {
               fillWith === SYMBOL_X ? s.playerX : "",
               fillWith === SYMBOL_O ? s.playerO : "",
               type === "winning" ? s.winning : "",
-            ].join(" ")
+              type === "frozen" ? s.frozen : "",
+            ].join(" ");
 
             return (
               <button

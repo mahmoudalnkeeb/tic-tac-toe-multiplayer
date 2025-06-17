@@ -86,6 +86,8 @@ const AboutPopup = () => {
             <p className={s.exampleText}>
               Example: Freezing an Opponent's Cell (4x4 board)
             </p>
+
+            <ExampleBoard boardData={BOARD_EXAMPLES.freezeBoard} />
           </InfoCard>
         </InfoCard>
       </article>
