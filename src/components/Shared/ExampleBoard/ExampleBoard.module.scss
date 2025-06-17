@@ -10,7 +10,6 @@
   background: rgba(255, 255, 255, .05);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, .1);
-  backdrop-filter: blur(10px);
   width: fit-content;
 }
 
@@ -43,11 +42,10 @@
   max-height: var(--size);
   border-radius: 10px;
   @include m.center-x-y;
-  position: relative;
-  backdrop-filter: blur(5px);
   font-size: 1.125rem;
   font-weight: bold;
   user-select: none;
+  position: relative;
 }
 
 .square.playerX {
@@ -81,11 +79,11 @@
 }
 
 .square.frozen {
-  position: relative;
   border-color: #87ceeb !important;
-  background: rgba(135, 206, 235, 0.3) !important;
-  box-shadow: 0 0 20px rgba(135, 206, 235, 0.8), inset 0 0 10px rgba(135, 206, 235, 0.5);
-  overflow: hidden;
+  background: rgba(135, 206, 235, .3) !important;
+  box-shadow:
+    0 0 20px rgba(135, 206, 235, .8),
+    inset 0 0 10px rgba(135, 206, 235, .5);
 }
 
 .square.frozen::before {
@@ -95,23 +93,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
-  pointer-events: none;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .4);
   border-radius: 8px;
 }
 
 .square.targeted {
-  background: rgba(255, 99, 71, 0.4);
+  background: rgba(255, 99, 71, .4);
   border-color: #ff6347;
   box-shadow:
     0 0 6px rgba(255, 99, 71, .5);
   z-index: 1;
-  animation: bomb-pulse 0.5s infinite alternate;
+  animation: bomb-pulse .5s infinite alternate;
 }
 
 .square.selected {
   border: 3px dashed #ffd93d;
   color: #ffd93d;
   background: rgba(255, 217, 61, .2);
-  animation: bomb-pulse 0.5s infinite alternate;
+  animation: bomb-pulse .5s infinite alternate;
 }

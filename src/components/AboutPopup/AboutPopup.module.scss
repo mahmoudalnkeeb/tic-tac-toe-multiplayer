@@ -7,13 +7,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, .85);
   @include m.center-x-y;
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s ease-out;
+  transition:
+    visibility .4s ease-out,
+    opacity .4s ease-out;
 
   &.show {
     opacity: 1;
@@ -22,35 +23,35 @@
 }
 
 .aboutArticle {
-  background: linear-gradient(145deg, rgba(20, 28, 40, 0.98), rgba(12, 17, 24, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg,
+      rgba(20, 28, 40, .98),
+      rgba(12, 17, 24, .98));
+  border: 1px solid rgba(255, 255, 255, .15);
   border-radius: 10px;
   padding: 45px;
   max-width: 840px;
   width: 90%;
   max-height: 85vh;
   overflow-y: auto;
-  backdrop-filter: blur(25px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
-  transform: scale(0.9) translateY(40px);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: scale(.9) translateY(40px);
+  transition: transform .4s cubic-bezier(.68, -0.55, .265, 1.55);
 }
 
 .aboutArticle::-webkit-scrollbar {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, .03);
   width: 8px;
 }
 
 .aboutArticle::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, .2);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, .6);
   }
 }
 
 .aboutArticle::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, .05);
 }
 
 @include m.small {
@@ -66,18 +67,12 @@
   transform: scale(1) translateY(0);
 }
 
-@include m.small {
-  .aboutOverlay.show .aboutArticle {
-    transform: scale(1) translateY(0);
-  }
-}
-
 .aboutArticle :where(p, li) {
   margin-bottom: 18px;
   font-size: 1rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, .88);
+  text-shadow: 0 0 2px rgba(0, 0, 0, .1);
 }
 
 .aboutArticle :where(p, li)>b {
@@ -95,7 +90,7 @@
 
 .howToPlayList li {
   padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
   display: flex;
   align-items: flex-start;
   gap: 14px;
