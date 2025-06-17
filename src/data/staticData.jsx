@@ -170,7 +170,7 @@ export const BOARD_EXAMPLES = {
       { fillWith: "" },
       { fillWith: SYMBOL_O, type: "selected" },
       { fillWith: "" },
-      { fillWith: SYMBOL_X, type: "selected" },
+      { fillWith: SYMBOL_X, type: "selected frozen" },
     ],
   ],
 };

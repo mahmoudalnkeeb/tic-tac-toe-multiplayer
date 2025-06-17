@@ -11,10 +11,10 @@ const ExampleBoard = ({ boardData }) => {
               s.square,
               fillWith === SYMBOL_X ? s.playerX : "",
               fillWith === SYMBOL_O ? s.playerO : "",
-              type === "winning" ? s.winning : "",
-              type === "frozen" ? s.frozen : "",
-              type === "targeted" ? s.targeted : "",
-              type === "selected" ? s.selected : "",
+              type?.includes("winning") ? s.winning : "",
+              type?.includes("frozen") ? s.frozen : "",
+              type?.includes("targeted") ? s.targeted : "",
+              type?.includes("selected") ? s.selected : "",
             ].join(" ");
 
             return (

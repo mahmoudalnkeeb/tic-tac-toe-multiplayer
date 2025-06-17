@@ -159,6 +159,19 @@ const AboutPopup = () => {
             </p>
 
             <ExampleBoard boardData={BOARD_EXAMPLES.selectSwapBoard} />
+
+            <p>
+              <strong>Player 2 ({SYMBOL_X})</strong> has strategically activated
+              the <strong>Swap</strong> power-up. They selected their own{" "}
+              <strong>{SYMBOL_X}</strong> in the bottom-right corner even though
+              it's frozen and an <strong>opponent's {SYMBOL_O}</strong> in the
+              same row. These two symbols are about to{" "}
+              <strong>swap places</strong>, allowing <strong>Player 2</strong>{" "}
+              to break the opponent’s setup and possibly set up a winning line
+              of their own. The <strong>Swap</strong> power-up can even exchange
+              symbols that are frozen, making it a powerful tool to turn the
+              tide of the game.
+            </p>
           </InfoCard>
         </InfoCard>
       </article>
