@@ -1,0 +1,86 @@
+@use "@/styles/mixins" as m;
+@use "@/styles/keyframes" as keyframe;
+@include keyframe.pulse(1.2, 1);
+
+.board {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  background: rgba(255, 255, 255, .05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+@include m.medium {
+  .board {
+    padding: 12px;
+    gap: 4px;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@include m.medium {
+  .row {
+    gap: 4px;
+  }
+}
+
+.square {
+  --size: 45px;
+  background: rgba(255, 255, 255, .08);
+  border: 2px solid transparent;
+  min-width: var(--size);
+  min-height: var(--size);
+  max-width: var(--size);
+  max-height: var(--size);
+  border-radius: 10px;
+  @include m.center-x-y;
+  position: relative;
+  backdrop-filter: blur(5px);
+  font-size: 1.125rem;
+  font-weight: bold;
+  user-select: none;
+}
+
+.square.playerX {
+  border-color: #4ecdc4;
+  background: rgba(78, 205, 196, .1);
+  color: #4ecdc4;
+  text-shadow: 0 0 20px rgba(78, 205, 196, .5);
+  box-shadow: 0 0 15px rgba(78, 205, 196, .1);
+}
+
+.square.playerO {
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, .1);
+  color: #ff6b6b;
+  text-shadow: 0 0 20px rgba(255, 107, 107, .5);
+  box-shadow: 0 0 15px rgba(255, 107, 107, .1);
+  font-size: 2.2rem;
+}
+
+.square.winning::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: inherit;
+  border: inherit;
+  animation: pulse 1.3s ease infinite;
+}
+
+.square.select {
+  border: 3px dashed #ffd93d;
+  color: #ffd93d;
+  background: rgba(255, 217, 61, .2);
+}

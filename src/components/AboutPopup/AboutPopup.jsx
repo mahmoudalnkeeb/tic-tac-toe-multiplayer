@@ -1,9 +1,10 @@
 "use client";
 
 import { SYMBOL_O } from "@/data/constants";
-import { HOW_TO_PLAY_LIST } from "@/data/staticData";
+import { BOARD_EXAMPLES, HOW_TO_PLAY_LIST } from "@/data/staticData";
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
+import ExampleBoard from "../Shared/ExampleBoard/ExampleBoard";
 import InfoCard from "../Shared/InfoCard/InfoCard";
 import AboutHeader from "./AboutHeader/AboutHeader";
 import s from "./AboutPopup.module.scss";
@@ -52,6 +53,8 @@ const AboutPopup = () => {
             Here's a clear illustration of how <b>Player 1 ({SYMBOL_O})</b> can
             achieve victory with a diagonal connection on a standard 4x4 board:
           </p>
+
+          <ExampleBoard boardData={BOARD_EXAMPLES.winningBoard} />
 
           <p className={s.winningParagraph2}>
             In this scenario, Player 1 successfully connects Four{" "}

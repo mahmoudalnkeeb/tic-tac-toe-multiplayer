@@ -51,3 +51,32 @@ export const HOW_TO_PLAY_LIST = [
     id: 4,
   },
 ];
+
+export const BOARD_EXAMPLES = {
+  winningBoard: [
+    [
+      { fillWith: SYMBOL_O, type: "winning" },
+      { fillWith: SYMBOL_X },
+      { fillWith: "" },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: SYMBOL_X },
+      { fillWith: SYMBOL_O, type: "winning" },
+      { fillWith: "" },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: "" },
+      { fillWith: SYMBOL_O, type: "winning" },
+      { fillWith: "" },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: "" },
+      { fillWith: "" },
+      { fillWith: SYMBOL_O, type: "winning" },
+    ],
+  ],
+};

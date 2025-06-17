@@ -1,13 +1,13 @@
-@mixin pulse {
+@mixin pulse($scale: 1.4, $initial-opacity: .8) {
   @keyframes pulse {
 
     from {
       scale: 1;
-      opacity: .8;
+      opacity: #{$initial-opacity};
     }
 
     to {
-      scale: 1.4;
+      scale: #{$scale};
       opacity: 0;
     }
   }
