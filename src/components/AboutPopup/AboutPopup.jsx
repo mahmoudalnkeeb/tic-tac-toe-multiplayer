@@ -64,7 +64,7 @@ const AboutPopup = () => {
           </p>
         </InfoCard>
 
-        <InfoCard title="Power-Ups">
+        <InfoCard title="Power-Ups" disableMarginBottom={true}>
           <p>
             Strategic advantages await! Each player has access to three unique
             power-ups that can dramatically alter the game's flow. Power-ups
@@ -146,7 +146,11 @@ const AboutPopup = () => {
             </p>
           </InfoCard>
 
-          <InfoCard title="Swap Power-Up" isNested={true}>
+          <InfoCard
+            title="Swap Power-Up"
+            isNested={true}
+            disableMarginBottom={true}
+          >
             <p>
               The <strong>Swap</strong> power-up allows you to{" "}
               <strong>exchange the positions </strong> of any{" "}
