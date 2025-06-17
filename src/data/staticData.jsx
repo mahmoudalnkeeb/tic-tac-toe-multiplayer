@@ -131,4 +131,20 @@ export const BOARD_EXAMPLES = {
       { fillWith: SYMBOL_X },
     ],
   ],
+  afterBombBoard: [
+    [{ fillWith: "" }, { fillWith: "" }, { fillWith: "" }, { fillWith: "" }],
+    [{ fillWith: "" }, { fillWith: "" }, { fillWith: "" }, { fillWith: "" }],
+    [
+      { fillWith: "" },
+      { fillWith: "" },
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+    ],
+    [
+      { fillWith: "" },
+      { fillWith: SYMBOL_O },
+      { fillWith: "" },
+      { fillWith: SYMBOL_X },
+    ],
+  ],
 };
