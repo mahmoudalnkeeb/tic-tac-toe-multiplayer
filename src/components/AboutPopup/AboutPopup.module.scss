@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as m;
+
 .aboutOverlay {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: fixed;
@@ -7,9 +9,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include m.center-x-y;
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
@@ -24,9 +24,9 @@
 .aboutArticle {
   background: linear-gradient(145deg, rgba(20, 28, 40, 0.98), rgba(12, 17, 24, 0.98));
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 45px;
-  max-width: 650px;
+  max-width: 840px;
   width: 90%;
   max-height: 85vh;
   overflow-y: auto;
@@ -57,29 +57,31 @@
   counter-reset: item;
 }
 
+.howToPlayList li p {
+  margin: 0;
+}
+
 .howToPlayList li {
-  padding: 12px 0;
+  padding: 6px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: flex-start;
-  gap: 18px;
+  gap: 14px;
+  margin-bottom: 0;
 }
 
 .howToPlayList li::before {
   content: counter(item);
   counter-increment: item;
   background: linear-gradient(135deg, #4ecdc4, #44a08d);
-  color: white;
+  color: #fff;
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+  @include m.center-x-y;
+  font-size: .875rem;
   font-weight: bold;
   flex-shrink: 0;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 .freezeDescription {
