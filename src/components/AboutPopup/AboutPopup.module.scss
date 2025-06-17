@@ -36,8 +36,23 @@
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+@include m.small {
+  .aboutArticle {
+    padding: 14px;
+    width: 100%;
+    min-height: 100dvh;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .aboutOverlay.show .aboutArticle {
   transform: scale(1) translateY(0);
+}
+
+@include m.small {
+  .aboutOverlay.show .aboutArticle {
+    transform: scale(1) translateY(0);
+  }
 }
 
 .aboutArticle :where(p, li) {
