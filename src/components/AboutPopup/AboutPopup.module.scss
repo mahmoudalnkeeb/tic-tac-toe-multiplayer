@@ -36,6 +36,23 @@
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+.aboutArticle::-webkit-scrollbar {
+  background: rgba(255, 255, 255, 0.03);
+  width: 8px;
+}
+
+.aboutArticle::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.aboutArticle::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
 @include m.small {
   .aboutArticle {
     padding: 14px;
