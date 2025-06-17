@@ -107,6 +107,18 @@ const AboutPopup = () => {
               lines through that square.
             </p>
           </InfoCard>
+
+          <InfoCard title="Bomb Power-Up" isNested={true}>
+            <p>
+              The <b>Bomb</b> power-up grants you the ability to target{" "}
+              <b>any single square</b> on the board. When activated, the
+              selected square and all <b>8 surrounding adjacent squares</b> (if
+              they exist within the board's boundaries) will be instantly{" "}
+              <b>cleared</b> of any <b>symbols</b>. If a targeted square
+              happened to be <b>frozen</b>, the <b>bomb</b> will effectively{" "}
+              <b>remove the freeze effect</b> but <b>not the symbol</b>.
+            </p>
+          </InfoCard>
         </InfoCard>
       </article>
     </div>
