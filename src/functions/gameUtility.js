@@ -108,7 +108,7 @@ export function opponentSymbolExists(board, playerTurn) {
 
     for (let j = 0; j < row.length; j++) {
       const square = row[j];
-      if (square.fillWith) symbols += square.fillWith;
+      if (square.fillWith && !square.isFreezed) symbols += square.fillWith;
     }
   }
 
