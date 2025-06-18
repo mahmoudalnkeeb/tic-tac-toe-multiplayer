@@ -98,3 +98,7 @@ export function bothPlayersWonWithSwap({
 
   return usedSwap && bothWon && !sameWinner;
 }
+
+export function getPlacedSymbolCount(board) {
+  return board.flat().filter((square) => square.fillWith).length;
+}
