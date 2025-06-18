@@ -22,3 +22,15 @@
     gap: 20px;
   }
 }
+
+.header>a {
+  outline: solid 2px transparent;
+  border-radius: 1px;
+  outline-offset: 12px;
+  color: rgba(255, 255, 255, .8);
+  transition: outline-color .3s ease;
+
+  &:focus-visible {
+    outline-color: #fff;
+  }
+}
