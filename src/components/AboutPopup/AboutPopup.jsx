@@ -9,6 +9,7 @@ import InfoCard from "../Shared/InfoCard/InfoCard";
 import AboutHeader from "./AboutHeader/AboutHeader";
 import FreezeExplanationCard from "./AboutHeader/FreezeExplanationCard/FreezeExplanationCard";
 import s from "./AboutPopup.module.scss";
+import BombExplanationCard from "./AboutHeader/BombExplanationCard/BombExplanationCard";
 
 const AboutPopup = () => {
   const { isAboutModelActive, toggleAboutModel } = useGlobalStore((s) => s);
@@ -77,38 +78,7 @@ const AboutPopup = () => {
           </p>
 
           <FreezeExplanationCard />
-
-          <InfoCard title="Bomb Power-Up" isNested={true}>
-            <p>
-              The <strong>Bomb</strong> power-up grants you the ability to
-              target <strong>any single square</strong> on the board. When
-              activated, the selected square and all{" "}
-              <strong>8 surrounding adjacent squares</strong> (if they exist
-              within the board's boundaries) will be instantly{" "}
-              <strong>cleared</strong> of any <strong>symbols</strong>. If a
-              targeted square happened to be <strong>frozen</strong>, the{" "}
-              <strong>bomb</strong> will effectively{" "}
-              <strong>remove the freeze effect</strong> but{" "}
-              <strong>not the symbol</strong>.
-            </p>
-
-            <ExampleBoard boardData={BOARD_EXAMPLES.bombBoard} />
-
-            <p>
-              <strong>Player 1 ({SYMBOL_O})</strong> is about to deploy the{" "}
-              <strong>Bomb</strong> power-up, targeting the marked{" "}
-              <strong>`{SYMBOL_X}`</strong> in the second row, second column.
-              Notice the symbols surrounding it.
-            </p>
-
-            <ExampleBoard boardData={BOARD_EXAMPLES.afterBombBoard} />
-
-            <p>
-              The <strong>`{SYMBOL_X}`</strong> and all its adjacent symbols
-              have been successfully cleared, opening up new strategic
-              possibilities for both players.
-            </p>
-          </InfoCard>
+          <BombExplanationCard />
 
           <InfoCard
             title="Swap Power-Up"
