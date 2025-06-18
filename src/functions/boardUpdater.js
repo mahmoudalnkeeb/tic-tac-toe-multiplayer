@@ -33,7 +33,7 @@ export function updateBoard({
   board[rowIndex][columnIndex] = {
     ...selectedSquare,
     fillWith,
-    isFreezed: powerUp === "Freeze",
+    isFrozen: powerUp === "Freeze",
   };
 
   return board;
@@ -82,10 +82,10 @@ export function triggerBombEffect({
 
       const targetedSquare = newBoard[newRow][newCol];
 
-      if (targetedSquare.isFreezed) {
+      if (targetedSquare.isFrozen) {
         targetedSquare.isBombed = true;
         setTimeout(() => {
-          targetedSquare.isFreezed = false;
+          targetedSquare.isFrozen = false;
         }, BOMB_DELETION_DELAY_MS);
         continue;
       }

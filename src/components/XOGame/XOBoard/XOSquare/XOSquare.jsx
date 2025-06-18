@@ -8,7 +8,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
   const { boardSize, powerUps, squaresToSwap, playerTurn } = useXOStore(
     (s) => s
   );
-  const { fillWith, isFreezed, isBombed, swapSelected } = squareData;
+  const { fillWith, isFrozen, isBombed, swapSelected } = squareData;
   const shouldSwap = squaresToSwap.length >= 2 && squareData.swapSelected;
 
   const classes = getSquareClasses({
@@ -30,7 +30,7 @@ const XOSquare = ({ squareData, disabled, onClick }) => {
     >
       {fillWith === SYMBOL_O && <span className={s.symbol}>{fillWith}</span>}
       {fillWith !== SYMBOL_O && fillWith}
-      {isFreezed && <span className={s.freeze} />}
+      {isFrozen && <span className={s.freeze} />}
       {isBombed && <span className={s.bomb} />}
       {shouldSwap && <span className={s.swap} />}
     </button>

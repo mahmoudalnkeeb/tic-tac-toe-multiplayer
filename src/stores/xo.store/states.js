@@ -50,7 +50,7 @@ export function getInitialCoolDown(boardSize) {
 export function createBoardBySize(size = 3) {
   const InitialSquare = {
     fillWith: "",
-    isFreezed: false,
+    isFrozen: false,
     isBombed: false,
     swapSelected: false,
   };
