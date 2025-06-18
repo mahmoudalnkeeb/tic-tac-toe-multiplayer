@@ -2,13 +2,10 @@
 
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
-import InfoCard from "../Shared/InfoCard/InfoCard";
 import AboutHeader from "./AboutHeader/AboutHeader";
-import BombExplanationCard from "./AboutHeader/BombExplanationCard/BombExplanationCard";
-import FreezeExplanationCard from "./AboutHeader/FreezeExplanationCard/FreezeExplanationCard";
 import GameObjectiveCard from "./AboutHeader/GameObjectiveCard/GameObjectiveCard";
 import HowToPlayCard from "./AboutHeader/HowToPlayCard/HowToPlayCard";
-import SwapExplanationCard from "./AboutHeader/SwapExplanationCard/SwapExplanationCard";
+import PowerUpsExplanationCard from "./AboutHeader/PowerUpsExplanationCard/PowerUpsExplanationCard";
 import WinningExplanationCard from "./AboutHeader/WinningExplanationCard/WinningExplanationCard";
 import s from "./AboutPopup.module.scss";
 
@@ -37,20 +34,7 @@ const AboutPopup = () => {
         <GameObjectiveCard />
         <HowToPlayCard />
         <WinningExplanationCard />
-
-        <InfoCard title="Power-Ups" disableMarginBottom={true}>
-          <p>
-            Strategic advantages await! Each player has access to three unique
-            power-ups that can dramatically alter the game's flow. Power-ups
-            have a <strong>cooldown period</strong> after use, meaning they
-            become available again only after a certain number of turns have
-            passed. Using them at the right moment is key to mastering the game!
-          </p>
-
-          <FreezeExplanationCard />
-          <BombExplanationCard />
-          <SwapExplanationCard />
-        </InfoCard>
+        <PowerUpsExplanationCard />
       </article>
     </div>
   );
