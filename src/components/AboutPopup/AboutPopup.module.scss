@@ -12,9 +12,6 @@
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transition:
-    visibility .4s ease-out,
-    opacity .4s ease-out;
 
   &.show {
     opacity: 1;
@@ -33,8 +30,6 @@
   width: 90%;
   max-height: 85vh;
   overflow-y: auto;
-  transform: scale(.9) translateY(40px);
-  transition: transform .4s cubic-bezier(.68, -0.55, .265, 1.55);
 }
 
 .aboutArticle::-webkit-scrollbar {
@@ -59,12 +54,7 @@
     padding: 14px;
     width: 100%;
     min-height: 100dvh;
-    transform: scale(1) translateY(0);
   }
-}
-
-.aboutOverlay.show .aboutArticle {
-  transform: scale(1) translateY(0);
 }
 
 .aboutArticle :where(p, li) {

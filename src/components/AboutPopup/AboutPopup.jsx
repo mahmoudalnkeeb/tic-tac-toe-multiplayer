@@ -22,6 +22,8 @@ const AboutPopup = () => {
     toggleAboutModel(false);
   }
 
+  if (!isAboutModelActive) return null;
+
   return (
     <div
       className={`${s.aboutOverlay} ${showClass}`}
