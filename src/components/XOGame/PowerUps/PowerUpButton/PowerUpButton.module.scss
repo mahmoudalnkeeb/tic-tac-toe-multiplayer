@@ -2,6 +2,7 @@
 
 .powerUp {
   -webkit-tap-highlight-color: transparent;
+  outline: none;
   background: rgba(255, 255, 255, .05);
   border: 2px solid rgba(255, 255, 255, .05);
   color: rgba(255, 255, 255, .8);
@@ -36,7 +37,7 @@
   }
 }
 
-.powerUp:not(:disabled):where(:hover, .selected) {
+.powerUp:not(:disabled):where(:hover, .selected, :focus-visible) {
   background-color: rgba(255, 255, 255, .1);
   border-color: #4ecdc4;
   box-shadow: 0 5px 15px rgba(78, 205, 196, .2);
@@ -54,7 +55,7 @@
   }
 }
 
-.powerUp.player1:not(:disabled):where(:hover, .selected) {
+.powerUp.player1:not(:disabled):where(:hover, .selected, :focus-visible) {
   background-color: rgba(255, 255, 255, .1);
   border-color: #ff6b6b;
   box-shadow: 0 5px 15px rgba(255, 107, 107, .2);
