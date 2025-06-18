@@ -1,3 +1,5 @@
+import { getPlacedSymbolCount, opponentSymbolExists } from "./gameUtility";
+
 export function getSquareAriaLabel(squareData) {
   if (squareData.fillWith === "") return "Empty square, click to make a move";
 
@@ -36,4 +38,30 @@ export function shouldDisableSquare({
   }
 
   return false;
+}
+
+export function shouldDisablePowerUp({
+  available,
+  powerName,
+  board,
+  playerTurn,
+  winner,
+  isPlayer1,
+  isPlayer2,
+}) {
+  const numberOfPlacedSymbols = getPlacedSymbolCount(board);
+  const hasOpponentSymbol = opponentSymbolExists(board, playerTurn);
+  const hasTwoSymbols = numberOfPlacedSymbols < 2;
+
+  const swapCondition = powerName === "Swap" && hasTwoSymbols;
+  const freezeCondition = powerName === "Freeze" && !hasOpponentSymbol;
+
+  return (
+    !available ||
+    isPlayer1 ||
+    isPlayer2 ||
+    winner ||
+    swapCondition ||
+    freezeCondition
+  );
 }
