@@ -1,7 +1,7 @@
 import InfoCard from "@/components/Shared/InfoCard/InfoCard";
-import BombExplanationCard from "../BombExplanationCard/BombExplanationCard";
-import FreezeExplanationCard from "../FreezeExplanationCard/FreezeExplanationCard";
-import SwapExplanationCard from "../SwapExplanationCard/SwapExplanationCard";
+import BombExplanationCard from "./BombExplanationCard/BombExplanationCard";
+import FreezeExplanationCard from "./FreezeExplanationCard/FreezeExplanationCard";
+import SwapExplanationCard from "./SwapExplanationCard/SwapExplanationCard";
 
 const PowerUpsExplanationCard = () => {
   return (
