@@ -3,10 +3,10 @@
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
 import AboutHeader from "./AboutHeader/AboutHeader";
-import GameObjectiveCard from "./AboutHeader/GameObjectiveCard/GameObjectiveCard";
-import HowToPlayCard from "./AboutHeader/HowToPlayCard/HowToPlayCard";
-import PowerUpsExplanationCard from "./AboutHeader/PowerUpsExplanationCard/PowerUpsExplanationCard";
-import WinningExplanationCard from "./AboutHeader/WinningExplanationCard/WinningExplanationCard";
+import GameObjectiveCard from "./GameObjectiveCard/GameObjectiveCard";
+import HowToPlayCard from "./HowToPlayCard/HowToPlayCard";
+import PowerUpsExplanationCard from "./PowerUpsExplanationCard/PowerUpsExplanationCard";
+import WinningExplanationCard from "./WinningExplanationCard/WinningExplanationCard";
 import s from "./AboutPopup.module.scss";
 
 const AboutPopup = () => {
