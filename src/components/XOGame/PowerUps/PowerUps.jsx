@@ -2,7 +2,10 @@
 
 import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
 import { POWER_UPS_BUTTONS } from "@/data/staticData";
-import { getPlacedSymbolCount } from "@/functions/gameUtility";
+import {
+  getPlacedSymbolCount,
+  opponentSymbolExists,
+} from "@/functions/gameUtility";
 import { useXOStore } from "@/stores/xo.store/xo.store";
 import PowerUpButton from "./PowerUpButton/PowerUpButton";
 import s from "./PowerUps.module.scss";
@@ -31,8 +34,15 @@ const PowerUps = ({ player }) => {
         const powerName = playerPowerUps[index][0];
         const hasTwoSymbols = numberOfPlacedSymbols < 2;
         const swapCondition = powerName === "swap" && hasTwoSymbols;
+        const hasOpponentSymbol = opponentSymbolExists(board, playerTurn);
+        const freezeCondition = powerName === "freeze" && !hasOpponentSymbol;
         const disable =
-          !available || isPlayer1 || isPlayer2 || winner || swapCondition;
+          !available ||
+          isPlayer1 ||
+          isPlayer2 ||
+          winner ||
+          swapCondition ||
+          freezeCondition;
 
         return (
           <PowerUpButton

@@ -99,6 +99,22 @@ export function bothPlayersWonWithSwap({
   return usedSwap && bothWon && !sameWinner;
 }
 
+export function opponentSymbolExists(board, playerTurn) {
+  const opponent = playerTurn === SYMBOL_X ? SYMBOL_O : SYMBOL_X;
+  let symbols = "";
+
+  for (let i = 0; i < board.length; i++) {
+    const row = board[i];
+
+    for (let j = 0; j < row.length; j++) {
+      const square = row[j];
+      if (square.fillWith) symbols += square.fillWith;
+    }
+  }
+
+  return symbols.includes(opponent);
+}
+
 export function getPlacedSymbolCount(board) {
   return board.flat().filter((square) => square.fillWith).length;
 }
