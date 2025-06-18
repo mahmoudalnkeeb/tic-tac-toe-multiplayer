@@ -7,6 +7,7 @@
 .square {
   --size: 85px;
   -webkit-tap-highlight-color: transparent;
+  outline: none;
   background: rgba(255, 255, 255, .08);
   border: 2px solid transparent;
   min-width: var(--size);
@@ -32,14 +33,14 @@
     --size: 60px;
   }
 
-  &:not(:disabled, .freeze, .bomb, .select):hover {
+  &:not(:disabled, .freeze, .bomb, .select):where(:hover, :focus-visible) {
     background: rgba(255, 255, 255, .15);
     border-color: rgba(255, 255, 255, .3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
     cursor: pointer;
   }
 
-  &:not(:disabled).freezeHover:hover {
+  &:not(:disabled).freezeHover:where(:hover, :focus-visible) {
     border-color: #87ceeb;
     box-shadow: 0 0 4px rgba(135, 206, 235, 1);
     background: linear-gradient(45deg,
@@ -47,7 +48,7 @@
         rgba(70, 131, 180, .7));
   }
 
-  &:not(:disabled).bombHover:hover {
+  &:not(:disabled).bombHover:where(:hover, :focus-visible) {
     background: linear-gradient(45deg,
         rgba(255, 68, 0, .8),
         rgba(255, 99, 71, 1));
@@ -92,7 +93,7 @@
   animation: frozen 2s ease-in-out;
 }
 
-.square.bombHover:hover .freeze {
+.square.bombHover:where(:hover, :focus-visible) .freeze {
   background: linear-gradient(45deg,
       rgba(255, 68, 0, .8),
       rgba(255, 99, 71, 1));
@@ -166,7 +167,7 @@
   background: rgba(255, 217, 61, .2);
 }
 
-.square:not(:disabled).swapHover:hover {
+.square:not(:disabled).swapHover:where(:hover, :focus-visible) {
   color: #ffd93d;
   background: rgba(255, 217, 61, .2);
 }
