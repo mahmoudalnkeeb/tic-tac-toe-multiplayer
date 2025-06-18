@@ -6,3 +6,4 @@ export const INITIAL_BOARD_SIZE = 4;
 export const SWAP_SYMBOL_DELAY_MS = 800;
 export const BOMB_DELETION_DELAY_MS = 800;
 export const WINNER_POPUP_DURATION_MS = 2000;
+export const IS_PRODUCTION = process.env.NODE_ENV === "production";
