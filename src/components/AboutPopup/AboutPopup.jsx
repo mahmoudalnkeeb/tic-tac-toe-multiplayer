@@ -9,6 +9,7 @@ import InfoCard from "../Shared/InfoCard/InfoCard";
 import AboutHeader from "./AboutHeader/AboutHeader";
 import BombExplanationCard from "./AboutHeader/BombExplanationCard/BombExplanationCard";
 import FreezeExplanationCard from "./AboutHeader/FreezeExplanationCard/FreezeExplanationCard";
+import GameObjectiveCard from "./AboutHeader/GameObjectiveCard/GameObjectiveCard";
 import SwapExplanationCard from "./AboutHeader/SwapExplanationCard/SwapExplanationCard";
 import s from "./AboutPopup.module.scss";
 
@@ -34,16 +35,7 @@ const AboutPopup = () => {
     >
       <article className={s.aboutArticle} ref={aboutArticleRef}>
         <AboutHeader />
-
-        <InfoCard title="Game Objective">
-          <p className={s.objectiveDescription}>
-            Tic Tac Toe is a classic strategy game where two players take turns
-            placing their symbols on a grid. The first player to get three (or
-            more on larger boards) of their symbols in a row, either{" "}
-            <strong>horizontally</strong>, <strong>vertically</strong>, or{" "}
-            <strong>diagonally</strong>, wins!
-          </p>
-        </InfoCard>
+        <GameObjectiveCard />
 
         <InfoCard title="How to Play">
           <ul className={s.howToPlayList}>
