@@ -29,13 +29,13 @@
   "screenshots": [
     {
       "src": "/PWA/install-app-image.webp",
-      "sizes": "1918x1078",
+      "sizes": "1345x872",
       "type": "image/webp",
       "form_factor": "wide"
     },
     {
       "src": "/PWA/install-app-image-mobile.webp",
-      "sizes": "455x751",
+      "sizes": "597x991",
       "type": "image/webp",
       "form_factor": "narrow"
     }

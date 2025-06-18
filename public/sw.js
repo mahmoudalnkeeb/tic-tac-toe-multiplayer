@@ -1,10 +1,6 @@
-const CACHE_NAME = "tic-tac-toe-v1";
+const CACHE_NAME = "tic-tac-toe-v2";
 
-const urlsToCache = [
-  "/",
-  "/manifest.json",
-  "/PWA/icons/maskable-icon.webp",
-];
+const urlsToCache = ["/", "/manifest.json", "/PWA/icons/maskable-icon.webp"];
 
 async function installServiceWorker() {
   try {
@@ -59,7 +55,7 @@ async function cleanupOldCaches() {
 }
 
 self.addEventListener("install", (event) => {
-    self.skipWaiting();
+  self.skipWaiting();
   event.waitUntil(installServiceWorker());
 });
 
