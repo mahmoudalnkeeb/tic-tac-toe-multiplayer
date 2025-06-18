@@ -37,23 +37,33 @@
 
 .header .closeBtn {
   background: rgba(255, 255, 255, .08);
-  border: 1px solid rgba(255, 255, 255, .15);
+  border: solid 1px rgba(255, 255, 255, .15);
+  outline: solid 1px transparent;
   color: rgba(255, 255, 255, .7);
   width: 45px;
   height: 45px;
   border-radius: 50%;
   @include m.center-x-y;
   cursor: pointer;
+  user-select: none;
   font-size: .9rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
   transition:
     background .3s ease,
     border-color .3s ease,
+    outline-color .3s ease,
     color .3s ease;
 
   &:hover {
     background: rgba(255, 107, 107, .25);
     border-color: #ff6b6b;
+    color: #ff6b6b;
+  }
+
+  &:focus-visible {
+    background: rgba(255, 107, 107, .25);
+    border-color: #ff6b6b;
+    outline-color: #fff;
     color: #ff6b6b;
   }
 }
