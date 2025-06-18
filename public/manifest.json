@@ -12,7 +12,7 @@
       "src": "/PWA/icons/maskable-icon.webp",
       "sizes": "192x192",
       "type": "image/webp",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "/PWA/icons/maskable-icon.webp",
