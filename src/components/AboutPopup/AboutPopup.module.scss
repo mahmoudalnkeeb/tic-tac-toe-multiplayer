@@ -71,7 +71,16 @@
   }
 }
 
-.aboutArticle :where(p, li)>b {
+.aboutArticle :where(p, li)>strong {
   font-weight: 500;
   color: #fff;
+}
+
+.aboutArticle :where(p, li) b {
+  font-family: "Inter", system-ui, "Segoe UI", "Segoe UI Symbol", "System UI fonts";
+  font-weight: 500;
+}
+
+.aboutArticle :where(p, li) :where(b, strong)[data-symbol=x] {
+  font-weight: 600;
 }

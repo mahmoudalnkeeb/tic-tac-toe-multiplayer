@@ -20,18 +20,20 @@ const BombExplanationCard = () => {
       <ExampleBoard boardData={BOARD_EXAMPLES.bombBoard} />
 
       <p>
-        <strong>Player 1 ({SYMBOL_O})</strong> is about to deploy the{" "}
-        <strong>Bomb</strong> power-up, targeting the marked{" "}
-        <strong>`{SYMBOL_X}`</strong> in the second row, second column. Notice
-        the symbols surrounding it.
+        <strong>
+          Player 1 <b>({SYMBOL_O})</b>
+        </strong>{" "}
+        is about to deploy the <strong>Bomb</strong> power-up, targeting the
+        marked <strong data-symbol="x">{SYMBOL_X}</strong> in the second row,
+        second column. Notice the symbols surrounding it.
       </p>
 
       <ExampleBoard boardData={BOARD_EXAMPLES.afterBombBoard} />
 
       <p>
-        The <strong>`{SYMBOL_X}`</strong> and all its adjacent symbols have been
-        successfully cleared, opening up new strategic possibilities for both
-        players.
+        The <strong data-symbol="x">{SYMBOL_X}</strong> and all its adjacent
+        symbols have been successfully cleared, opening up new strategic
+        possibilities for both players.
       </p>
     </InfoCard>
   );

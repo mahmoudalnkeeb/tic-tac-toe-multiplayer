@@ -22,8 +22,17 @@ export const HOW_TO_PLAY_LIST = [
   {
     content: (
       <p>
-        <b>Player 1 ({SYMBOL_O})</b> always starts the game by placing their
-        symbol first. <b>Player 2 ({SYMBOL_X})</b> follows.
+        <strong>
+          Player 1 <b>({SYMBOL_O})</b>
+        </strong>{" "}
+        always starts the game by placing their symbol first.{" "}
+        <strong>
+          Player 2{" "}
+          <b>
+            (<b data-symbol="x">{SYMBOL_X}</b>)
+          </b>
+        </strong>{" "}
+        follows.
       </p>
     ),
     id: 1,
@@ -31,8 +40,8 @@ export const HOW_TO_PLAY_LIST = [
   {
     content: (
       <div>
-        Simply <b>click</b> on any empty cell on the game board to place your
-        symbol.
+        Simply <strong>click</strong> on any empty cell on the game board to
+        place your symbol.
       </div>
     ),
     id: 2,
@@ -45,7 +54,7 @@ export const HOW_TO_PLAY_LIST = [
   {
     content: (
       <div>
-        If all cells are filled with no winner, it's a <b>draw</b>.
+        If all cells are filled with no winner, it's a <strong>draw</strong>.
       </div>
     ),
     id: 4,

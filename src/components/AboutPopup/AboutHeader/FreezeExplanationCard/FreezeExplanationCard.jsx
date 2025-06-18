@@ -33,11 +33,23 @@ const FreezeExplanationCard = () => {
       <ExampleBoard boardData={BOARD_EXAMPLES.freezeBoard} />
 
       <p className={s.freezeDescription}>
-        In this example, <strong>Player 1 ({SYMBOL_O})</strong> has used the
-        Freeze power-up on <strong>Player 2's ({SYMBOL_X})</strong> symbol in
-        the <strong>top-middle</strong> cell. This {SYMBOL_X} is now{" "}
-        <strong>frozen</strong>, making it unusable in future moves and blocking
-        Player 2 from completing <strong>vertical</strong>,{" "}
+        In this example,{" "}
+        <strong>
+          Player 1 <b>({SYMBOL_O})</b>
+        </strong>{" "}
+        has used the Freeze power-up on{" "}
+        <strong>
+          Player 2's{" "}
+          <b>
+            (<b data-symbol="x">{SYMBOL_X}</b>){" "}
+          </b>
+        </strong>{" "}
+        symbol in the <strong>top-middle</strong> cell. This{" "}
+        <strong>
+          <b data-symbol="x">{SYMBOL_X}</b>
+        </strong>{" "}
+        is now <strong>frozen</strong>, making it unusable in future moves and
+        blocking Player 2 from completing <strong>vertical</strong>,{" "}
         <strong>diagonal</strong>, or <strong>horizontal</strong> lines through
         that square.
       </p>
