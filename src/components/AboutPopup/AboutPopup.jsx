@@ -1,7 +1,7 @@
 "use client";
 
 import { SYMBOL_O } from "@/data/constants";
-import { BOARD_EXAMPLES, HOW_TO_PLAY_LIST } from "@/data/staticData";
+import { BOARD_EXAMPLES } from "@/data/staticData";
 import { useGlobalStore } from "@/stores/xo.store/global.store";
 import { useRef } from "react";
 import ExampleBoard from "../Shared/ExampleBoard/ExampleBoard";
@@ -10,6 +10,7 @@ import AboutHeader from "./AboutHeader/AboutHeader";
 import BombExplanationCard from "./AboutHeader/BombExplanationCard/BombExplanationCard";
 import FreezeExplanationCard from "./AboutHeader/FreezeExplanationCard/FreezeExplanationCard";
 import GameObjectiveCard from "./AboutHeader/GameObjectiveCard/GameObjectiveCard";
+import HowToPlayCard from "./AboutHeader/HowToPlayCard/HowToPlayCard";
 import SwapExplanationCard from "./AboutHeader/SwapExplanationCard/SwapExplanationCard";
 import s from "./AboutPopup.module.scss";
 
@@ -36,14 +37,7 @@ const AboutPopup = () => {
       <article className={s.aboutArticle} ref={aboutArticleRef}>
         <AboutHeader />
         <GameObjectiveCard />
-
-        <InfoCard title="How to Play">
-          <ul className={s.howToPlayList}>
-            {HOW_TO_PLAY_LIST.map(({ content, id }) => (
-              <li key={id}>{content}</li>
-            ))}
-          </ul>
-        </InfoCard>
+        <HowToPlayCard />
 
         <InfoCard title="Winning Example">
           <p>
