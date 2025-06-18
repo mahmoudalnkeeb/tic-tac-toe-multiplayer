@@ -1,7 +1,7 @@
 "use client";
 
 import { SYMBOL_X } from "@/data/constants";
-import { useGlobalStore } from "@/stores/xo.store/global.store";
+import { useGlobalStore } from "@/stores/global.store/global.store";
 import s from "./AboutHeader.module.scss";
 
 const AboutHeader = () => {

@@ -1,13 +1,13 @@
 "use client";
 
-import { useGlobalStore } from "@/stores/xo.store/global.store";
+import { useGlobalStore } from "@/stores/global.store/global.store";
 import { useRef } from "react";
 import AboutHeader from "./AboutHeader/AboutHeader";
+import s from "./AboutPopup.module.scss";
 import GameObjectiveCard from "./GameObjectiveCard/GameObjectiveCard";
 import HowToPlayCard from "./HowToPlayCard/HowToPlayCard";
 import PowerUpsExplanationCard from "./PowerUpsExplanationCard/PowerUpsExplanationCard";
 import WinningExplanationCard from "./WinningExplanationCard/WinningExplanationCard";
-import s from "./AboutPopup.module.scss";
 
 const AboutPopup = () => {
   const { isAboutModelActive, toggleAboutModel } = useGlobalStore((s) => s);
