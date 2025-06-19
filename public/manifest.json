@@ -15,6 +15,11 @@
       "purpose": "maskable"
     },
     {
+      "src": "/PWA/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
       "src": "/PWA/icons/android-chrome-512x512.webp",
       "sizes": "512x512",
       "type": "image/webp"
