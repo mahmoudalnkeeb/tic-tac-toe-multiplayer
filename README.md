@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Tic Tac Toe Website Preview" src="https://github-production-user-asset-6210df.s3.amazonaws.com/103026211/457124609-96955005-0129-4c01-b37d-6664c37923c2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250619%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250619T201304Z&X-Amz-Expires=300&X-Amz-Signature=e6135dc11e359a697d5b3fe772eda52a2aa26838bdac950d083d721a8056ddd4&X-Amz-SignedHeaders=host" />
+  <img alt="Tic Tac Toe Website Preview" src="https://github.com/user-attachments/assets/368e17bb-06be-481a-8769-387896ade241" />
 </div>
 
 <br />
