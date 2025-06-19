@@ -8,6 +8,11 @@
   "theme_color": "#0a192f",
   "orientation": "any",
   "start_url": "/",
+  "categories": [
+    "games",
+    "board",
+    "strategy"
+  ],
   "icons": [
     {
       "src": "/PWA/icons/maskable-icon.webp",
