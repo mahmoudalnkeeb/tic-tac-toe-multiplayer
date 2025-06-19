@@ -10,20 +10,25 @@
   "icons": [
     {
       "src": "/PWA/icons/maskable-icon.webp",
-      "sizes": "192x192",
+      "sizes": "512x512",
       "type": "image/webp",
       "purpose": "maskable"
     },
     {
-      "src": "/PWA/icons/maskable-icon.webp",
+      "src": "/PWA/icons/android-chrome-512x512.webp",
       "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "/PWA/icons/android-chrome-192x192.webp",
+      "sizes": "192x192",
       "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "/PWA/icons/maskable-icon.webp",
+      "src": "/PWA/icons/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/webp"
+      "type": "image/png"
     }
   ],
   "screenshots": [
