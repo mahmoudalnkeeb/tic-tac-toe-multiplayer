@@ -1,0 +1,24 @@
+export function isStandalone() {
+  if (typeof window === "undefined") return false;
+
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone ||
+    document.referrer.includes("android-app://")
+  );
+}
+
+export function isIOS() {
+  if (typeof window === "undefined") return false;
+
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+export function isInStandaloneMode() {
+  if (typeof window === "undefined") return false;
+
+  return (
+    window.navigator.standalone ||
+    window.matchMedia("(display-mode: standalone)").matches
+  );
+}

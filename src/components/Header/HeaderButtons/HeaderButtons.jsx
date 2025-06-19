@@ -1,5 +1,6 @@
 "use client";
 
+import InstallPWAButton from "@/components/PWA/InstallPWAButton";
 import Button from "@/components/Shared/Button/Button";
 import { useGlobalStore } from "@/stores/global.store/global.store";
 import { useXOStore } from "@/stores/xo.store/xo.store";
@@ -15,6 +16,7 @@ const HeaderButtons = () => {
       <BoardSelector />
 
       <div className={s.wrapper}>
+        <InstallPWAButton />
         <Button onClick={toggleAboutModel}>About</Button>
         <Button onClick={resetStats}>Reset</Button>
       </div>
