@@ -25,6 +25,12 @@
   }
 }
 
+@media (max-width: 420px) {
+  .board {
+    width: 100%;
+  }
+}
+
 @include m.medium {
   .board {
     padding: 12px;

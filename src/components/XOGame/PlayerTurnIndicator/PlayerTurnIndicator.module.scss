@@ -31,13 +31,13 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .indicator {
     top: 235px !important;
   }
 }
 
-@include m.very-small {
+@media (max-width: 420px) {
   .indicator {
     top: 280px !important;
   }

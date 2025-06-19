@@ -67,9 +67,8 @@
   }
 }
 
-@include m.very-small {
-  :where(.square, .square.x4, .square.x5) {
-    --size: auto !important;
+@media (max-width: 420px) {
+  .square {
     flex: 1;
     aspect-ratio: 1/1;
   }

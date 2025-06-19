@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 800px;
+  max-width: 867px;
   margin-bottom: 30px;
   gap: 30px;
 }
@@ -16,7 +16,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .header {
     flex-direction: column;
     gap: 20px;
