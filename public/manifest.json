@@ -1,6 +1,7 @@
 {
   "name": "Advanced Tic Tac Toe",
   "short_name": "Tic Tac Toe",
+  "id": "/tic-tac-toe",
   "description": "A fun and strategic Tic Tac Toe game with board sizes up to 5x5 and exciting power-ups like Freeze, Bomb, and Swap. Learn how to play, challenge a friend, and enjoy a new level of competition!",
   "display": "standalone",
   "background_color": "#0a192f",
