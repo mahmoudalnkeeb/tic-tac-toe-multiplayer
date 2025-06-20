@@ -1,5 +1,6 @@
 import Header from "@/components/Header/Header";
 import PWAInit from "@/components/PWA/PWAInit";
+import GitHubButton from "@/components/Shared/GitHubButton/GitHubButton";
 import { METADATA } from "@/data/metadata";
 import "../styles/globals.scss";
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
+        <GitHubButton />
         <PWAInit />
       </body>
     </html>
