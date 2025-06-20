@@ -63,7 +63,7 @@
 .indicator .player .symbol {
   width: 60px;
   height: 60px;
-  border: 3px solid rgba(255, 255, 255, .3);
+  border: 3px solid #ff6b6b;
   border-radius: 50%;
   @include m.center-x-y;
   font-size: 1.75rem;
@@ -76,14 +76,14 @@
   font-weight: 400;
   border-color: #ff6b6b;
   color: #ff6b6b;
-  background: rgba(255, 107, 107, .1);
+  background: #3b333f;
 }
 
 .indicator .player.p2 .symbol {
   font-weight: bold;
   border-color: #4ecdc4;
   color: #4ecdc4;
-  background: rgba(78, 205, 196, .1);
+  background: #293d48;
   position: relative;
   z-index: 1;
 }
@@ -135,7 +135,7 @@
 .indicator .player .label {
   font-size: .875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, .8);
+  color: #d3d5d8;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: color .3s ease;

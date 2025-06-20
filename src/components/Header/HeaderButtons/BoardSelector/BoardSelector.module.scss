@@ -1,10 +1,10 @@
 .boardSelector {
   display: flex;
-  background: rgba(255, 255, 255, .08);
+  background: #28303a;
   border-radius: 10px;
   padding: 4px;
   gap: 2px;
-  border: 1px solid rgba(255, 255, 255, .15);
+  border: 1px solid #484f57;
 }
 
 .boardSelector>button {
@@ -12,7 +12,7 @@
   padding: 6px 12px;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, .7);
+  color: #b9c0c8;
   border-radius: 6px;
   cursor: pointer;
   font-size: .75rem;
@@ -24,36 +24,36 @@
     border-color .3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, .1);
-    color: rgba(255, 255, 255, .9);
-    border-color: rgba(255, 255, 255, .2);
+    background: #404651;
+    color: #e8e9eb;
+    border-color: #666b74;
   }
 
   &:active {
-    background: rgba(255, 255, 255, .2);
-    color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, .3);
+    background-color: #555a64;
+    color: #fff;
+    border-color: #888c93;
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 1px rgb(255, 255, 255);
+    box-shadow: 0 0 0 1px #fff;
   }
 
   &.active {
-    background: rgba(78, 205, 196, .2);
+    background: #304f56;
     color: #4ecdc4;
-    border: 1px solid rgba(78, 205, 196, .3);
+    border: 1px solid #3a7577;
   }
 
   &.active:hover {
-    background: rgba(78, 205, 196, .3);
+    background: #356065;
     color: #4ecdc4;
-    border: 1px solid rgba(78, 205, 196, .6);
+    border: 1px solid #44a19e;
   }
 
   &.active:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 1px rgba(78, 205, 196, 1);
+    box-shadow: 0 0 0 1px #4ecdc4;
   }
 }
