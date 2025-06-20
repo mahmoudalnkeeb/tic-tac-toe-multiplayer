@@ -1,0 +1,45 @@
+.button {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  color: rgba(255, 255, 255, .8);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: .75rem;
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  left: 20px;
+  bottom: 40px;
+  transition: background .2s ease, border-color .2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .3);
+  }
+
+  &:focus-visible {
+    background: rgba(255, 255, 255, .15);
+    border-color: #fff;
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, .2);
+    border-color: rgba(255, 255, 255, .3);
+  }
+}
+
+@media (max-width: 620px) {
+  .button {
+    position: static;
+  }
+}
+
+.button>svg {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  fill: rgba(255, 255, 255, .8);
+}

@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+@media (max-width: 620px) {
+  .headerButtons {
+    align-self: center;
+  }
+}
+
 @media (max-width: 500px) {
   .headerButtons {
     flex-direction: column;
