@@ -33,7 +33,7 @@ async function initializePWA() {
 
 export default function PWAInit() {
   useEffect(() => {
-    // initializePWA();
+    initializePWA();
   }, []);
 
   return null;
