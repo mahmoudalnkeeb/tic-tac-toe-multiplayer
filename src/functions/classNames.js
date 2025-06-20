@@ -7,10 +7,13 @@ export function getSquareClasses({
   powerUps,
   swapSelected,
   playerTurn,
+  hasSelectSquares,
 }) {
   const isOpponent = fillWith !== playerTurn;
   const activeFreezeHover =
     powerUps.selectedPower === "Freeze" && fillWith && isOpponent;
+  const activeSwapHover =
+    powerUps.selectedPower === "Swap" && !hasSelectSquares;
 
   return [
     cssModule.square,
@@ -19,7 +22,7 @@ export function getSquareClasses({
     fillWith === SYMBOL_X ? cssModule.playerX : "",
     fillWith === SYMBOL_O ? cssModule.playerO : "",
     activeFreezeHover ? cssModule.freezeHover : "",
-    powerUps.selectedPower === "Swap" && fillWith ? cssModule.swapHover : "",
+    activeSwapHover && fillWith ? cssModule.swapHover : "",
     powerUps.selectedPower === "Bomb" ? cssModule.bombHover : "",
     swapSelected ? cssModule.select : "",
   ].join(" ");
