@@ -16,7 +16,7 @@ const WinningExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.winningBoard} />
 
-      <p>
+      <p style={{ marginTop: "20px" }}>
         In this scenario, <strong>Player 1</strong> successfully connects Four{" "}
         <strong>
           <b>{SYMBOL_O}</b> symbols

@@ -22,7 +22,7 @@ const FreezeExplanationCard = () => {
         </li>
       </ul>
 
-      <p className={s.freezeDescription}>
+      <p>
         This power-up is a <strong>defensive tool</strong> used to disrupt
         potential winning lines. It can only target existing{" "}
         <strong>opponent symbols</strong>, not your own or empty cells. However,
@@ -32,7 +32,7 @@ const FreezeExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.freezeBoard} />
 
-      <p className={s.freezeDescription}>
+      <p className={s.freezeExampleDescription}>
         In this example,{" "}
         <strong>
           Player 1 <b>({SYMBOL_O})</b>

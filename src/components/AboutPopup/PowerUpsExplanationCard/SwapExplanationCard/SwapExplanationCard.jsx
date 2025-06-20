@@ -18,7 +18,7 @@ const SwapExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.selectSwapBoard} />
 
-      <p>
+      <p style={{ marginTop: "20px" }}>
         <strong>
           Player 2{" "}
           <b>
@@ -40,7 +40,7 @@ const SwapExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.afterSwapBoard} />
 
-      <p>
+      <p style={{ marginTop: "20px" }}>
         The{" "}
         <strong>
           <b>{SYMBOL_O}</b>

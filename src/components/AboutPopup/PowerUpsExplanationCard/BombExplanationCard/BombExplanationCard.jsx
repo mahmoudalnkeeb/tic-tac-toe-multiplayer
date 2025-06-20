@@ -19,7 +19,7 @@ const BombExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.bombBoard} />
 
-      <p>
+      <p style={{ marginTop: "20px" }}>
         <strong>
           Player 1 <b>({SYMBOL_O})</b>
         </strong>{" "}
@@ -30,7 +30,7 @@ const BombExplanationCard = () => {
 
       <ExampleBoard boardData={BOARD_EXAMPLES.afterBombBoard} />
 
-      <p>
+      <p style={{ marginTop: "20px" }}>
         The <strong data-symbol="x">{SYMBOL_X}</strong> and all its adjacent
         symbols have been successfully cleared, opening up new strategic
         possibilities for both players.
