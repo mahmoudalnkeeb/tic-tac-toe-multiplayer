@@ -162,6 +162,7 @@
   color: #ffd93d;
   background: #504d38;
   box-shadow: 0 0 10px rgba(255, 217, 61, .5);
+  text-shadow: 0 0 20px #ffd93d;
 }
 
 .square:not(:disabled, .select).swapHover:where(:hover, :focus-visible) {
@@ -169,6 +170,7 @@
   background: #504d38;
   border-color: #95843b;
   box-shadow: 0 0 10px rgba(255, 217, 61, .5);
+  text-shadow: 0 0 20px #ffd93d;
 }
 
 @media (hover: none) and (pointer: coarse) {
