@@ -1,4 +1,4 @@
-import { SYMBOL_O, SYMBOL_X } from "@/data/constants";
+import { getExampleBoardSquareClasses } from "@/functions/classNames";
 import s from "./ExampleBoard.module.scss";
 
 const ExampleBoard = ({ boardData }) => {
@@ -7,15 +7,11 @@ const ExampleBoard = ({ boardData }) => {
       {boardData.map((row, rowIndex) => (
         <div key={rowIndex} className={s.row}>
           {row.map(({ fillWith, type }, columnIndex) => {
-            const classes = [
-              s.square,
-              fillWith === SYMBOL_X ? s.playerX : "",
-              fillWith === SYMBOL_O ? s.playerO : "",
-              type?.includes("winning") ? s.winning : "",
-              type?.includes("frozen") ? s.frozen : "",
-              type?.includes("targeted") ? s.targeted : "",
-              type?.includes("selected") ? s.selected : "",
-            ].join(" ");
+            const classes = getExampleBoardSquareClasses({
+              cssModule: s,
+              fillWith,
+              type,
+            });
 
             return (
               <button

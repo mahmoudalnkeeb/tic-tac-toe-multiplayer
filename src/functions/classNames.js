@@ -24,3 +24,15 @@ export function getSquareClasses({
     swapSelected ? cssModule.select : "",
   ].join(" ");
 }
+
+export function getExampleBoardSquareClasses({ cssModule, fillWith, type }) {
+  return [
+    cssModule.square,
+    fillWith === SYMBOL_X ? cssModule.playerX : "",
+    fillWith === SYMBOL_O ? cssModule.playerO : "",
+    type?.includes("winning") ? cssModule.winning : "",
+    type?.includes("frozen") ? cssModule.frozen : "",
+    type?.includes("targeted") ? cssModule.targeted : "",
+    type?.includes("selected") ? cssModule.selected : "",
+  ].join(" ");
+}
