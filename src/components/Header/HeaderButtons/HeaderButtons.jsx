@@ -5,6 +5,7 @@ import Button from "@/components/Shared/Button/Button";
 import { useGlobalStore } from "@/stores/global.store/global.store";
 import { useXOStore } from "@/stores/xo.store/xo.store";
 import BoardSelector from "./BoardSelector/BoardSelector";
+import FullscreenToggleButton from "./FullscreenToggleButton/FullscreenToggleButton";
 import s from "./HeaderButtons.module.scss";
 
 const HeaderButtons = () => {
@@ -13,6 +14,7 @@ const HeaderButtons = () => {
 
   return (
     <div className={s.headerButtons}>
+      <FullscreenToggleButton />
       <BoardSelector />
 
       <div className={s.wrapper}>
