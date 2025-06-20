@@ -9,6 +9,7 @@ import s from "./FullscreenToggleButton.module.scss";
 const FullscreenToggleButton = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   useFunctionOnKey(toggleFullScreen, ["KeyF"], 200, true);
+  const title = isFullScreen ? "Exit Full Screen" : "Enter Full Screen";
 
   function toggleFullScreen() {
     setIsFullScreen((prevValue) => !prevValue);
@@ -20,7 +21,7 @@ const FullscreenToggleButton = () => {
     <button
       type="button"
       className={s.fullscreenBtn}
-      title="Full Screen Mode"
+      title={title}
       onClick={toggleFullScreen}
     >
       <SvgIcon name={isFullScreen ? "compress" : "expand"} />
