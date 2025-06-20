@@ -8,17 +8,17 @@
   --size: 85px;
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  background: rgba(255, 255, 255, .08);
+  background: #3f4650;
   border: 2px solid transparent;
   min-width: var(--size);
   min-height: var(--size);
   border-radius: 10px;
   @include m.center-x-y;
   position: relative;
-  backdrop-filter: blur(5px);
   font-size: 2rem;
   font-weight: bold;
   user-select: none;
+  z-index: 1;
   transition:
     background .3s ease,
     border-color .3s ease,
@@ -34,7 +34,7 @@
   }
 
   &:not(:disabled, .freeze, .bomb, .select):where(:hover, :focus-visible) {
-    background: rgba(255, 255, 255, .15);
+    background: #505762;
     border-color: rgba(255, 255, 255, .3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
     cursor: pointer;
@@ -50,8 +50,9 @@
 
   &:not(:disabled).bombHover:where(:hover, :focus-visible) {
     background: linear-gradient(45deg,
-        rgba(255, 68, 0, .8),
-        rgba(255, 99, 71, 1));
+        rgb(255, 68, 0),
+        rgb(255, 99, 71));
+    border-color: #e98061;
   }
 }
 
@@ -94,8 +95,9 @@
 
 .square.bombHover:where(:hover, :focus-visible) .freeze {
   background: linear-gradient(45deg,
-      rgba(255, 68, 0, .8),
-      rgba(255, 99, 71, 1));
+      rgb(255, 68, 0),
+      rgb(255, 99, 71));
+  border-color: #e98061;
 }
 
 .bomb {
@@ -129,10 +131,10 @@
 
 .square.playerX {
   border-color: #4ecdc4;
-  background: rgba(78, 205, 196, .1);
+  background: rgba(131, 247, 239, .15);
   color: #4ecdc4;
   text-shadow: 0 0 20px rgba(78, 205, 196, .5);
-  box-shadow: 0 0 15px rgba(78, 205, 196, .1);
+  box-shadow: 0 0 15px rgba(78, 205, 196, .5);
 
   &.x4 {
     font-size: 1.8rem;
@@ -145,10 +147,10 @@
 
 .square.playerO {
   border-color: #ff6b6b;
-  background: rgba(255, 107, 107, .1);
+  background: rgba(255, 128, 128, .2);
   color: #ff6b6b;
   text-shadow: 0 0 20px rgba(255, 107, 107, .5);
-  box-shadow: 0 0 15px rgba(255, 107, 107, .1);
+  box-shadow: 0 0 15px rgba(255, 107, 107, .5);
   font-size: 3.8rem;
 
   &.x4 {
@@ -166,9 +168,10 @@
   background: rgba(255, 217, 61, .2);
 }
 
-.square:not(:disabled).swapHover:where(:hover, :focus-visible) {
+.square:not(:disabled, .select).swapHover:where(:hover, :focus-visible) {
   color: #ffd93d;
   background: rgba(255, 217, 61, .2);
+  border-color: rgba(255, 216, 61, .4);
 }
 
 @media (hover: none) and (pointer: coarse) {

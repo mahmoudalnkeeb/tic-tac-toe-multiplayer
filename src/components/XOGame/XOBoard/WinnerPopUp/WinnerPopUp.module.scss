@@ -2,7 +2,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, .8);
   color: #fff;
   padding: 30px 50px;
   border-radius: 20px;
@@ -11,7 +11,6 @@
   font-size: 1.5rem;
   font-weight: bold;
   border: 2px solid #4ecdc4;
-  backdrop-filter: blur(20px);
   z-index: 1000;
   transform: translate(-50%, -50%) scale(0);
   transition: transform .5s cubic-bezier(.68, -0.55, .265, 1.55);
