@@ -22,3 +22,15 @@ export function isInStandaloneMode() {
     window.matchMedia("(display-mode: standalone)").matches
   );
 }
+
+export function enterFullScreen() {
+  if (typeof document === "undefined") return false;
+
+  const htmlElement = document.documentElement;
+
+  if (htmlElement.requestFullscreen) htmlElement.requestFullscreen();
+  else if (htmlElement.mozRequestFullScreen) htmlElement.mozRequestFullScreen();
+  else if (htmlElement.webkitRequestFullscreen)
+    htmlElement.webkitRequestFullscreen();
+  else if (htmlElement.msRequestFullscreen) htmlElement.msRequestFullscreen();
+}
