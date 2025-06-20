@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 500px) {
   .headerButtons {
     flex-direction: column;
   }
@@ -20,7 +20,8 @@
   }
 }
 
-.headerButtons .wrapper {
+.headerButtons .wrapper1,
+.headerButtons .wrapper2 {
   display: flex;
   gap: 12px;
   align-items: center;

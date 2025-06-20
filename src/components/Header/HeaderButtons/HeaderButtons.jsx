@@ -14,10 +14,12 @@ const HeaderButtons = () => {
 
   return (
     <div className={s.headerButtons}>
-      <FullscreenToggleButton />
-      <BoardSelector />
+      <div className={s.wrapper1}>
+        <FullscreenToggleButton />
+        <BoardSelector />
+      </div>
 
-      <div className={s.wrapper}>
+      <div className={s.wrapper2}>
         <InstallPWAButton />
         <Button onClick={toggleAboutModel}>About</Button>
         <Button onClick={resetStats}>Reset</Button>
