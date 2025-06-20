@@ -158,6 +158,7 @@
 }
 
 .square.select {
+  box-sizing: content-box;
   border: 2px dashed #ffd93d;
   color: #ffd93d;
   background: #504d38;
@@ -166,6 +167,7 @@
 }
 
 .square:not(:disabled, .select).swapHover:where(:hover, :focus-visible) {
+  box-sizing: content-box;
   color: #ffd93d;
   background: #504d38;
   border-color: #95843b;
