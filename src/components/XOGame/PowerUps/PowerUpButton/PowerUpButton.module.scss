@@ -37,6 +37,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .powerUp {
+    aspect-ratio: 1.7/1;
+  }
+}
+
 .powerUp:not(:disabled):where(:hover, .selected, :focus-visible) {
   background-color: rgba(255, 255, 255, .1);
   border-color: #4ecdc4;
