@@ -7,8 +7,8 @@
 .square {
   --size: 85px;
   -webkit-tap-highlight-color: transparent;
-  outline: none;
   background: #3f4650;
+  outline: 2px solid transparent;
   border: 2px solid transparent;
   min-width: var(--size);
   min-height: var(--size);
@@ -158,8 +158,9 @@
 }
 
 .square.select {
-  box-sizing: content-box;
-  border: 2px dashed #ffd93d;
+  outline: 3px dashed #ffd93d;
+  border-color: transparent;
+  outline-offset: -2px;
   color: #ffd93d;
   background: #504d38;
   box-shadow: 0 0 10px rgba(255, 217, 61, .5);
@@ -167,7 +168,6 @@
 }
 
 .square:not(:disabled, .select).swapHover:where(:hover, :focus-visible) {
-  box-sizing: content-box;
   color: #ffd93d;
   background: #504d38;
   border-color: #95843b;
