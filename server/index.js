@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import { Server } from "socket.io";
 import "dotenv/config";
-import { GameManager } from "./GameManager.js";
+import { GameManager } from "./classes/GameManger.js";
 
 const PORT = process.env.PORT || 4000;
 const ORIGIN = (
